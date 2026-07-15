@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "title": "Backend & APIs",
+    "description": "Designing modular backends, scalable REST/WebSocket APIs, and messaging pipelines.",
+    "slug": "/thoughts"
+  },
+  {
+    "id": "2",
+    "title": "Infrastructure & DevOps",
+    "description": "Docker container isolation, Nginx reverse proxy configurations, and AWS cloud management.",
+    "slug": "/thoughts"
+  },
+  {
+    "id": "3",
+    "title": "AI & WebRTC",
+    "description": "Voice bots with Twilio and Deepgram, dynamic AI prompts, and real-time streaming tools.",
+    "slug": "/thoughts"
+  },
+  {
+    "id": "4",
+    "title": "Security & Tooling",
+    "description": "Browser-native cryptography, custom CLI scaffolding tools, and feature-branch isolations.",
+    "slug": "/thoughts"
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "name": "AI Complaint Management System",
+    "year": "2025",
+    "status": "Live",
+    "featured": true,
+    "description": "Full-stack complaint management platform with a real-time voice AI agent that handles citizen calls via Twilio, transcribes speech using Deepgram, routes through an LLM, and registers complaints automatically. Features an admin dashboard with analytics, employee management, OTP-based worker auth, and SMS notifications.",
+    "stack": ["Express", "Node.js", "MongoDB", "Mongoose", "WebSocket", "REST APIs", "Deepgram", "Twilio", "JWT", "Bcrypt", "Zod", "React", "Vite", "TanStack Router", "TanStack Table", "Recharts", "Zustand", "Axios", "Tailwind CSS", "Radix UI", "Sonner"],
+    "slug": "ai-complaint-management-system",
+    "links": { "live": "https://aicms.abubakarshaikh.dev", "github": "https://github.com/abubakar-shaikh-dev/aicms" }
+  },
+  {
+    "id": "2",
+    "name": "Postlance",
+    "year": "2025",
+    "status": "Live",
+    "featured": false,
+    "description": "A student freelance platform connecting clients with student talent. Clients post projects, students submit proposals, and an AI evaluation system scores applicants. Includes role-based dashboards, a wallet system with top-up and split payments, SMS notifications, and project lifecycle management.",
+    "stack": ["Next.js 16", "React 19", "Server Actions", "MongoDB", "Mongoose", "Jose (JWT)", "Bcrypt", "Zod", "React Hook Form", "Tailwind CSS", "Framer Motion", "Shadcn UI", "Base UI", "Sonner"],
+    "slug": "postlance",
+    "links": { "live": "https://postlance.abubakarshaikh.dev" }
+  },
+  {
+    "id": "3",
+    "name": "XENC",
+    "year": "2023",
+    "status": "Live",
+    "featured": false,
+    "description": "Browser-native encryption tool using AES-256-CBC and Web Crypto API with a clean, lightweight approach.",
+    "stack": ["Vanilla JS", "Web Crypto API", "AES-256-CBC"],
+    "slug": "xenc",
+    "links": { "live": "https://xenc.abubakarshaikh.dev", "github": "https://github.com/abubakar-shaikh-dev/xenc" }
+  },
+  {
+    "id": "4",
+    "name": "Libro: AI Library Assistant",
+    "year": "2026",
+    "status": "Live",
+    "featured": false,
+    "description": "A full-stack web app for managing a library collection with an AI-powered assistant. Users can add, edit, search, and organize books, chat with the assistant for recommendations and book queries, and use voice features for speech-to-text input and spoken AI responses.",
+    "stack": ["Next.js 16", "Server Actions", "React 19", "Tailwind CSS 4", "Motion", "MongoDB", "Mongoose", "Zustand", "TanStack Query", "React Hook Form", "Zod", "OpenRouter SDK", "AssemblyAI", "Speech Synthesis API"],
+    "slug": "libro-ai-library-assistant",
+    "links": { "live": "https://libro.abubakarshaikh.dev" }
+  },
+  {
+    "id": "5",
+    "name": "SKELR",
+    "year": "2026",
+    "status": "Live",
+    "featured": false,
+    "description": "Service Scaffolding CLI — Generate production-ready service files in seconds. Supports modular and layer-based architectures, JavaScript/TypeScript templates, optional CRUD generation with soft-delete strategies, and config-driven defaults via .skelrrc.json.",
+    "stack": ["Node.js", "CLI Tooling", "ES Modules", "Express", "TypeScript Templates", "@clack/prompts", "chalk"],
+    "slug": "skelr",
+    "links": { "npm": "https://www.npmjs.com/package/skelr", "github": "https://github.com/abubakar-shaikh-dev/skelr" }
+  },
+  {
+    "id": "6",
+    "name": "FEATIFY",
+    "year": "2026",
+    "status": "Live",
+    "featured": false,
+    "description": "Feature Branch Database Isolation CLI — Instantly clone your development MySQL database into isolated environments per feature branch. Prevents schema conflicts in Prisma workflows by creating branch-specific databases, enabling parallel development without migration collisions.",
+    "stack": ["Node.js", "Bash Scripting", "Docker", "MySQL", "Prisma", "CLI Tooling", "Environment Automation"],
+    "slug": "featify",
+    "links": { "github": "https://github.com/abubakar-shaikh-dev/featify" }
+  }
+]

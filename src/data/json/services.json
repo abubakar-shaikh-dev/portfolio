@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "title": "Full-Stack Web Development",
+    "description": "Expert implementation of custom web applications using React, Next.js, and TypeScript. I build clean, modern user interfaces with state-of-the-art styling and micro-animations, integrated with secure, high-performance API backends.",
+    "techStack": ["React", "Next.js", "TypeScript", "Zustand", "TailwindCSS", "Framer Motion"]
+  },
+  {
+    "id": "2",
+    "title": "Backend & Microservices Architecture",
+    "description": "Designing modular monoliths and event-driven microservices architectures using NestJS, Node.js, and Fastify. Scalable database schema designs in PostgreSQL, MongoDB, and MySQL with high-throughput queuing via Kafka and BullMQ.",
+    "techStack": ["NestJS", "Node.js", "PostgreSQL", "MongoDB", "Redis", "Kafka", "BullMQ"]
+  },
+  {
+    "id": "3",
+    "title": "DevOps & CI/CD Automation",
+    "description": "Dockerizing service environments, configuring Nginx reverse proxies, setting up GitHub Actions pipelines for automated builds and testing, and deploying secure, production-grade applications on AWS cloud infrastructure.",
+    "techStack": ["Docker", "AWS Infrastructure", "Nginx", "GitHub Actions", "Linux Shell", "CI/CD"]
+  },
+  {
+    "id": "4",
+    "title": "AI Agent & Real-time Integrations",
+    "description": "Integrating LLMs (via OpenRouter/OpenAI), building real-time voice AI agents over WebSockets using Twilio and Deepgram, and connecting low-latency notification and messaging networks (SMS, Socket.io).",
+    "techStack": ["Twilio Voice API", "Deepgram STT", "WebSockets", "OpenAI / LLMs", "Socket.io"]
+  }
+]

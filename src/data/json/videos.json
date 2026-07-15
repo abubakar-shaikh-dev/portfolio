@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "title": "How I Fixed The Bottleneck That Killed 700+ Lambdas",
+    "date": "27 Mar 2026",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "how-i-fixed-the-bottleneck-that-killed-700-lambdas"
+  },
+  {
+    "id": "2",
+    "title": "I benchmarked all .NET serializers for .NET 10",
+    "date": "1 Feb 2026",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "i-benchmarked-all-net-serializers-for-net-10"
+  },
+  {
+    "id": "3",
+    "title": "The Smartest Way to Onboard Developers",
+    "date": "1 Jan 2024",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "The-Smartest-Way-to-Onboard-Developers"
+  },
+  {
+    "id": "4",
+    "title": "2 MUST USE features for dotnet test debugging",
+    "date": "8 May 2023",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "2-must-use-features-for-dotnet-test-debugging"
+  },
+  {
+    "id": "5",
+    "title": "Saying Hello To The Newest .NET Community - WeAreDotnet!",
+    "date": "27 Apr 2023",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "saying-hello-to-the-newest-net-community-wearedotnet"
+  },
+  {
+    "id": "6",
+    "title": "Create Terraform Modules Like A Pro",
+    "date": "26 Feb 2023",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "create-terraform-modules-like-a-pro"
+  },
+  {
+    "id": "7",
+    "title": "How to Use AWS IAM Identity Centre with Terraform",
+    "date": "26 Feb 2023",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "how-to-use-aws-iam-identity-centre-with-terraform"
+  },
+  {
+    "id": "8",
+    "title": "Unlocking the best of AWS Route 53",
+    "date": "26 Feb 2023",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "unlocking-the-best-of-aws-route-53"
+  },
+  {
+    "id": "9",
+    "title": "The Way You Publish Apps Is Changing | .NET 7",
+    "date": "15 Nov 2022",
+    "youtubeId": "dQw4w9WgXcQ",
+    "slug": "the-way-you-publish-apps-is-changing-net-7"
+  }
+]
