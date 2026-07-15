@@ -4,13 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { NAV_LINKS } from '@/lib/constants';
 
 export function Navbar() {
   const { isScrolled } = useScrollPosition();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const pathname = usePathname();
 
   const isActive = (href: string) => pathname === href;
@@ -18,12 +19,12 @@ export function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500"
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 transition-[padding-top] duration-300 ease-out-premium"
         style={{ paddingTop: isScrolled ? '12px' : '0px' }}
         aria-label="Primary navigation"
       >
         <div
-          className={`flex w-full items-center justify-between transition-all duration-500 ${
+          className={`flex w-full items-center justify-between transition-[max-width,padding,background-color,box-shadow,border-radius] duration-300 ease-out-premium ${
             isScrolled
               ? 'max-w-6xl rounded-full px-6 py-2.5 backdrop-blur-xl'
               : 'max-w-7xl px-6 py-4'
@@ -85,15 +86,16 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
               className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
               aria-hidden="true"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              initial={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-20px)", opacity: 0 }}
+              animate={{ transform: "translateY(0px)", opacity: 1 }}
+              exit={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-20px)", opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
               className="fixed inset-x-0 top-0 z-50 border-b-[3px] border-accent-orange bg-[#0a0a0a] md:hidden"
             >
               <div className="flex items-center justify-between border-b border-border-primary px-6 py-4">
@@ -113,9 +115,9 @@ export function Navbar() {
                   {NAV_LINKS.map((link, index) => (
                     <motion.li
                       key={link.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
+                      initial={{ opacity: 0, transform: shouldReduceMotion ? "translateX(0px)" : "translateX(-20px)" }}
+                      animate={{ opacity: 1, transform: "translateX(0px)" }}
+                      transition={{ delay: index * 0.04, duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
                     >
                       <Link
                         href={link.href}

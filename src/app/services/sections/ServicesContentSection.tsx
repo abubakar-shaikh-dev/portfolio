@@ -16,7 +16,7 @@ export async function ServicesContentSection() {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className="group relative flex flex-col justify-between border border-border-primary bg-bg-secondary p-6 md:p-8 transition-all duration-300 hover:border-accent-orange hover:-translate-y-1"
+              className="group relative flex flex-col justify-between border border-border-primary bg-bg-secondary p-6 md:p-8 transition-[border-color,transform] duration-200 ease-out-premium hover:border-accent-orange hover:-translate-y-1"
             >
               <div>
                 <div className="flex items-start justify-between">
@@ -70,7 +70,7 @@ export async function ServicesContentSection() {
             return (
               <div
                 key={area.category}
-                className="group flex flex-col border border-border-primary bg-bg-secondary transition-all duration-300 hover:border-accent-orange hover:-translate-y-1"
+                className="group flex flex-col border border-border-primary bg-bg-secondary transition-[border-color,transform] duration-200 ease-out-premium hover:border-accent-orange hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between border-b border-border-primary/50 bg-[#0c0c0c] px-4 py-3 select-none">
                   <div className="flex gap-1.5">
@@ -91,7 +91,7 @@ export async function ServicesContentSection() {
                     {tags.map((tag) => (
                       <span
                         key={tag}
-                        className="border border-border-primary bg-bg-primary px-2.5 py-1 font-mono text-[10px] text-text-secondary transition-all duration-200 hover:border-accent-orange hover:bg-accent-orange/5 hover:text-white cursor-default"
+                        className="border border-border-primary bg-bg-primary px-2.5 py-1 font-mono text-[10px] text-text-secondary transition-[border-color,background-color,color] duration-150 ease-out-premium hover:border-accent-orange hover:bg-accent-orange/5 hover:text-white cursor-default"
                       >
                         {tag}
                       </span>

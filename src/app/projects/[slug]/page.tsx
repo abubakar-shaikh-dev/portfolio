@@ -84,7 +84,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     href={project.links.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 border border-accent-orange bg-accent-orange px-6 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:bg-accent-orange-deep hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2.5 border border-accent-orange bg-accent-orange px-6 py-3.5 text-sm font-medium text-white transition-[background-color,border-color,transform] duration-150 ease-out-premium hover:bg-accent-orange-deep hover:-translate-y-0.5 active:scale-97"
                   >
                     <ExternalLink className="h-4 w-4" />
                     Visit Live Demo
@@ -95,7 +95,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 border border-border-primary bg-bg-secondary px-6 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:border-accent-orange hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2.5 border border-border-primary bg-bg-secondary px-6 py-3.5 text-sm font-medium text-white transition-[border-color,background-color,transform] duration-150 ease-out-premium hover:border-accent-orange hover:-translate-y-0.5 active:scale-97"
                   >
                     <Github className="h-4 w-4" />
                     View Repository
@@ -106,7 +106,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     href={project.links.npm}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 border border-border-primary bg-bg-secondary px-6 py-3.5 text-sm font-medium text-white transition-all duration-200 hover:border-accent-orange hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2.5 border border-border-primary bg-bg-secondary px-6 py-3.5 text-sm font-medium text-white transition-[border-color,background-color,transform] duration-150 ease-out-premium hover:border-accent-orange hover:-translate-y-0.5 active:scale-97"
                   >
                     <Package className="h-4 w-4" />
                     NPM Registry

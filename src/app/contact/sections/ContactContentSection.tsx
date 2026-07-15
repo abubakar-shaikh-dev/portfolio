@@ -98,7 +98,7 @@ export function ContactContentSection() {
               </span>
               <a
                 href="mailto:shaikhabubakar2380@gmail.com"
-                className="inline-flex w-full items-center gap-3 border border-border-primary bg-bg-secondary px-6 py-4 text-base font-semibold text-white transition-all duration-200 hover:border-accent-orange"
+                className="inline-flex w-full items-center gap-3 border border-border-primary bg-bg-secondary px-6 py-4 text-base font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent-orange active:scale-98"
               >
                 <Mail className="h-5 w-5 text-accent-orange" />
                 shaikhabubakar2380@gmail.com
@@ -116,7 +116,7 @@ export function ContactContentSection() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-border-primary bg-bg-secondary px-4 py-3 text-xs font-semibold text-white transition-all duration-200 hover:border-accent-orange"
+                    className="inline-flex items-center gap-2 border border-border-primary bg-bg-secondary px-4 py-3 text-xs font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent-orange active:scale-97"
                   >
                     <social.icon className="h-4 w-4" />
                     {social.label}
@@ -204,7 +204,7 @@ export function ContactContentSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex w-full items-center justify-center gap-2 border border-accent-orange bg-accent-orange py-4 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-orange-deep disabled:opacity-50"
+                className="inline-flex w-full items-center justify-center gap-2 border border-accent-orange bg-accent-orange py-4 text-sm font-semibold text-white transition-[background-color,border-color,transform] duration-150 ease-out-premium hover:bg-accent-orange-deep active:scale-97 disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <><Loader2 className="h-4 w-4 animate-spin" /> Sending Message...</>

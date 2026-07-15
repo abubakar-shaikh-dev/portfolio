@@ -9,7 +9,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group flex h-full flex-col justify-between border border-border-primary bg-bg-secondary p-6 transition-all duration-300 hover:border-accent-orange hover:-translate-y-0.5"
+      className="group flex h-full flex-col justify-between border border-border-primary bg-bg-secondary p-6 transition-[border-color,transform] duration-200 ease-out-premium hover:border-accent-orange hover:-translate-y-0.5 active:scale-98"
     >
       <div>
         <h3 className="mb-2 text-base font-semibold text-white transition-colors group-hover:text-accent-orange">

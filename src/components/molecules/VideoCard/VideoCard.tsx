@@ -11,7 +11,7 @@ export function VideoCard({ video }: VideoCardProps) {
       href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block"
+      className="group block transition-transform duration-150 ease-out-premium active:scale-98"
     >
       <div className="relative aspect-video overflow-hidden bg-bg-secondary">
         <img

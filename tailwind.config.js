@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {
@@ -61,6 +65,14 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+      },
+      transitionTimingFunction: {
+        'out-premium': 'var(--ease-out-premium)',
+        'in-out-premium': 'var(--ease-in-out-premium)',
+      },
+      scale: {
+        '97': '0.97',
+        '98': '0.98',
       },
       keyframes: {
         "accordion-down": {

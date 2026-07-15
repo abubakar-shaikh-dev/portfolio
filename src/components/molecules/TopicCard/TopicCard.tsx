@@ -10,7 +10,7 @@ export function TopicCard({ topic }: TopicCardProps) {
   return (
     <Link
       href={topic.slug}
-      className="group block border-black bg-black p-6 text-white transition-all duration-150"
+      className="group block border-black bg-black p-6 text-white transition-[border-color,transform] duration-150 ease-out-premium active:scale-98"
       style={{ borderWidth: '3px', boxShadow: '4px 4px 0 #000000' }}
     >
       <h3 className="font-display font-semibold text-white transition-colors group-hover:text-accent-orange">

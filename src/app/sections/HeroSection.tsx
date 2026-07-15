@@ -81,7 +81,7 @@ export async function HeroSection() {
               href={social.href}
               target="_blank"
               rel="noopener"
-              className="hero-link flex items-center gap-3 border-surface-border bg-surface-elevated px-5 py-4 text-sm font-semibold text-text-primary transition-all duration-150 hover:border-accent-orange hover:text-accent-orange"
+              className="hero-link flex items-center gap-3 border-surface-border bg-surface-elevated px-5 py-4 text-sm font-semibold text-text-primary transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent-orange hover:text-accent-orange active:scale-97"
               style={{ borderWidth: '3px', borderStyle: 'solid', boxShadow: '4px 4px 0 rgba(255, 107, 0, 0.15)' }}
             >
               <social.icon width="20" height="20" className="lucide" aria-hidden="true" />
