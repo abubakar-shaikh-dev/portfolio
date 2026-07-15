@@ -44,6 +44,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Abubakar Shaikh' }],
   creator: 'Abubakar Shaikh',
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
