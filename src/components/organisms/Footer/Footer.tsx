@@ -12,7 +12,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border-primary bg-[#0a0a0a]">
-      <div className="mx-auto max-w-7xl px-6 py-16">
+      <div className="section-container py-16">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <Link href="/" className="inline-block font-mono text-lg font-bold text-white">
@@ -72,7 +72,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border-primary">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between px-6 py-6 sm:flex-row">
+        <div className="section-container flex flex-col items-center justify-between py-6 sm:flex-row">
           <p className="text-sm text-text-muted">&copy; {currentYear} Abubakar Shaikh. All rights reserved.</p>
           <div className="flex items-center gap-4">
             {FOOTER_LEGAL_LINKS.map((link) => (

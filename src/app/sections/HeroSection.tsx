@@ -26,10 +26,10 @@ export async function HeroSection() {
   return (
     <section id="hero" className="relative flex flex-col overflow-hidden bg-grid-pattern">
       <div className="section-container pt-28 lg:pt-36 hero-content-wrapper">
-        <p className="hero-label mono-accent mb-6">// full_stack_software_engineer</p>
+        <p className="hero-label mono-accent mb-6 animate-fade-in-up">// full_stack_software_engineer</p>
         <div className="relative">
-          <div className="hero-image absolute -top-4 right-4 z-10 hidden xl:block xl:-top-8 xl:right-12">
-            <div style={{ transform: 'rotate(-3deg)' }}>
+          <div className="hero-image absolute -top-4 right-4 z-10 hidden xl:block xl:-top-8 xl:right-12 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
+            <div className="animate-float-rotate">
               <div className="overflow-hidden border-text-primary" style={{ borderWidth: '4px', boxShadow: '6px 6px 0 var(--color-accent-orange)' }}>
                 <img src="/images/profile.webp" alt="Abubakar Shaikh" width="180" height="180" fetchPriority="high" />
               </div>
@@ -38,11 +38,15 @@ export async function HeroSection() {
 
           <h1 className="font-display font-extrabold text-white">
             <span className="sr-only">Abubakar Shaikh — Full Stack Software Engineer specialising in React, Node.js, and AWS DevOps</span>
-            <span className="hero-word block text-display-hero" aria-hidden="true">ABUBAKAR</span>
-            <span className="hero-word block text-display-hero text-accent-orange" aria-hidden="true">SHAIKH</span>
+            <span className="block overflow-hidden" aria-hidden="true">
+              <span className="hero-word block text-display-hero animate-reveal-up" style={{ animationDelay: '100ms' }}>ABUBAKAR</span>
+            </span>
+            <span className="block overflow-hidden" aria-hidden="true">
+              <span className="hero-word block text-display-hero text-accent-orange animate-reveal-up" style={{ animationDelay: '250ms' }}>SHAIKH</span>
+            </span>
           </h1>
 
-          <div className="hero-glass absolute -bottom-12 right-0 z-30 hidden px-6 py-3 md:block lg:-bottom-14 lg:right-8 backdrop-blur-xl" style={{ backgroundColor: 'rgba(255, 107, 0, 0.1)', border: '1px solid rgba(255, 107, 0, 0.3)' }}>
+          <div className="hero-glass absolute -bottom-12 right-0 z-30 hidden px-6 py-3 md:block lg:-bottom-14 lg:right-8 backdrop-blur-xl animate-fade-in-up" style={{ backgroundColor: 'rgba(255, 107, 0, 0.1)', border: '1px solid rgba(255, 107, 0, 0.3)', animationDelay: '650ms' }}>
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-accent-orange">3+ YRS EXP</span>
             <span className="mx-3 text-text-muted">/</span>
             <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">BUILDS IN PUBLIC</span>
@@ -51,15 +55,15 @@ export async function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-image mt-8 xl:hidden">
-          <div className="inline-block overflow-hidden border-text-primary" style={{ borderWidth: '4px', boxShadow: '6px 6px 0 var(--color-accent-orange)' }}>
+        <div className="hero-image mt-8 xl:hidden animate-fade-in-up" style={{ animationDelay: '600ms' }}>
+          <div className="inline-block overflow-hidden border-text-primary animate-float-flat" style={{ borderWidth: '4px', boxShadow: '6px 6px 0 var(--color-accent-orange)' }}>
             <img src="/images/profile.webp" alt="Abubakar Shaikh" width="140" height="140" fetchPriority="high" />
           </div>
         </div>
 
-        <div className="hero-divider my-8 h-[4px] w-full origin-left bg-accent-orange" aria-hidden="true"></div>
+        <div className="hero-divider my-8 h-[4px] w-full origin-left bg-accent-orange animate-draw-line" style={{ animationDelay: '400ms' }} aria-hidden="true"></div>
 
-        <p className="hero-subtitle max-w-xl">
+        <p className="hero-subtitle max-w-xl animate-fade-in-up" style={{ animationDelay: '450ms' }}>
           <span className="text-display-sm font-display text-text-secondary">Specializing in </span>
           <Link className="font-mono text-lg font-medium text-accent-orange transition-colors hover:text-[#ff8533]" href="/thoughts">React</Link>
           <span className="text-display-sm font-display text-text-secondary">, </span>
@@ -75,14 +79,14 @@ export async function HeroSection() {
         </p>
 
         <nav className="mt-10 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-3" aria-label="Social links">
-          {socials.map((social) => (
+          {socials.map((social, index) => (
             <a
               key={social.label}
               href={social.href}
               target="_blank"
               rel="noopener"
-              className="hero-link flex items-center gap-3 border-surface-border bg-surface-elevated px-5 py-4 text-sm font-semibold text-text-primary transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent-orange hover:text-accent-orange active:scale-97"
-              style={{ borderWidth: '3px', borderStyle: 'solid', boxShadow: '4px 4px 0 rgba(255, 107, 0, 0.15)' }}
+              className="hero-link flex items-center gap-3 border-surface-border bg-surface-elevated px-5 py-4 text-sm font-semibold text-text-primary transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent-orange hover:text-accent-orange active:scale-97 animate-fade-in-up"
+              style={{ borderWidth: '3px', borderStyle: 'solid', boxShadow: '4px 4px 0 rgba(255, 107, 0, 0.15)', animationDelay: `${550 + index * 80}ms` }}
             >
               <social.icon width="20" height="20" className="lucide" aria-hidden="true" />
               {social.label}
@@ -90,11 +94,11 @@ export async function HeroSection() {
           ))}
         </nav>
 
-        <p className="hero-bio mt-8 max-w-lg text-sm leading-relaxed text-text-secondary">
+        <p className="hero-bio mt-8 max-w-lg text-sm leading-relaxed text-text-secondary animate-fade-in-up" style={{ animationDelay: '900ms' }}>
           3+ years shipping production-grade applications at NEXENSTIAL LLP, previously Freelancing.
         </p>
 
-        <div className="hero-glass glass-card mt-6 inline-flex w-fit px-4 py-2 md:hidden">
+        <div className="hero-glass glass-card mt-6 inline-flex w-fit px-4 py-2 md:hidden animate-fade-in-up" style={{ animationDelay: '950ms' }}>
           <span className="font-mono text-xs uppercase tracking-wider text-accent-orange">3+ years</span>
           <span className="mx-2 text-text-muted">|</span>
           <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">Full Stack / DevOps</span>

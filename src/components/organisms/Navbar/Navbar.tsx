@@ -18,16 +18,19 @@ export function Navbar() {
 
   return (
     <>
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 transition-[padding-top] duration-300 ease-out-premium"
+      <motion.nav
+        initial={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-40px)", opacity: 0 }}
+        animate={{ transform: "translateY(0px)", opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.15 }}
+        className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-[padding] duration-300 ease-out-premium ${isScrolled ? 'px-4' : 'px-0'}`}
         style={{ paddingTop: isScrolled ? '12px' : '0px' }}
         aria-label="Primary navigation"
       >
         <div
           className={`flex w-full items-center justify-between transition-[max-width,padding,background-color,box-shadow,border-radius] duration-300 ease-out-premium ${
             isScrolled
-              ? 'max-w-6xl rounded-full px-6 py-2.5 backdrop-blur-xl'
-              : 'max-w-7xl px-6 py-4'
+              ? 'max-w-5xl rounded-full px-6 py-2.5 backdrop-blur-xl'
+              : 'section-container py-4'
           }`}
           style={
             isScrolled
@@ -77,7 +80,7 @@ export function Navbar() {
             <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       <AnimatePresence>
         {isMobileMenuOpen && (
