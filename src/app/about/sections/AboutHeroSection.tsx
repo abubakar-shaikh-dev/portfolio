@@ -9,7 +9,7 @@ export function AboutHeroSection() {
             <div className="mb-6 h-28 w-28 overflow-hidden rounded-full border-2 border-accent/80 bg-bg-secondary p-1 shadow-xl animate-fade-in-up" style={{ animationDelay: '100ms' }}>
               <Image
                 src="/images/profile_2.webp"
-                alt="Abubakar Shaikh"
+                alt="Abubakar Shaikh — Full Stack Software Engineer"
                 width={112}
                 height={112}
                 unoptimized

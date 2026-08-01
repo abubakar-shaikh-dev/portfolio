@@ -3,10 +3,12 @@ export interface Article {
   title: string;
   excerpt: string;
   date: string;
+  dateISO: string;
   readTime: string;
   tags: string[];
   slug: string;
   category: string;
+  author: string;
 }
 
 export interface ArticleCategory {

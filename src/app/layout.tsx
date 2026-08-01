@@ -95,9 +95,20 @@ export default function RootLayout({
               '@graph': [
                 {
                   '@type': 'Organization',
+                  '@id': 'https://abubakarshaikh.dev/#organization',
                   name: 'Abubakar Shaikh',
                   url: 'https://abubakarshaikh.dev',
-                  logo: 'https://abubakarshaikh.dev/images/profile_2.webp',
+                  logo: {
+                    '@type': 'ImageObject',
+                    url: 'https://abubakarshaikh.dev/images/profile_2.webp',
+                    width: 1200,
+                    height: 1200,
+                  },
+                  contactPoint: {
+                    '@type': 'ContactPoint',
+                    email: 'shaikhabubakar2380@gmail.com',
+                    contactType: 'customer service',
+                  },
                   sameAs: [
                     'https://www.linkedin.com/in/abubakar-shaikh-dev',
                     'https://github.com/abubakar-shaikh-dev',
@@ -107,24 +118,37 @@ export default function RootLayout({
                 },
                 {
                   '@type': 'WebSite',
+                  '@id': 'https://abubakarshaikh.dev/#website',
                   name: 'Abubakar Shaikh',
                   url: 'https://abubakarshaikh.dev',
+                  publisher: { '@id': 'https://abubakarshaikh.dev/#organization' },
                   potentialAction: {
                     '@type': 'SearchAction',
-                    target: 'https://abubakarshaikh.dev/thoughts',
+                    target: {
+                      '@type': 'EntryPoint',
+                      urlTemplate: 'https://abubakarshaikh.dev/thoughts?q={search_term_string}',
+                    },
                     'query-input': 'required name=search_term_string',
                   },
                 },
                 {
                   '@type': 'Person',
+                  '@id': 'https://abubakarshaikh.dev/#person',
                   name: 'Abubakar Shaikh',
                   url: 'https://abubakarshaikh.dev',
                   image: 'https://abubakarshaikh.dev/images/profile_2.webp',
                   jobTitle: 'Full Stack Software Engineer',
+                  description: 'Full Stack Software Engineer specializing in building scalable MERN applications, APIs, and DevOps workflows.',
+                  knowsAbout: [
+                    'TypeScript', 'React', 'Next.js', 'Node.js', 'Express',
+                    'NestJS', 'MongoDB', 'PostgreSQL', 'Docker', 'AWS',
+                    'DevOps', 'CI/CD', 'Microservices', 'WebSockets', 'AI Integrations',
+                  ],
                   sameAs: [
                     'https://www.linkedin.com/in/abubakar-shaikh-dev',
                     'https://github.com/abubakar-shaikh-dev',
                     'https://x.com/abubakarshaikh_dev',
+                    'https://instagram.com/abubakarshaikh.dev',
                   ],
                 },
               ],

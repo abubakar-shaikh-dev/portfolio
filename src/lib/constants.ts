@@ -29,10 +29,10 @@ export const FOOTER_CONTENT_LINKS = [
 ] as const;
 
 export const FOOTER_TOPIC_LINKS = [
-  { label: 'Backend & APIs', href: '/thoughts' },
-  { label: 'Infrastructure & DevOps', href: '/thoughts' },
-  { label: 'AI & WebRTC', href: '/thoughts' },
-  { label: 'Security & Tooling', href: '/thoughts' },
+  { label: 'Backend & APIs', href: '/thoughts#backend' },
+  { label: 'Infrastructure & DevOps', href: '/thoughts#devops' },
+  { label: 'AI & Real-time Systems', href: '/thoughts#ai' },
+  { label: 'Security & Cryptography', href: '/thoughts#security' },
 ] as const;
 
 export const FOOTER_CONNECT_LINKS = [

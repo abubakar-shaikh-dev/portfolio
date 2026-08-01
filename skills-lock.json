@@ -1,6 +1,144 @@
 {
   "version": 1,
   "skills": {
+    "30x-seo-ai-visibility": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-ai-visibility/SKILL.md",
+      "computedHash": "6a177e99a416da620456870edfbb497aa7e3602b798e78d16ec82d18e1408988"
+    },
+    "30x-seo-architecture": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-architecture/SKILL.md",
+      "computedHash": "13407f551c40ea9cfc39a44e5d9369a01175c312c5d1aca233980f3f9d710472"
+    },
+    "30x-seo-backlinks": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-backlinks/SKILL.md",
+      "computedHash": "df25395206e23ee4156861ba1103689f979522d4e9fd03cd4167fadce28949f9"
+    },
+    "30x-seo-competitor-pages": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-competitor-pages/SKILL.md",
+      "computedHash": "66aa9853c92ec6c2da2086ecc994a6daa709a69cc21a82da2a6d8a022171aee7"
+    },
+    "30x-seo-content-audit": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-content-audit/SKILL.md",
+      "computedHash": "cb3da6f02daca8850ec13bdbd75da96569076a4174f956d55ae77baea315cb36"
+    },
+    "30x-seo-content-brief": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-content-brief/SKILL.md",
+      "computedHash": "b0267cb61eacdc51a41c52efb3c4b6bb529cf52754f26bc31152d165ce4eea08"
+    },
+    "30x-seo-content-decay": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-content-decay/SKILL.md",
+      "computedHash": "e063704f58ed3fc81fae4ccb93ed17f1ba96d592983417733b0928bbd157800d"
+    },
+    "30x-seo-content-writer": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-content-writer/SKILL.md",
+      "computedHash": "5f202b8df947303f87467215359a5b51b339c6e83471b6de807cbfedd281314b"
+    },
+    "30x-seo-geo-technical": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-geo-technical/SKILL.md",
+      "computedHash": "f34e4f80810aa92cd9a34943a7481e456d10aa097a78d4672c8fbc546cb70c46"
+    },
+    "30x-seo-hreflang": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-hreflang/SKILL.md",
+      "computedHash": "3b4ac6c145f0d855342a3c3380545318cfba4a5e83e7ea4996cfccb86e057e9a"
+    },
+    "30x-seo-images": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-images/SKILL.md",
+      "computedHash": "7712428b4decc2bd15e770e7354bcb7fa71e7fd4f910f16d6b1bb01df75267c8"
+    },
+    "30x-seo-internal-links": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-internal-links/SKILL.md",
+      "computedHash": "58e9fe236488bab98f614070d971ffde34d4d0ca9df1a4b94b3b4146709cfa57"
+    },
+    "30x-seo-keywords": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-keywords/SKILL.md",
+      "computedHash": "25997f0be2f96d3b8b14ac9e8f9fc62d34bb8315f480403b0a45bf40dfdcf4ff"
+    },
+    "30x-seo-local": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-local/SKILL.md",
+      "computedHash": "518a4a92f4145827b68ed2a1d8a7d45226fbdbeebe9f296512ce58847ceb7ce3"
+    },
+    "30x-seo-monitor": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-monitor/SKILL.md",
+      "computedHash": "f0c895fd24c0e23ff5b83e57a494f7318920b035db6e7adbcec986e66a9a242b"
+    },
+    "30x-seo-page": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-page/SKILL.md",
+      "computedHash": "438a200ee10125c3148f7ce758382cbbbedb35106ab00fee4e343894c73822a0"
+    },
+    "30x-seo-plan": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-plan/SKILL.md",
+      "computedHash": "6cc368ddf5f639b410ec16ec85959ba1a66484430c5f6887d2147f64ff80ce2f"
+    },
+    "30x-seo-programmatic": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-programmatic/SKILL.md",
+      "computedHash": "bcd8d8e48b8924612596a71ace0a0bc41d44256a6fcab5b316eabcfb88ba0e16"
+    },
+    "30x-seo-redirects": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-redirects/SKILL.md",
+      "computedHash": "bc0c70f4114e50625e0b7eef837cc448adba3b8de54ff52d16f586407f2ca57f"
+    },
+    "30x-seo-schema": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-schema/SKILL.md",
+      "computedHash": "b50b351956b2783b219eb49f47d9b2ae237ce9c759ad3962ff18364e76c62f59"
+    },
+    "30x-seo-serp": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-serp/SKILL.md",
+      "computedHash": "caf397de209553c4480b85bc227af8533cbc0326ca26fc1b51d3fcc9bcd85ef6"
+    },
+    "30x-seo-sitemap": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-sitemap/SKILL.md",
+      "computedHash": "cbb083976b508cd7cc61153e56fb0fb53d3fc29083c8c31cb97bde0533d6347e"
+    },
+    "30x-seo-technical": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "skills/30x-seo-technical/SKILL.md",
+      "computedHash": "59f2ee1083efaac8cb9a1238d91162e5d280f3a490ae128388f9b298ddaa0fee"
+    },
     "animation-vocabulary": {
       "source": "emilkowalski/skill",
       "sourceType": "github",
@@ -36,6 +174,12 @@
       "sourceType": "github",
       "skillPath": "skills/review-animations/SKILL.md",
       "computedHash": "26bec85a9bfe7cfbfd500ff1ffebc7819ac0cef75cf068c4a97b5af865ccccf7"
+    },
+    "seo": {
+      "source": "norahe0304-art/30x-seo",
+      "sourceType": "github",
+      "skillPath": "seo/SKILL.md",
+      "computedHash": "b115416491c808891e7c3f17bc47da37d098c80c55c1ac62fffe43ec32df1833"
     }
   }
 }

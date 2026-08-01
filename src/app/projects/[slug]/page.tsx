@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Github, Package } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github, Package, ChevronRight } from 'lucide-react';
 import { getProjectBySlug, getAllProjectSlugs } from '@/data/queries/getProjects';
 import { notFound } from 'next/navigation';
+
+const BASE_URL = 'https://abubakarshaikh.dev';
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -18,13 +20,34 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
   const project = await getProjectBySlug(slug);
   if (!project) return { title: 'Project Not Found' };
 
+  const projectUrl = `${BASE_URL}/projects/${slug}`;
+
   return {
     title: project.name,
     description: project.description,
+    keywords: [project.name, ...project.stack.slice(0, 8)],
     openGraph: {
       title: `${project.name} | Abubakar Shaikh`,
       description: project.description,
+      url: projectUrl,
       type: 'article',
+      images: [
+        {
+          url: '/images/profile_2.webp',
+          width: 1200,
+          height: 1200,
+          alt: project.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary',
+      title: project.name,
+      description: project.description,
+      images: ['/images/profile_2.webp'],
+    },
+    alternates: {
+      canonical: projectUrl,
     },
   };
 }
@@ -37,10 +60,30 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
     notFound();
   }
 
+  const projectUrl = `${BASE_URL}/projects/${slug}`;
+
+  // Determine schema type based on whether it has a live URL
+  const schemaType = project.links.live ? 'WebApplication' : 'SoftwareSourceCode';
+
   return (
     <section className="min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24">
       <div className="section-container">
         <div className="mx-auto max-w-5xl">
+          {/* Breadcrumb Navigation */}
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex items-center gap-1.5 font-mono text-xs text-text-muted">
+              <li>
+                <Link href="/" className="transition-colors hover:text-white">Home</Link>
+              </li>
+              <li><ChevronRight className="h-3 w-3" /></li>
+              <li>
+                <Link href="/projects" className="transition-colors hover:text-white">Projects</Link>
+              </li>
+              <li><ChevronRight className="h-3 w-3" /></li>
+              <li className="text-text-secondary truncate max-w-[200px]" aria-current="page">{project.name}</li>
+            </ol>
+          </nav>
+
           <div className="mb-8">
             <Link
               href="/projects"
@@ -135,6 +178,36 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           </div>
         </div>
       </div>
+
+      {/* SoftwareSourceCode / WebApplication + BreadcrumbList JSON-LD per 30x-seo-schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': schemaType,
+            name: project.name,
+            description: project.description,
+            url: projectUrl,
+            author: {
+              '@type': 'Person',
+              '@id': `${BASE_URL}/#person`,
+              name: 'Abubakar Shaikh',
+            },
+            ...(project.links.github && { codeRepository: project.links.github }),
+            ...(project.links.live && { url: project.links.live }),
+            programmingLanguage: project.stack,
+            breadcrumb: {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Projects', item: `${BASE_URL}/projects` },
+                { '@type': 'ListItem', position: 3, name: project.name, item: projectUrl },
+              ],
+            },
+          }),
+        }}
+      />
     </section>
   );
 }

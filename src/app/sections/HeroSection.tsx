@@ -93,7 +93,7 @@ export async function HeroSection() {
               <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1.5 shadow-xl">
                 <Image
                   src="/images/profile_2.webp"
-                  alt="Abubakar Shaikh"
+                  alt="Abubakar Shaikh — Full Stack Software Engineer profile photo"
                   width={256}
                   height={256}
                   priority
