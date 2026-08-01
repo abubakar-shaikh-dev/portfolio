@@ -7,18 +7,23 @@ export async function LatestThoughtsSection() {
   const articles = await getAllArticles();
 
   return (
-    <section className="bg-surface-elevated py-20" style={{ backgroundColor: 'rgba(20,20,20,0.3)' }}>
+    <section className="border-b border-border-primary/40 bg-bg-primary/50 py-16 md:py-24">
       <div className="section-container">
         <div className="mb-10 flex items-end justify-between">
           <div>
-            <p className="mono-accent mb-3">// things_i_write_about</p>
-            <h2 className="text-display-md font-display font-bold text-white">Latest Thoughts</h2>
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">
+              // THINGS_I_WRITE_ABOUT
+            </p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">
+              Latest Thoughts
+            </h2>
           </div>
           <Link
             href="/thoughts"
-            className="hidden items-center gap-1.5 text-sm text-text-secondary transition-colors hover:text-accent-orange sm:flex"
+            className="group hidden items-center gap-1.5 font-mono text-xs text-text-secondary transition-colors duration-150 hover:text-white sm:flex"
           >
-            All articles <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>All articles</span>
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-150 ease-out-premium group-hover:translate-x-1" />
           </Link>
         </div>
 
@@ -30,9 +35,10 @@ export async function LatestThoughtsSection() {
 
         <Link
           href="/thoughts"
-          className="mt-6 flex items-center justify-center gap-1.5 text-sm text-text-secondary transition-colors hover:text-accent-orange sm:hidden"
+          className="group mt-8 flex items-center justify-center gap-1.5 font-mono text-xs text-text-secondary transition-colors duration-150 hover:text-white sm:hidden"
         >
-          All articles <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          <span>All articles</span>
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-150 ease-out-premium group-hover:translate-x-1" />
         </Link>
       </div>
     </section>

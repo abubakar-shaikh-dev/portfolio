@@ -29,28 +29,15 @@ export function Navbar() {
         <div
           className={`flex w-full items-center justify-between transition-[max-width,padding,background-color,box-shadow,border-radius] duration-300 ease-out-premium ${
             isScrolled
-              ? 'max-w-5xl rounded-full px-6 py-2.5 backdrop-blur-xl'
+              ? 'max-w-5xl rounded-full px-6 py-2.5 border border-border-primary/80 bg-bg-secondary/90 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
               : 'section-container py-4'
           }`}
-          style={
-            isScrolled
-              ? {
-                  backgroundColor: 'rgba(30, 14, 0, 0.88)',
-                  boxShadow:
-                    'rgba(255, 107, 0, 0.35) 0px 0px 0px 1px inset, rgba(255, 107, 0, 0.12) 0px 4px 32px',
-                }
-              : {
-                  backgroundColor: 'transparent',
-                  boxShadow:
-                    'rgba(255, 107, 0, 0) 0px 0px 0px 1px inset, rgba(255, 107, 0, 0) 0px 0px 0px',
-                }
-          }
         >
           <Link
             href="/"
-            className="font-mono text-lg font-bold tracking-tight text-white transition-colors"
+            className="font-mono text-lg font-bold tracking-tight text-white transition-colors duration-150 active:scale-97"
           >
-            <span className="text-accent-orange">~/</span>abubakarshaikh
+            <span className="text-accent">~/</span>abubakarshaikh
           </Link>
 
           <div className="hidden items-center gap-1 md:flex">
@@ -58,12 +45,12 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-3 py-2 font-mono text-xs uppercase tracking-wider transition-colors hover:text-accent-orange ${
+                className={`relative px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider transition-[color,background-color] duration-150 ease-out-premium rounded-md ${
                   isActive(link.href)
-                    ? 'text-accent-orange'
+                    ? 'text-accent font-semibold bg-accent/10 border border-accent/20'
                     : isScrolled
-                      ? 'text-white/80'
-                      : 'text-text-secondary'
+                      ? 'text-white/80 hover:text-white hover:bg-white/5'
+                      : 'text-text-secondary hover:text-white hover:bg-bg-secondary'
                 }`}
               >
                 {link.label}
@@ -72,7 +59,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="rounded-sm p-2 text-text-secondary transition-colors hover:text-accent-orange md:hidden"
+            className="rounded-md p-2 text-text-secondary transition-[color,background-color,transform] duration-150 ease-out-premium hover:text-accent active:scale-95 md:hidden"
             aria-label="Open menu"
             aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(true)}
@@ -89,7 +76,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
               className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
               aria-hidden="true"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -98,15 +85,15 @@ export function Navbar() {
               initial={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-20px)", opacity: 0 }}
               animate={{ transform: "translateY(0px)", opacity: 1 }}
               exit={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-20px)", opacity: 0 }}
-              transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-              className="fixed inset-x-0 top-0 z-50 border-b-[3px] border-accent-orange bg-[#0a0a0a] md:hidden"
+              transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
+              className="fixed inset-x-0 top-0 z-50 border-b-2 border-accent bg-[#0a0a0a] md:hidden"
             >
               <div className="flex items-center justify-between border-b border-border-primary px-6 py-4">
                 <span className="font-mono text-lg font-bold text-white">
-                  <span className="text-accent-orange">~/</span>abubakarshaikh
+                  <span className="text-accent">~/</span>abubakarshaikh
                 </span>
                 <button
-                  className="rounded-sm p-2 text-text-secondary hover:text-accent-orange"
+                  className="rounded-md p-2 text-text-secondary transition-[color,transform] duration-150 ease-out-premium hover:text-accent active:scale-95"
                   aria-label="Close menu"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -124,8 +111,8 @@ export function Navbar() {
                     >
                       <Link
                         href={link.href}
-                        className={`block py-3 font-mono text-2xl font-bold uppercase tracking-wider transition-colors hover:text-accent-orange ${
-                          isActive(link.href) ? 'text-accent-orange' : 'text-white'
+                        className={`block py-3 font-mono text-2xl font-bold uppercase tracking-wider transition-colors duration-150 hover:text-accent active:scale-97 ${
+                          isActive(link.href) ? 'text-accent' : 'text-white'
                         }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >

@@ -87,7 +87,7 @@ export function ContactContentSection() {
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="space-y-8 lg:col-span-2">
             <div className="border border-border-primary bg-bg-secondary p-8 space-y-4">
-              <h3 className="font-mono text-xs uppercase tracking-wider text-accent-orange">
+              <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
                 // GET_IN_TOUCH
               </h3>
               <p className="text-lg text-white leading-relaxed">
@@ -104,9 +104,9 @@ export function ContactContentSection() {
               </span>
               <a
                 href="mailto:shaikhabubakar2380@gmail.com"
-                className="inline-flex w-full items-center gap-3 border border-border-primary bg-bg-secondary px-6 py-4 text-base font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent-orange active:scale-98"
+                className="inline-flex w-full items-center gap-3 border border-border-primary bg-bg-secondary px-6 py-4 text-base font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent active:scale-98"
               >
-                <Mail className="h-5 w-5 text-accent-orange" />
+                <Mail className="h-5 w-5 text-accent" />
                 shaikhabubakar2380@gmail.com
               </a>
             </div>
@@ -122,7 +122,7 @@ export function ContactContentSection() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-border-primary bg-bg-secondary px-4 py-3 text-xs font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent-orange active:scale-97"
+                    className="inline-flex items-center gap-2 border border-border-primary bg-bg-secondary px-4 py-3 text-xs font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent active:scale-97"
                   >
                     <social.icon className="h-4 w-4" />
                     {social.label}
@@ -143,14 +143,14 @@ export function ContactContentSection() {
                   transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                   className="w-full space-y-6"
                 >
-                  <h3 className="mb-6 font-mono text-xs uppercase tracking-wider text-accent-orange">
+                  <h3 className="mb-6 font-mono text-xs uppercase tracking-wider text-accent">
                     // SEND_A_MESSAGE
                   </h3>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="block text-xs font-semibold text-white uppercase tracking-wider">
-                        Full Name <span className="text-accent-orange">*</span>
+                        Full Name <span className="text-accent">*</span>
                       </label>
                       <input
                         type="text"
@@ -160,7 +160,7 @@ export function ContactContentSection() {
                         onChange={handleInputChange}
                         placeholder="Enter your name"
                         disabled={isSubmitting}
-                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent-orange transition-[border-color,opacity,background-color] duration-300 disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                           errors.name ? 'border-red-500' : 'border-border-primary'
                         }`}
                       />
@@ -169,7 +169,7 @@ export function ContactContentSection() {
 
                     <div className="space-y-2">
                       <label htmlFor="email" className="block text-xs font-semibold text-white uppercase tracking-wider">
-                        Email Address <span className="text-accent-orange">*</span>
+                        Email Address <span className="text-accent">*</span>
                       </label>
                       <input
                         type="text"
@@ -179,7 +179,7 @@ export function ContactContentSection() {
                         onChange={handleInputChange}
                         placeholder="name@example.com"
                         disabled={isSubmitting}
-                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent-orange transition-[border-color,opacity,background-color] duration-300 disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                           errors.email ? 'border-red-500' : 'border-border-primary'
                         }`}
                       />
@@ -198,13 +198,13 @@ export function ContactContentSection() {
                         onChange={handleInputChange}
                         placeholder="Project, Job Opportunity, Consultancy..."
                         disabled={isSubmitting}
-                        className="w-full border border-border-primary bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent-orange transition-[border-color,opacity,background-color] duration-300 disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed"
+                        className="w-full border border-border-primary bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <label htmlFor="message" className="block text-xs font-semibold text-white uppercase tracking-wider">
-                        Message <span className="text-accent-orange">*</span>
+                        Message <span className="text-accent">*</span>
                       </label>
                       <textarea
                         id="message"
@@ -214,7 +214,7 @@ export function ContactContentSection() {
                         onChange={handleInputChange}
                         placeholder="Tell me about your project or inquiry..."
                         disabled={isSubmitting}
-                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent-orange transition-[border-color,opacity,background-color] duration-300 resize-none disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium resize-none disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                           errors.message ? 'border-red-500' : 'border-border-primary'
                         }`}
                       />
@@ -236,7 +236,7 @@ export function ContactContentSection() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-flex w-full items-center justify-center gap-2 border border-accent-orange bg-accent-orange py-4 text-sm font-semibold text-white transition-[background-color,border-color,transform] duration-150 ease-out-premium hover:bg-accent-orange-deep active:scale-97 disabled:opacity-50"
+                      className="inline-flex w-full items-center justify-center gap-2 border border-accent bg-accent py-4 text-sm font-semibold text-black transition-[background-color,border-color,transform] duration-150 ease-out-premium hover:bg-accent-light active:scale-97 disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <><Loader2 className="h-4 w-4 animate-spin" /> Sending Message...</>
@@ -287,7 +287,7 @@ export function ContactContentSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <h3 className="font-mono text-xs uppercase tracking-wider text-accent-orange">// RECORD_SAVED</h3>
+                    <h3 className="font-mono text-xs uppercase tracking-wider text-accent">// RECORD_SAVED</h3>
                     <h4 className="text-3xl font-bold text-white tracking-tight">Message Received!</h4>
                     <p className="max-w-md text-text-secondary text-sm leading-relaxed text-balance mx-auto">
                       Thank you, <span className="text-white font-semibold">{formData.name}</span>. Your message has been saved and I will get back to you at <span className="text-white font-semibold">{formData.email}</span> within 24 hours.
@@ -298,19 +298,19 @@ export function ContactContentSection() {
                   <div className="w-full max-w-md border border-border-primary bg-bg-primary p-5 text-left font-mono text-xs text-text-secondary space-y-3 select-none">
                     <p className="text-text-muted">// SUBMITTED_RECORD</p>
                     <div className="grid grid-cols-[60px_1fr] gap-x-2 gap-y-1">
-                      <span className="text-accent-orange">NAME:</span>
+                      <span className="text-accent">NAME:</span>
                       <span className="text-white truncate">{formData.name}</span>
-                      <span className="text-accent-orange">EMAIL:</span>
+                      <span className="text-accent">EMAIL:</span>
                       <span className="text-white truncate">{formData.email}</span>
                       {formData.subject && (
                         <>
-                          <span className="text-accent-orange">SUBJECT:</span>
+                          <span className="text-accent">SUBJECT:</span>
                           <span className="text-white truncate">{formData.subject}</span>
                         </>
                       )}
                     </div>
                     <div className="border-t border-border-primary pt-3 mt-2">
-                      <p className="text-accent-orange mb-1">MESSAGE:</p>
+                      <p className="text-accent mb-1">MESSAGE:</p>
                       <p className="text-text-muted whitespace-pre-wrap break-words max-h-[120px] overflow-y-auto pr-1">
                         {formData.message}
                       </p>
@@ -320,7 +320,7 @@ export function ContactContentSection() {
                   <button
                     type="button"
                     onClick={handleResetForm}
-                    className="inline-flex items-center gap-2 border border-border-primary bg-bg-primary hover:border-accent-orange hover:bg-[#111111] px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-white transition-all duration-200 active:scale-97"
+                    className="inline-flex items-center gap-2 border border-border-primary bg-bg-primary hover:border-accent hover:bg-[#111111] px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-white transition-all duration-200 active:scale-97"
                   >
                     <span>// SEND_ANOTHER_MESSAGE</span>
                   </button>

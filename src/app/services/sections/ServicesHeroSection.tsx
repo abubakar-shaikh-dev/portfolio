@@ -1,19 +1,20 @@
-import { SectionLabel } from '@/components/atoms/SectionLabel';
-
 export function ServicesHeroSection() {
   return (
-    <section className="relative overflow-hidden bg-grid-pattern pt-32 pb-20">
-      <div className="section-container hero-content-wrapper">
+    <section className="relative border-b border-border-primary/60 bg-bg-primary pt-28 pb-16 lg:pt-36 lg:pb-20">
+      <div className="section-container">
         <div className="mx-auto max-w-3xl text-center">
-          <div>
-            <SectionLabel label="SERVICES" />
-            <h1 className="font-display mt-4 text-4xl font-black uppercase tracking-tight text-white sm:text-5xl md:text-7xl">
-              Services <span className="text-accent-orange">&amp; Advisory</span>
-            </h1>
-            <p className="mt-6 text-base leading-relaxed text-text-secondary md:text-lg">
-              Advisory &amp; consultancy services with hands-on expertise building and deploying scalable web applications, real-time AI networks, and automated cloud pipelines.
-            </p>
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border-primary/80 bg-bg-secondary px-3.5 py-1 text-xs text-text-secondary animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+            <span className="h-2 w-2 rounded-full bg-accent" />
+            <span className="font-mono text-accent">// SERVICES_&amp;_ADVISORY</span>
           </div>
+
+          <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl animate-fade-in-up" style={{ animationDelay: '180ms' }}>
+            Services &amp; Advisory
+          </h1>
+
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg animate-fade-in-up" style={{ animationDelay: '260ms' }}>
+            Advisory &amp; consultancy services with hands-on expertise building and deploying scalable web applications, real-time backend systems, and automated cloud pipelines.
+          </p>
         </div>
       </div>
     </section>

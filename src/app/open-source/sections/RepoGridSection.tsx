@@ -5,7 +5,7 @@ export async function RepoGridSection() {
   const repos = await getAllRepos();
 
   return (
-    <section className="pb-20">
+    <section className="py-16 md:py-24">
       <div className="section-container">
         <div className="grid gap-6 sm:grid-cols-2">
           {repos.map((repo) => (

@@ -1,4 +1,4 @@
-import { Star, ExternalLink } from 'lucide-react';
+import { Star, ArrowUpRight } from 'lucide-react';
 import type { Repo } from '@/data/types/repo.types';
 
 interface RepoCardProps {
@@ -11,30 +11,30 @@ export function RepoCard({ repo }: RepoCardProps) {
       href={`https://github.com/abubakar-shaikh-dev/${repo.slug}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="card group block p-6"
+      className="group flex h-full flex-col justify-between rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6 transition-[border-color,background-color,transform] duration-150 ease-out-premium hover:border-accent/40 hover:bg-bg-secondary active:scale-98"
     >
-      <div className="flex items-start justify-between">
-        <h3 className="font-mono text-sm font-semibold text-white transition-colors group-hover:text-accent-orange">
-          {repo.name}
-        </h3>
-        <ExternalLink
-          className="h-3.5 w-3.5 shrink-0 text-text-muted opacity-0 transition-opacity group-hover:opacity-100"
-          aria-hidden="true"
-        />
+      <div>
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="font-mono text-base font-bold text-white transition-colors duration-150 group-hover:text-accent">
+            {repo.name}
+          </h3>
+          <ArrowUpRight className="h-4 w-4 shrink-0 text-text-muted transition-transform duration-150 ease-out-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+        </div>
+        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-text-secondary">
+          {repo.description}
+        </p>
       </div>
-      <p className="mt-2 line-clamp-2 text-sm text-text-secondary">
-        {repo.description}
-      </p>
-      <div className="mt-4 flex items-center gap-4 text-xs text-text-muted">
+
+      <div className="mt-6 flex items-center gap-4 font-mono text-xs text-text-muted">
         <span className="flex items-center gap-1.5">
           <span
-            className="inline-block h-2.5 w-2.5"
-            style={{ backgroundColor: repo.languageColor }}
+            className="inline-block h-2 w-2 rounded-full"
+            style={{ backgroundColor: repo.languageColor || '#10b981' }}
           />
           {repo.language}
         </span>
         <span className="flex items-center gap-1">
-          <Star className="h-3 w-3" aria-hidden="true" />
+          <Star className="h-3.5 w-3.5 text-text-muted" aria-hidden="true" />
           {repo.stars}
         </span>
         {repo.forks > 0 && (

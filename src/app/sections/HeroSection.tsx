@@ -1,130 +1,127 @@
 import Link from 'next/link';
-import { Linkedin, Twitter, Github, Instagram } from 'lucide-react';
+import Image from 'next/image';
+import { Linkedin, Twitter, Github, Instagram, ArrowUpRight, Mail } from 'lucide-react';
 import { getAllSkills } from '@/data/queries/getSkills';
 
 const socials = [
+  { label: 'GitHub', href: 'https://github.com/abubakar-shaikh-dev', icon: Github },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abubakar-shaikh-dev', icon: Linkedin },
   { label: 'X / Twitter', href: 'https://x.com/abubakarshaikh_dev', icon: Twitter },
-  { label: 'GitHub', href: 'https://github.com/abubakar-shaikh-dev', icon: Github },
   { label: 'Instagram', href: 'https://instagram.com/abubakarshaikh.dev', icon: Instagram },
 ];
 
-export async function HeroSection() {
-  const skills = await getAllSkills();
+const focusTech = ['React', 'Node.js', 'NestJS', 'TypeScript', 'AWS', 'Docker', 'Microservices', 'PostgreSQL'];
 
-  const renderItems = (items: string[]) => (
-    <>
-      {items.map((skill, index) => (
-        <span key={`${skill}-${index}`} className="flex items-center whitespace-nowrap font-mono text-sm font-medium uppercase tracking-wider text-text-primary">
-          <span className="mx-4 font-bold text-accent-orange">///</span>
-          {skill}
-        </span>
-      ))}
-    </>
-  );
+export async function HeroSection() {
+  const skillsData = await getAllSkills();
+  const allSkillsList = Array.from(new Set([...(skillsData.row1 || []), ...(skillsData.row2 || [])]));
 
   return (
-    <section id="hero" className="relative flex flex-col overflow-hidden bg-grid-pattern">
-      <div className="section-container pt-28 lg:pt-36 hero-content-wrapper">
-        <p className="hero-label mono-accent mb-6 animate-fade-in-up">// full_stack_software_engineer</p>
-        <div className="relative">
-          <div className="hero-image absolute -top-4 right-4 z-10 hidden xl:block xl:-top-8 xl:right-12 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
-            <div className="animate-float-rotate">
-              <div className="overflow-hidden border-text-primary" style={{ borderWidth: '4px', boxShadow: '6px 6px 0 var(--color-accent-orange)' }}>
-                <img src="/images/profile.webp" alt="Abubakar Shaikh" width="180" height="180" fetchPriority="high" />
+    <section id="hero" className="relative border-b border-border-primary/60 bg-bg-primary pt-28 pb-16 lg:pt-36 lg:pb-20">
+      <div className="section-container">
+        {/* Availability Badge */}
+        <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-border-primary/80 bg-bg-secondary px-3.5 py-1.5 text-xs text-text-secondary animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+          <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+          <span className="font-mono">Available for full-stack &amp; cloud engineering roles</span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+          {/* Left Main Content */}
+          <div className="lg:col-span-8">
+            <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl animate-fade-in-up" style={{ animationDelay: '180ms' }}>
+              Abubakar Shaikh
+            </h1>
+
+            <p className="mt-3 font-mono text-base font-medium text-accent sm:text-lg animate-fade-in-up" style={{ animationDelay: '260ms' }}>
+              Full Stack Software Engineer
+            </p>
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg animate-fade-in-up" style={{ animationDelay: '340ms' }}>
+              3+ years of experience architecting and shipping production-grade web applications, microservices, and cloud systems. Currently engineering at NEXENSTIAL LLP.
+            </p>
+
+            {/* Key Focus Technologies */}
+            <div className="mt-6 flex flex-wrap gap-2 animate-fade-in-up" style={{ animationDelay: '420ms' }}>
+              {focusTech.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-md border border-border-primary/80 bg-bg-secondary/60 px-3 py-1 font-mono text-xs text-text-secondary transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent/40 hover:text-white active:scale-97 cursor-default"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* CTAs & Social Links */}
+            <div className="mt-10 flex flex-wrap items-center gap-4 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+              <Link
+                href="/projects"
+                className="group inline-flex items-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-black transition-[background-color,transform] duration-150 ease-out-premium hover:bg-white/90 active:scale-97"
+              >
+                <span>View Projects</span>
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-150 ease-out-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-md border border-border-primary bg-bg-secondary px-5 py-3 text-sm font-medium text-white transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent hover:text-accent active:scale-97"
+              >
+                <Mail className="h-4 w-4" />
+                <span>Get in Touch</span>
+              </Link>
+
+              <div className="ml-2 flex items-center gap-1 border-l border-border-primary/60 pl-4">
+                {socials.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex h-10 w-10 items-center justify-center rounded-md text-text-muted transition-[background-color,color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-white active:scale-95"
+                  >
+                    <social.icon className="h-4 w-4" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
-          <h1 className="font-display font-extrabold text-white">
-            <span className="sr-only">Abubakar Shaikh — Full Stack Software Engineer specialising in React, Node.js, and AWS DevOps</span>
-            <span className="block overflow-hidden" aria-hidden="true">
-              <span className="hero-word block text-display-hero animate-reveal-up" style={{ animationDelay: '100ms' }}>ABUBAKAR</span>
-            </span>
-            <span className="block overflow-hidden" aria-hidden="true">
-              <span className="hero-word block text-display-hero text-accent-orange animate-reveal-up" style={{ animationDelay: '250ms' }}>SHAIKH</span>
-            </span>
-          </h1>
+          {/* Right Clean Profile Image */}
+          <div className="lg:col-span-4 flex justify-start lg:justify-end animate-fade-in-up" style={{ animationDelay: '380ms' }}>
+            <div className="relative group">
+              <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1.5 shadow-xl">
+                <Image
+                  src="/images/profile_2.webp"
+                  alt="Abubakar Shaikh"
+                  width={256}
+                  height={256}
+                  priority
+                  unoptimized
+                  className="h-56 w-56 sm:h-64 sm:w-64 rounded-lg object-cover grayscale transition-[filter,transform] duration-250 ease-out-premium group-hover:grayscale-0 group-hover:scale-[1.02]"
+                />
+              </div>
 
-          <div className="hero-glass absolute -bottom-12 right-0 z-30 hidden px-6 py-3 md:block lg:-bottom-14 lg:right-8 backdrop-blur-xl animate-fade-in-up" style={{ backgroundColor: 'rgba(255, 107, 0, 0.1)', border: '1px solid rgba(255, 107, 0, 0.3)', animationDelay: '650ms' }}>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-accent-orange">3+ YRS EXP</span>
-            <span className="mx-3 text-text-muted">/</span>
-            <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">BUILDS IN PUBLIC</span>
-            <span className="mx-3 text-text-muted">/</span>
-            <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">SHIPS TO PROD</span>
+              <div className="mt-3 flex items-center justify-between px-1 font-mono text-xs text-text-muted">
+                <span>Based in India</span>
+                <span>3+ Yrs Exp</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="hero-image mt-8 xl:hidden animate-fade-in-up" style={{ animationDelay: '600ms' }}>
-          <div className="inline-block overflow-hidden border-text-primary animate-float-flat" style={{ borderWidth: '4px', boxShadow: '6px 6px 0 var(--color-accent-orange)' }}>
-            <img src="/images/profile.webp" alt="Abubakar Shaikh" width="140" height="140" fetchPriority="high" />
-          </div>
-        </div>
-
-        <div className="hero-divider my-8 h-[4px] w-full origin-left bg-accent-orange animate-draw-line" style={{ animationDelay: '400ms' }} aria-hidden="true"></div>
-
-        <p className="hero-subtitle max-w-xl animate-fade-in-up" style={{ animationDelay: '450ms' }}>
-          <span className="text-display-sm font-display text-text-secondary">Specializing in </span>
-          <Link className="font-mono text-lg font-medium text-accent-orange transition-colors hover:text-[#ff8533]" href="/thoughts">React</Link>
-          <span className="text-display-sm font-display text-text-secondary">, </span>
-          <Link className="font-mono text-lg font-medium text-accent-orange transition-colors hover:text-[#ff8533]" href="/thoughts">Node.js</Link>
-          <span className="text-display-sm font-display text-text-secondary">, </span>
-          <Link className="font-mono text-lg font-medium text-accent-orange transition-colors hover:text-[#ff8533]" href="/thoughts">NestJS</Link>
-          <span className="text-display-sm font-display text-text-secondary">, </span>
-          <Link className="font-mono text-lg font-medium text-accent-orange transition-colors hover:text-[#ff8533]" href="/thoughts">Docker</Link>
-          <span className="text-display-sm font-display text-text-secondary">, </span>
-          <Link className="font-mono text-lg font-medium text-accent-orange transition-colors hover:text-[#ff8533]" href="/thoughts">AWS</Link>
-          <span className="text-display-sm font-display text-text-secondary"> &amp; </span>
-          <Link className="font-mono text-lg font-medium text-accent-orange transition-colors hover:text-[#ff8533]" href="/thoughts">Microservices</Link>
-        </p>
-
-        <nav className="mt-10 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-3" aria-label="Social links">
-          {socials.map((social, index) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener"
-              className="hero-link flex items-center gap-3 border-surface-border bg-surface-elevated px-5 py-4 text-sm font-semibold text-text-primary transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent-orange hover:text-accent-orange active:scale-97 animate-fade-in-up"
-              style={{ borderWidth: '3px', borderStyle: 'solid', boxShadow: '4px 4px 0 rgba(255, 107, 0, 0.15)', animationDelay: `${550 + index * 80}ms` }}
-            >
-              <social.icon width="20" height="20" className="lucide" aria-hidden="true" />
-              {social.label}
-            </a>
-          ))}
-        </nav>
-
-        <p className="hero-bio mt-8 max-w-lg text-sm leading-relaxed text-text-secondary animate-fade-in-up" style={{ animationDelay: '900ms' }}>
-          3+ years shipping production-grade applications at NEXENSTIAL LLP, previously Freelancing.
-        </p>
-
-        <div className="hero-glass glass-card mt-6 inline-flex w-fit px-4 py-2 md:hidden animate-fade-in-up" style={{ animationDelay: '950ms' }}>
-          <span className="font-mono text-xs uppercase tracking-wider text-accent-orange">3+ years</span>
-          <span className="mx-2 text-text-muted">|</span>
-          <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">Full Stack / DevOps</span>
-        </div>
-      </div>
-
-      <div className="hero-bottom mt-16 lg:mt-20">
-        <div className="section-container mb-4">
-          <p className="mono-accent font-mono text-xs uppercase tracking-wider text-accent-orange">// things_i_work_with</p>
-        </div>
-
-        <div className="overflow-hidden bg-surface-elevated py-2.5" style={{ borderTop: '3px solid var(--color-accent-orange)' }} aria-hidden="true">
-          <div className="marquee-left marquee-track">
-            <div className="flex">{renderItems(skills.row1)}</div>
-            <div className="flex">{renderItems(skills.row1)}</div>
-            <div className="flex">{renderItems(skills.row1)}</div>
-            <div className="flex">{renderItems(skills.row1)}</div>
-          </div>
-        </div>
-
-        <div className="overflow-hidden bg-surface-elevated py-2.5" style={{ borderBottom: '3px solid var(--color-accent-orange)' }} aria-hidden="true">
-          <div className="marquee-right marquee-track">
-            <div className="flex">{renderItems(skills.row2)}</div>
-            <div className="flex">{renderItems(skills.row2)}</div>
-            <div className="flex">{renderItems(skills.row2)}</div>
-            <div className="flex">{renderItems(skills.row2)}</div>
+        {/* Minimal Quiet Tech Stack List */}
+        <div className="mt-16 border-t border-border-primary/40 pt-8 animate-fade-in-up" style={{ animationDelay: '580ms' }}>
+          <p className="font-mono text-xs uppercase tracking-wider text-text-muted">
+            Core Technologies &amp; Capabilities
+          </p>
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2.5 font-mono text-xs text-text-secondary">
+            {allSkillsList.map((skill) => (
+              <span key={skill} className="flex items-center gap-2 transition-colors duration-150 hover:text-white">
+                <span className="h-1 w-1 rounded-full bg-accent/60" />
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
       </div>

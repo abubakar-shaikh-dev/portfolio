@@ -16,7 +16,7 @@ export function SocialButtons() {
           href={social.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 border border-border-primary bg-bg-secondary px-5 py-3 text-sm font-medium text-white transition-[border-color,transform] duration-150 ease-out-premium active:scale-97 hover:border-accent-orange"
+          className="inline-flex items-center gap-2.5 border border-border-primary bg-bg-secondary px-5 py-3 text-sm font-medium text-white transition-[border-color,transform,color] duration-150 ease-out-premium active:scale-97 hover:border-accent hover:text-accent"
         >
           <social.icon className="h-4 w-4" />
           {social.label}

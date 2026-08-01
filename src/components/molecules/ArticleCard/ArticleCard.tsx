@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Clock } from 'lucide-react';
 import type { Article } from '@/data/types/article.types';
 
 interface ArticleCardProps {
@@ -9,24 +10,30 @@ export function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link
       href={`/thoughts/${article.slug}`}
-      className="card group block p-6"
+      className="group flex h-full flex-col justify-between rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6 transition-[border-color,background-color,transform] duration-150 ease-out-premium hover:border-accent/40 hover:bg-bg-secondary active:scale-98"
     >
-      <div className="mb-3 flex items-center gap-2 text-xs text-text-muted">
-        <time>{article.date}</time>
-        <span className="text-border-primary">·</span>
-        <span>{article.readTime}</span>
+      <div>
+        <div className="mb-3 flex items-center gap-2 font-mono text-xs text-text-muted">
+          <time>{article.date}</time>
+          <span className="text-border-primary">•</span>
+          <span className="flex items-center gap-1">
+            <Clock className="h-3 w-3 text-text-muted" />
+            {article.readTime}
+          </span>
+        </div>
+        <h3 className="line-clamp-2 text-lg font-bold text-white transition-colors duration-150 group-hover:text-accent">
+          {article.title}
+        </h3>
+        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-text-secondary">
+          {article.excerpt}
+        </p>
       </div>
-      <h3 className="line-clamp-2 font-semibold text-white transition-colors group-hover:text-accent-orange">
-        {article.title}
-      </h3>
-      <p className="mt-2 line-clamp-2 text-sm text-text-secondary">
-        {article.excerpt}
-      </p>
-      <div className="mt-4 flex flex-wrap gap-1.5">
+
+      <div className="mt-6 flex flex-wrap gap-1.5">
         {article.tags.map((tag) => (
           <span
             key={tag}
-            className="bg-surface-hover px-2 py-0.5 font-mono text-[11px] text-text-muted"
+            className="rounded-md border border-border-primary/60 bg-bg-primary px-2.5 py-0.5 font-mono text-[10px] text-text-muted transition-colors duration-150 group-hover:border-accent/20 group-hover:text-text-secondary"
           >
             {tag}
           </span>

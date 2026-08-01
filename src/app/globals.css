@@ -10,22 +10,25 @@
     --card-foreground: 0 0% 100%;
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 100%;
-    --primary: 24 100% 50%;
+    --primary: 160 84% 39%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 63%;
-    --accent: 24 100% 50%;
+    --accent: 160 84% 39%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 16%;
     --input: 0 0% 16%;
-    --ring: 24 100% 50%;
+    --ring: 160 84% 39%;
     --radius: 0rem;
-    --color-accent-orange: #ff6600;
-    --color-accent-orange-light: #ff8533;
+    --color-accent: #10b981;
+    --color-accent-light: #34d399;
+    --color-accent-deep: #059669;
+    --color-accent-orange: #10b981;
+    --color-accent-orange-light: #34d399;
     --color-surface-elevated: #141414;
     --color-surface-border: #2a2a2a;
     --color-text-primary: #ffffff;
@@ -49,7 +52,7 @@
   }
 
   ::selection {
-    background-color: rgba(255, 102, 0, 0.3);
+    background-color: rgba(16, 185, 129, 0.3);
     color: #ffffff;
   }
 
@@ -123,12 +126,12 @@
 
 .mono-accent {
   font-family: 'JetBrains Mono', monospace;
-  color: var(--color-accent-orange);
+  color: var(--color-accent);
 }
 
 .hero-divider {
   height: 4px;
-  background-color: var(--color-accent-orange);
+  background-color: var(--color-accent);
 }
 
 /* Custom bg, text and border classes */
@@ -144,8 +147,9 @@
   border-color: var(--color-text-primary);
 }
 
-.bg-accent-orange {
-  background-color: var(--color-accent-orange);
+.bg-accent-orange,
+.bg-accent {
+  background-color: var(--color-accent);
 }
 
 .text-text-primary {
@@ -160,12 +164,14 @@
   color: var(--color-text-muted);
 }
 
-.text-accent-orange {
-  color: var(--color-accent-orange);
+.text-accent-orange,
+.text-accent {
+  color: var(--color-accent);
 }
 
-.border-accent-orange {
-  border-color: var(--color-accent-orange);
+.border-accent-orange,
+.border-accent {
+  border-color: var(--color-accent);
 }
 
 .text-surface-border {
@@ -186,7 +192,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    border-color: var(--color-accent-orange);
+    border-color: var(--color-accent);
     transform: translateY(-2px);
   }
 }
@@ -246,7 +252,7 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 85% 35%, rgba(255, 102, 0, 0.07) 0%, transparent 60%),
+    radial-gradient(circle at 85% 35%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
     radial-gradient(circle at 50% 50%, transparent 10%, #0a0a0a 95%);
   pointer-events: none;
   z-index: 1;

@@ -57,7 +57,7 @@ export const metadata: Metadata = {
       'Full Stack Software Engineer specializing in building scalable MERN applications, APIs, and DevOps workflows.',
     images: [
       {
-        url: '/images/profile.webp',
+        url: '/images/profile_2.webp',
         width: 1200,
         height: 1200,
         alt: 'Abubakar Shaikh',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@abubakarshaikh_dev',
     creator: '@abubakarshaikh_dev',
-    images: ['/images/profile.webp'],
+    images: ['/images/profile_2.webp'],
   },
   robots: {
     index: true,
@@ -97,7 +97,7 @@ export default function RootLayout({
                   '@type': 'Organization',
                   name: 'Abubakar Shaikh',
                   url: 'https://abubakarshaikh.dev',
-                  logo: 'https://abubakarshaikh.dev/images/profile.webp',
+                  logo: 'https://abubakarshaikh.dev/images/profile_2.webp',
                   sameAs: [
                     'https://www.linkedin.com/in/abubakar-shaikh-dev',
                     'https://github.com/abubakar-shaikh-dev',
@@ -119,7 +119,7 @@ export default function RootLayout({
                   '@type': 'Person',
                   name: 'Abubakar Shaikh',
                   url: 'https://abubakarshaikh.dev',
-                  image: 'https://abubakarshaikh.dev/images/profile.webp',
+                  image: 'https://abubakarshaikh.dev/images/profile_2.webp',
                   jobTitle: 'Full Stack Software Engineer',
                   sameAs: [
                     'https://www.linkedin.com/in/abubakar-shaikh-dev',

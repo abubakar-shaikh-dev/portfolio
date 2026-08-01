@@ -4,7 +4,7 @@ import { SectionLabel } from '@/components/atoms/SectionLabel';
 
 export function CollaborateCTASection() {
   return (
-    <section className="bg-accent-orange py-16">
+    <section className="bg-accent py-16">
       <div className="section-container">
         <div className="flex flex-col items-center text-center">
           <SectionLabel label="COLLABORATE" />

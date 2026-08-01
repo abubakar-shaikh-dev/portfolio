@@ -42,13 +42,13 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
   }
 
   return (
-    <section className="min-h-screen pt-32 pb-20">
+    <section className="min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24">
       <div className="section-container">
         <div className="mx-auto max-w-4xl">
           <div className="mb-8 flex items-center justify-between">
             <Link
               href="/thoughts"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-text-secondary transition-colors hover:text-accent-orange"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-text-secondary transition-colors duration-150 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to thoughts
@@ -56,29 +56,29 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
           </div>
 
           <article className="space-y-8">
-            <header className="space-y-4 border-b border-border-primary pb-8">
-              <span className="inline-block border border-border-primary bg-bg-secondary px-2.5 py-0.5 font-mono text-xs uppercase tracking-wider text-accent-orange">
+            <header className="space-y-4 border-b border-border-primary/60 pb-8">
+              <span className="inline-block rounded-md border border-border-primary/80 bg-bg-secondary px-3 py-1 font-mono text-xs font-semibold text-accent">
                 {article.category}
               </span>
-              <h1 className="text-4xl font-black leading-tight text-white md:text-5xl lg:text-6xl">
+              <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 {article.title}
               </h1>
-              <p className="text-xl text-text-secondary leading-relaxed">
+              <p className="text-lg leading-relaxed text-text-secondary sm:text-xl">
                 {content.subtitle}
               </p>
               <div className="flex flex-wrap gap-6 pt-2 font-mono text-xs text-text-muted">
                 <span className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-accent-orange" />
+                  <Calendar className="h-4 w-4 text-accent" />
                   {article.date}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-accent-orange" />
+                  <Clock className="h-4 w-4 text-accent" />
                   {article.readTime} read
                 </span>
               </div>
             </header>
 
-            <div className="border-l-2 border-accent-orange pl-6 py-1">
+            <div className="border-l-2 border-accent pl-6 py-1">
               <p className="text-lg leading-relaxed text-text-secondary italic">
                 {content.introduction}
               </p>
@@ -94,7 +94,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
                     {section.body}
                   </p>
                   {section.code && (
-                    <div className="border border-border-primary bg-[#0f0f0f] p-5 font-mono text-sm leading-relaxed text-[#c9d1d9] overflow-x-auto rounded-sm">
+                    <div className="rounded-xl border border-border-primary/80 bg-[#0c0c0c] p-6 font-mono text-sm leading-relaxed text-[#c9d1d9] overflow-x-auto shadow-inner">
                       <pre><code>{section.code}</code></pre>
                     </div>
                   )}
@@ -102,21 +102,21 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
               ))}
             </div>
 
-            <div className="border border-border-primary bg-bg-secondary p-8 space-y-3">
-              <h3 className="text-lg font-bold uppercase tracking-wider font-mono text-accent-orange">
-                // Summary
+            <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 space-y-3 shadow-xl">
+              <h3 className="text-xs font-bold uppercase tracking-wider font-mono text-accent">
+                // SUMMARY
               </h3>
               <p className="leading-relaxed text-text-secondary">
                 {content.conclusion}
               </p>
             </div>
 
-            <footer className="flex flex-wrap items-center justify-between border-t border-border-primary pt-8">
+            <footer className="flex flex-wrap items-center justify-between border-t border-border-primary/60 pt-8">
               <div className="flex flex-wrap gap-2">
                 {article.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="border border-border-primary bg-bg-secondary px-2.5 py-0.5 font-mono text-xs text-text-muted"
+                    className="rounded-md border border-border-primary/60 bg-bg-secondary px-3 py-1 font-mono text-xs text-text-muted"
                   >
                     #{tag}
                   </span>

@@ -19,7 +19,7 @@ export function SectionHeader({ label, title, viewAllLink, viewAllLabel }: Secti
       {viewAllLink && (
         <Link
           href={viewAllLink}
-          className="group inline-flex items-center gap-2 font-mono text-sm text-text-secondary transition-colors hover:text-accent-orange"
+          className="group inline-flex items-center gap-2 font-mono text-sm text-text-secondary transition-colors hover:text-accent"
         >
           {viewAllLabel || 'View all'}
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
