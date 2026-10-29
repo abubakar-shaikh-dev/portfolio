@@ -1,10 +1,14 @@
 import servicesJson from '@/data/json/services.json';
+import { fetchCollection } from '@/lib/db';
 import type { Service, ExpertiseArea, PreviousClient } from '@/data/types/service.types';
 
+const FALLBACK = servicesJson as Service[];
+
 export async function getAllServices(): Promise<Service[]> {
-  return servicesJson as Service[];
+  return fetchCollection<Service>('services', FALLBACK, { sort: { order: 1 } });
 }
 
+// Static advisory config — moved to the DB when the admin panel manages it
 export async function getExpertiseAreas(): Promise<ExpertiseArea[]> {
   return [
     { category: 'Frontend Tech', items: 'React, Next.js 16, Server Actions, Zustand, Tailwind CSS, TanStack' },

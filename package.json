@@ -7,16 +7,22 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:seed": "node --env-file=.env.local scripts/seed.mjs"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
     "framer-motion": "^12.40.0",
+    "jose": "^6.2.13",
     "lucide-react": "^0.562.0",
+    "mongodb": "^7.7.0",
     "next": "16.2.10",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "resend": "^6.17.2",
-    "sonner": "^2.0.7"
+    "sonner": "^2.0.7",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",

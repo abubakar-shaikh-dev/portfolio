@@ -4,6 +4,9 @@ import { ArrowLeft, ExternalLink, Github, Package, ChevronRight } from 'lucide-r
 import { getProjectBySlug, getAllProjectSlugs } from '@/data/queries/getProjects';
 import { notFound } from 'next/navigation';
 
+// ISR: admin edits surface within a minute without a redeploy
+export const revalidate = 60;
+
 const BASE_URL = 'https://abubakarshaikh.dev';
 
 interface ProjectDetailPageProps {

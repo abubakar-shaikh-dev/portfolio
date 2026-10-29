@@ -5,6 +5,9 @@ import { LatestProjectsSection } from './sections/LatestProjectsSection';
 import { PreviouslyAtSection } from './sections/PreviouslyAtSection';
 import { CTABannerSection } from './sections/CTABannerSection';
 
+// ISR: admin edits surface within a minute without a redeploy
+export const revalidate = 60;
+
 export default function HomePage() {
   return (
     <>

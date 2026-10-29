@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { ThoughtsHeroSection } from './sections/ThoughtsHeroSection';
 import { ThoughtsListWrapper } from './sections/ThoughtsListWrapper';
 
+// ISR: admin edits surface within a minute without a redeploy
+export const revalidate = 60;
+
 const BASE_URL = 'https://abubakarshaikh.dev';
 
 export const metadata: Metadata = {

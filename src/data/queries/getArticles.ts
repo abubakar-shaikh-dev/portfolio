@@ -1,13 +1,17 @@
 import articlesJson from '@/data/json/articles.json';
+import { fetchCollection, fetchOne } from '@/lib/db';
 import type { Article, ArticleCategory } from '@/data/types/article.types';
 
+const FALLBACK = articlesJson as Article[];
+
+/** Newest first, preserving the curated JSON order. */
 export async function getAllArticles(): Promise<Article[]> {
-  return articlesJson as Article[];
+  return fetchCollection<Article>('articles', FALLBACK, { sort: { order: 1 } });
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
-  const articles = await getAllArticles();
-  return articles.find((a) => a.slug === slug);
+  const fromDb = await fetchOne<Article>('articles', { slug }, null);
+  return fromDb ?? FALLBACK.find((a) => a.slug === slug);
 }
 
 export async function getArticleCategories(): Promise<ArticleCategory[]> {

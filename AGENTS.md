@@ -22,10 +22,13 @@
 
 ## Data Layer
 
-- All data lives in `src/data/json/*.json` (static mock database).
-- TypeScript interfaces are in `src/data/types/*.types.ts`.
-- Query functions in `src/data/queries/*.ts` provide async getters — these are the **only** way components should read data.
-- To swap in a real backend: replace the body of query functions to call fetch/axios instead of importing JSON.
+- **MongoDB Atlas is the primary data source** (`MONGODB_URI` in `.env.local`); connection lives in `src/lib/db.ts` (cached singleton, 5s server selection timeout).
+- Query functions in `src/data/queries/*.ts` provide async getters — these are the **only** way components should read data. Each one reads MongoDB and falls back to the JSON snapshot in `src/data/json/*.json` when the DB is unreachable, so the public site never breaks.
+- Collections: `articles`, `projects`, `repos`, `career`, `services`, `skills` (single config doc, `key: "skills"`). List queries sort by `order`; the seed assigns it. TypeScript interfaces are in `src/data/types/*.types.ts`.
+- Seed: `pnpm db:seed` (idempotent upserts by `id` from the JSON snapshot — works both as initial setup and restore path).
+- Data-driven pages use ISR (`export const revalidate = 60`); admin mutations must call `revalidatePath` to publish instantly.
+- Article bodies: DB documents may carry `content`; `src/data/articleContent.ts` remains the fallback until the admin editor migrates bodies.
+- Images upload to Cloudinary via `src/lib/cloudinary.ts` (server-only; requires CLOUDINARY_* env vars).
 
 ## Naming Conventions
 

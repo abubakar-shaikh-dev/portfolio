@@ -5,6 +5,9 @@ import { getArticleBySlug, getAllArticles } from '@/data/queries/getArticles';
 import { articleContent } from '@/data/articleContent';
 import { notFound } from 'next/navigation';
 
+// ISR: admin edits surface within a minute without a redeploy
+export const revalidate = 60;
+
 const BASE_URL = 'https://abubakarshaikh.dev';
 
 interface ArticleDetailPageProps {
@@ -60,7 +63,7 @@ export async function generateMetadata({ params }: ArticleDetailPageProps): Prom
 export default async function ArticleDetailPage({ params }: ArticleDetailPageProps) {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
-  const content = articleContent[slug];
+  const content = article?.content ?? articleContent[slug];
 
   if (!article || !content) {
     notFound();
