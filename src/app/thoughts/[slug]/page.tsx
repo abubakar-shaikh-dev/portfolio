@@ -87,7 +87,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
       <div className="section-container">
         <div className="mx-auto max-w-4xl">
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="mb-6">
+          <nav aria-label="Breadcrumb" className="mb-6 hidden sm:block">
             <ol className="flex items-center gap-1.5 font-mono text-xs text-text-muted">
               <li>
                 <Link href="/" className="transition-colors hover:text-white">Home</Link>

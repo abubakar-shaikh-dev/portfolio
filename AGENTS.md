@@ -64,6 +64,16 @@
 - Images use `next/image` with `unoptimized: true`.
 - Deployment requires a **Node.js hosting platform** (Vercel, Railway, etc.).
 
+## Responsive Conventions
+
+- Mobile-first Tailwind breakpoints: base = phone, `sm:` 640, `md:` 768, `lg:` 1024.
+- The navbar shows desktop links at `lg` and up only (`hidden lg:flex`); below that it uses the hamburger menu — `md` crams six links and wraps at 768.
+- Vertical rhythm comes from the `Section` atom (`py-16 md:py-24`); page content bounds from `.section-container` (1200px, 24px gutters).
+- Stacked page forms (contact) cap at `max-w-2xl` below `lg` so inputs stay readable on tablets.
+- Touch targets: 40px+ on mobile (menu toggle `p-2.5`, filter pills `py-2.5`); primary CTAs stretch full width on phones (`w-full sm:w-auto`).
+- Detail pages hide the breadcrumb below `sm` and keep the back link.
+- Cursor effects are `pointer: fine` only and honor reduced motion (`CustomCursor`); overlay menus lock body scroll via `useBodyScrollLock`.
+
 ## Email Integration (Resend)
 
 - Contact form submissions are sent via the [Resend](https://resend.com/) SDK.

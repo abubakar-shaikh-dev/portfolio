@@ -16,8 +16,8 @@ export function Footer() {
   return (
     <footer className="border-t border-border-primary/60 bg-bg-primary">
       <div className="section-container py-16">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-12 lg:grid-cols-4">
+          <div className="col-span-2 space-y-4 sm:col-span-1">
             <Link href="/" className="inline-block font-mono text-lg font-bold text-white transition-colors duration-150 active:scale-97">
               <span className="text-accent">~/</span>abubakarshaikh
             </Link>

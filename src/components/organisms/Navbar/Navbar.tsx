@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { NAV_LINKS } from '@/lib/constants';
 
@@ -13,6 +14,8 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const pathname = usePathname();
+
+  useBodyScrollLock(isMobileMenuOpen);
 
   const isActive = (href: string) => pathname === href;
 
@@ -40,7 +43,7 @@ export function Navbar() {
             <span className="text-accent">~/</span>abubakarshaikh
           </Link>
 
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -59,7 +62,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="rounded-md p-2 text-text-secondary transition-[color,background-color,transform] duration-150 ease-out-premium hover:text-accent active:scale-95 md:hidden"
+            className="rounded-md p-2.5 text-text-secondary transition-[color,background-color,transform] duration-150 ease-out-premium hover:text-accent active:scale-95 lg:hidden"
             aria-label="Open menu"
             aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(true)}
@@ -77,7 +80,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
-              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden"
               aria-hidden="true"
               onClick={() => setIsMobileMenuOpen(false)}
             />
@@ -86,7 +89,7 @@ export function Navbar() {
               animate={{ transform: "translateY(0px)", opacity: 1 }}
               exit={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-20px)", opacity: 0 }}
               transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
-              className="fixed inset-x-0 top-0 z-50 border-b-2 border-accent bg-[#0a0a0a] md:hidden"
+              className="fixed inset-x-0 top-0 z-50 border-b-2 border-accent bg-[#0a0a0a] lg:hidden"
             >
               <div className="flex items-center justify-between border-b border-border-primary px-6 py-4">
                 <span className="font-mono text-lg font-bold text-white">

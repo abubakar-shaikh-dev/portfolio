@@ -20,33 +20,60 @@ export async function HeroSection() {
 
       <div className="section-container relative z-10">
         {/* Status Line */}
-        <div className="mb-6 sm:mb-8 flex items-center gap-2.5 font-mono text-xs text-text-secondary animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+        <div className="mb-6 flex items-center justify-center gap-2.5 font-mono text-xs text-text-secondary animate-fade-in-up sm:mb-8 sm:justify-start" style={{ animationDelay: '100ms' }}>
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           <span>Available for full-stack &amp; cloud engineering roles</span>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+          {/* Profile Photo — leads on phones/tablets, right column on desktop */}
+          <div className="order-1 flex justify-center animate-fade-in-up lg:order-2 lg:col-span-4 lg:justify-end" style={{ animationDelay: '200ms' }}>
+            <div className="relative group">
+              <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1.5 shadow-xl">
+                <Image
+                  src="/images/profile_2.webp"
+                  alt="Abubakar Shaikh profile photo"
+                  width={256}
+                  height={256}
+                  priority
+                  unoptimized
+                  className="h-44 w-44 rounded-lg object-cover grayscale transition-all duration-300 ease-out-premium group-hover:grayscale-0 group-hover:scale-[1.02] sm:h-60 sm:w-60 lg:h-64 lg:w-64"
+                />
+              </div>
+
+              <div className="mt-2.5 flex items-center justify-center gap-3 whitespace-nowrap px-1 font-mono text-[11px] text-text-muted sm:justify-between sm:text-xs">
+                <span className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Based in India
+                </span>
+                <span>3+ Yrs Exp</span>
+              </div>
+            </div>
+          </div>
+
           {/* Main Hero Content */}
-          <div className="lg:col-span-8">
-            <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl animate-fade-in-up" style={{ animationDelay: '180ms' }}>
-              Abubakar Shaikh
-            </h1>
+          <div className="order-2 lg:order-1 lg:col-span-8">
+            <div className="text-center sm:text-left">
+              <h1 className="font-display text-4xl font-bold tracking-tight text-white animate-fade-in-up sm:text-6xl lg:text-7xl" style={{ animationDelay: '260ms' }}>
+                Abubakar Shaikh
+              </h1>
 
-            <p className="mt-2.5 sm:mt-3 inline-flex items-center gap-1.5 font-mono text-base font-medium text-accent sm:text-lg animate-fade-in-up" style={{ animationDelay: '240ms' }}>
-              <span>Full Stack Software Engineer</span>
-              <span className="inline-block h-[1.1em] w-[2.5px] rounded-sm bg-accent align-middle animate-pulse" />
-            </p>
+              <p className="mt-2.5 inline-flex items-center gap-1.5 font-mono text-base font-medium text-accent animate-fade-in-up sm:mt-3 sm:text-lg" style={{ animationDelay: '320ms' }}>
+                <span>Full Stack Software Engineer</span>
+                <span className="inline-block h-[1.1em] w-[2.5px] rounded-sm bg-accent align-middle animate-pulse" />
+              </p>
+            </div>
 
-            <p className="mt-4 sm:mt-6 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary animate-fade-in-up sm:mt-6 sm:text-lg" style={{ animationDelay: '380ms' }}>
               3+ years of experience architecting and shipping web applications, microservices, and cloud systems. Currently engineering at NEXENSTIAL LLP.
             </p>
 
-            {/* Key Focus Tech Tags */}
-            <div className="mt-5 sm:mt-6 flex flex-wrap gap-2 animate-fade-in-up" style={{ animationDelay: '360ms' }}>
-              {focusTech.map((tech) => (
+            {/* Key Focus Tech Tags — trimmed to the top four on phones */}
+            <div className="mt-5 flex flex-wrap gap-2 animate-fade-in-up sm:mt-6" style={{ animationDelay: '440ms' }}>
+              {focusTech.map((tech, index) => (
                 <span
                   key={tech}
-                  className="rounded-md border border-border-primary/80 bg-bg-secondary/80 px-2.5 py-1 font-mono text-xs text-text-secondary transition-colors duration-150 hover:border-accent/40 hover:text-white cursor-default"
+                  className={`rounded-md border border-border-primary/80 bg-bg-secondary/80 px-2.5 py-1 font-mono text-xs text-text-secondary transition-colors duration-150 hover:border-accent/40 hover:text-white cursor-default ${index > 3 ? 'hidden sm:inline' : ''}`}
                 >
                   {tech}
                 </span>
@@ -54,7 +81,7 @@ export async function HeroSection() {
             </div>
 
             {/* Action Buttons & Socials */}
-            <div className="mt-8 sm:mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-4 animate-fade-in-up" style={{ animationDelay: '420ms' }}>
+            <div className="mt-8 flex flex-col gap-4 animate-fade-in-up sm:mt-10 sm:flex-row sm:items-center sm:gap-4" style={{ animationDelay: '500ms' }}>
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <Link
                   href="/projects"
@@ -74,7 +101,7 @@ export async function HeroSection() {
               </div>
 
               {/* Social Links Bar */}
-              <div className="flex items-center justify-start gap-1 pt-2 sm:pt-0 sm:border-l sm:border-border-primary/60 sm:pl-4">
+              <div className="flex items-center justify-center gap-1 pt-2 sm:justify-start sm:pt-0 sm:border-l sm:border-border-primary/60 sm:pl-4">
                 {SOCIAL_LINKS.map((social) => {
                   const SocialIcon = socialIcons[social.label as keyof typeof socialIcons];
                   return (
@@ -93,35 +120,10 @@ export async function HeroSection() {
               </div>
             </div>
           </div>
-
-          {/* Profile Photo */}
-          <div className="lg:col-span-4 flex justify-start lg:justify-end animate-fade-in-up" style={{ animationDelay: '480ms' }}>
-            <div className="relative group max-w-[240px] sm:max-w-[260px] lg:max-w-none">
-              <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1.5 shadow-xl">
-                <Image
-                  src="/images/profile_2.webp"
-                  alt="Abubakar Shaikh profile photo"
-                  width={256}
-                  height={256}
-                  priority
-                  unoptimized
-                  className="h-48 w-48 sm:h-60 sm:w-60 lg:h-64 lg:w-64 rounded-lg object-cover grayscale transition-all duration-300 ease-out-premium group-hover:grayscale-0 group-hover:scale-[1.02]"
-                />
-              </div>
-
-              <div className="mt-2.5 flex items-center justify-between px-1 font-mono text-xs text-text-muted">
-                <span className="flex items-center gap-1.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Based in India
-                </span>
-                <span>3+ Yrs Exp</span>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Tech Stack List */}
-        <div className="mt-12 sm:mt-16 border-t border-border-primary/40 pt-6 sm:pt-8 animate-fade-in-up" style={{ animationDelay: '540ms' }}>
+        <div className="mt-10 border-t border-border-primary/40 pt-6 animate-fade-in-up sm:mt-16 sm:pt-8" style={{ animationDelay: '560ms' }}>
           <p className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-text-muted">
             Core Technologies &amp; Capabilities
           </p>
@@ -138,5 +140,3 @@ export async function HeroSection() {
     </section>
   );
 }
-
-

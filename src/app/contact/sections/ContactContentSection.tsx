@@ -80,7 +80,7 @@ export function ContactContentSection() {
 
   return (
     <Section>
-    <div className="grid gap-12 lg:grid-cols-5">
+    <div className="mx-auto grid w-full max-w-2xl gap-12 lg:max-w-none lg:grid-cols-5">
         <div className="space-y-8 lg:col-span-2">
           <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 space-y-4">
             <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
