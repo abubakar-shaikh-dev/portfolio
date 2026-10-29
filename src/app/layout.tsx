@@ -88,6 +88,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${outfit.variable}`}>
       <head>
+        {/* Gates JS-dependent styles (scroll reveals) so no-JS visitors always see content */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

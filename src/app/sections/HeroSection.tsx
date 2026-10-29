@@ -16,7 +16,7 @@ export async function HeroSection() {
     <section id="hero" className="relative overflow-hidden border-b border-border-primary/60 bg-bg-primary pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-20">
       {/* Subtle Background Ambiance Glow & Grid */}
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-60" />
-      <div className="pointer-events-none absolute -top-32 left-1/2 -z-0 h-[450px] w-[650px] -translate-x-1/2 rounded-full bg-accent/10 blur-[130px]" />
+      <div className="pointer-events-none absolute -top-32 left-1/2 -z-0 h-[450px] w-[650px] -translate-x-1/2 rounded-full bg-accent/10 blur-[130px] animate-breathe" />
 
       <div className="section-container relative z-10">
         {/* Status Line */}
@@ -29,7 +29,7 @@ export async function HeroSection() {
           {/* Profile Photo — leads on phones/tablets, right column on desktop */}
           <div className="order-1 flex justify-center animate-fade-in-up lg:order-2 lg:col-span-4 lg:justify-end" style={{ animationDelay: '200ms' }}>
             <div className="relative group">
-              <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1.5 shadow-xl">
+              <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1.5 shadow-xl animate-jelly-in">
                 <Image
                   src="/images/profile_2.webp"
                   alt="Abubakar Shaikh profile photo"

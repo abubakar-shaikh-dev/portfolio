@@ -74,6 +74,12 @@
 - Detail pages hide the breadcrumb below `sm` and keep the back link.
 - Cursor effects are `pointer: fine` only and honor reduced motion (`CustomCursor`); overlay menus lock body scroll via `useBodyScrollLock`.
 
+## Motion System
+
+- Entrances use the liquid keyframes in `globals.css`: `.animate-fade-in-up` (blur-to-sharp rise with water settle — stagger via inline `animationDelay`), `.animate-jelly-in` (squishy scale for photos/cards), `.animate-breathe` (ambient float; uses the `scale` property so it composes with transforms).
+- Scroll reveals come from the `Reveal` atom (client, IntersectionObserver, fires once). Wrap section blocks with it; stagger children with `delay={index * 70}` and `className="h-full"` inside card grids. Content is hidden only when `html.js` is set (inline script in the root layout), so no-JS visitors always see it.
+- Framer Motion (menu, cursor) uses blur-dissolve overlays and springy y/scale; keep `filter` animations on tween transitions and transforms on springs. Reduced motion: CSS forces final states; framer uses `useReducedMotion` branches.
+
 ## Email Integration (Resend)
 
 - Contact form submissions are sent via the [Resend](https://resend.com/) SDK.

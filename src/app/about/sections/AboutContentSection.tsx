@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { Reveal } from '@/components/atoms/Reveal';
 import { Section } from '@/components/atoms/Section';
 import { SectionLabel } from '@/components/atoms/SectionLabel';
 
 export function AboutContentSection() {
   return (
     <Section>
+      <Reveal>
       <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 md:p-12 shadow-xl space-y-10">
         <div>
           <SectionLabel label="BIOGRAPHY" className="mb-3" />
@@ -65,6 +67,7 @@ export function AboutContentSection() {
           </div>
         </div>
       </div>
+      </Reveal>
     </Section>
   );
 }

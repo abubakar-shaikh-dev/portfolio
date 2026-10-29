@@ -1,13 +1,37 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import {
+  Menu,
+  X,
+  User,
+  Github,
+  FolderGit2,
+  Briefcase,
+  PenLine,
+  Mail,
+  ArrowUpRight,
+  Linkedin,
+  Twitter,
+  Instagram,
+} from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
-import { NAV_LINKS } from '@/lib/constants';
+import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
+
+const LINK_ICONS = {
+  '/about': User,
+  '/open-source': Github,
+  '/projects': FolderGit2,
+  '/services': Briefcase,
+  '/thoughts': PenLine,
+  '/contact': Mail,
+} as const;
+
+const MENU_SOCIAL_ICONS = { LinkedIn: Linkedin, GitHub: Github, 'X / Twitter': Twitter, Instagram: Instagram };
 
 export function Navbar() {
   const { isScrolled } = useScrollPosition();
@@ -16,6 +40,15 @@ export function Navbar() {
   const pathname = usePathname();
 
   useBodyScrollLock(isMobileMenuOpen);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isMobileMenuOpen]);
 
   const isActive = (href: string) => pathname === href;
 
@@ -74,59 +107,128 @@ export function Navbar() {
 
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <>
+          <motion.div
+            initial={{ opacity: 0, filter: 'blur(14px)' }}
+            animate={{ opacity: 1, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, filter: 'blur(12px)' }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-[#0a0a0a]/85 backdrop-blur-2xl lg:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site menu"
+          >
+            {/* Luxury ambience — soft emerald glows over the frosted page */}
+            <div className="pointer-events-none absolute -top-32 -right-24 h-80 w-80 rounded-full bg-accent/10 blur-[110px]" />
+            <div className="pointer-events-none absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-accent/5 blur-[110px]" />
+
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
-              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden"
-              aria-hidden="true"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            <motion.div
-              initial={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-20px)", opacity: 0 }}
-              animate={{ transform: "translateY(0px)", opacity: 1 }}
-              exit={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-20px)", opacity: 0 }}
-              transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
-              className="fixed inset-x-0 top-0 z-50 border-b-2 border-accent bg-[#0a0a0a] lg:hidden"
+              className="relative flex items-center justify-between border-b border-border-primary/40 px-6 py-5"
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
             >
-              <div className="flex items-center justify-between border-b border-border-primary px-6 py-4">
-                <span className="font-mono text-lg font-bold text-white">
-                  <span className="text-accent">~/</span>abubakarshaikh
-                </span>
-                <button
-                  className="rounded-md p-2 text-text-secondary transition-[color,transform] duration-150 ease-out-premium hover:text-accent active:scale-95"
-                  aria-label="Close menu"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-              <nav className="px-6 py-10">
-                <ul className="space-y-2">
-                  {NAV_LINKS.map((link, index) => (
+              <Link
+                href="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="font-mono text-lg font-bold tracking-tight text-white active:scale-97"
+              >
+                <span className="text-accent">~/</span>abubakarshaikh
+              </Link>
+              <button
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border-primary/60 text-text-secondary transition-colors duration-150 hover:border-accent/60 hover:text-accent active:scale-95"
+                aria-label="Close menu"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <X className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </motion.div>
+
+            <nav className="relative flex flex-1 flex-col justify-center px-6 py-8" aria-label="Mobile navigation">
+              <ul>
+                {NAV_LINKS.map((link, index) => {
+                  const Icon = LINK_ICONS[link.href as keyof typeof LINK_ICONS];
+                  const active = isActive(link.href);
+                  return (
                     <motion.li
                       key={link.href}
-                      initial={{ opacity: 0, transform: shouldReduceMotion ? "translateX(0px)" : "translateX(-20px)" }}
-                      animate={{ opacity: 1, transform: "translateX(0px)" }}
-                      transition={{ delay: index * 0.04, duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                      initial={
+                        shouldReduceMotion
+                          ? { opacity: 0 }
+                          : { opacity: 0, y: 28, scale: 0.94, filter: 'blur(6px)' }
+                      }
+                      animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                      transition={
+                        shouldReduceMotion
+                          ? { duration: 0.2, delay: index * 0.03 }
+                          : { delay: 0.12 + index * 0.055, type: 'spring', stiffness: 320, damping: 22, mass: 0.9 }
+                      }
                     >
                       <Link
                         href={link.href}
-                        className={`block py-3 font-mono text-2xl font-bold uppercase tracking-wider transition-colors duration-150 hover:text-accent active:scale-97 ${
-                          isActive(link.href) ? 'text-accent' : 'text-white'
-                        }`}
                         onClick={() => setIsMobileMenuOpen(false)}
+                        className={`group flex items-center gap-4 border-b border-border-primary/30 py-3.5 ${index === NAV_LINKS.length - 1 ? 'border-b-0' : ''}`}
                       >
-                        {link.label}
+                        <span className={`w-6 font-mono text-[11px] ${active ? 'text-accent' : 'text-text-muted'}`}>
+                          0{index + 1}
+                        </span>
+                        <span
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border transition-colors duration-150 ${
+                            active
+                              ? 'border-accent/40 bg-accent/10 text-accent'
+                              : 'border-border-primary/60 bg-bg-secondary/60 text-text-secondary group-hover:border-accent/40 group-hover:text-accent'
+                          }`}
+                        >
+                          <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+                        </span>
+                        <span
+                          className={`font-display text-[26px] font-semibold tracking-tight transition-colors duration-150 ${
+                            active ? 'text-accent' : 'text-white group-hover:text-accent'
+                          }`}
+                        >
+                          {link.label}
+                        </span>
+                        <ArrowUpRight
+                          className={`ml-auto h-4 w-4 transition-all duration-150 ${
+                            active ? 'text-accent opacity-100' : 'text-text-muted opacity-0 group-hover:opacity-100'
+                          }`}
+                          aria-hidden="true"
+                        />
                       </Link>
                     </motion.li>
-                  ))}
-                </ul>
-              </nav>
+                  );
+                })}
+              </ul>
+            </nav>
+
+            <motion.div
+              className="relative border-t border-border-primary/40 px-6 py-6"
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 18, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ delay: shouldReduceMotion ? 0 : 0.45, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="flex items-center gap-3">
+                {SOCIAL_LINKS.map((social) => {
+                  const SocialIcon = MENU_SOCIAL_ICONS[social.label as keyof typeof MENU_SOCIAL_ICONS];
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border-primary/60 text-text-secondary transition-colors duration-150 hover:border-accent/60 hover:text-accent active:scale-95"
+                    >
+                      <SocialIcon className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  );
+                })}
+              </div>
+              <p className="mt-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                Available for full-stack &amp; cloud roles — India
+              </p>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

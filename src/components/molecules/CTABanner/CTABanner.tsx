@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { Reveal } from '@/components/atoms/Reveal';
 import { Section } from '@/components/atoms/Section';
 
 interface CTABannerProps {
@@ -21,6 +22,7 @@ export function CTABanner({ label, title, description, buttonText, buttonLink, e
 
   return (
     <Section>
+      <Reveal>
       <div className="relative overflow-hidden rounded-2xl border border-border-primary/80 bg-gradient-to-b from-bg-secondary to-bg-primary p-8 md:p-12 shadow-2xl">
         <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
 
@@ -48,6 +50,7 @@ export function CTABanner({ label, title, description, buttonText, buttonLink, e
           )}
         </div>
       </div>
+      </Reveal>
     </Section>
   );
 }

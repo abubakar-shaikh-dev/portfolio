@@ -15,6 +15,7 @@ const HOTSPOT_Y = 4;
  */
 export function CustomCursor() {
   const planeRef = useRef<HTMLDivElement>(null);
+  const trailRef = useRef<HTMLDivElement>(null);
   const fxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ export function CustomCursor() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const root = document.documentElement;
     const plane = planeRef.current;
+    const trail = trailRef.current;
     const fx = fxRef.current;
     if (!plane || !fx) return;
 
@@ -32,6 +34,8 @@ export function CustomCursor() {
     let targetY = -100;
     let x = targetX;
     let y = targetY;
+    let trailX = targetX;
+    let trailY = targetY;
     let scale = 1;
     let pressed = false;
     let shown = false;
@@ -74,15 +78,33 @@ export function CustomCursor() {
       if (!shown) {
         x = targetX;
         y = targetY;
+        trailX = x;
+        trailY = y;
         shown = true;
         plane.style.opacity = '1';
       }
+    };
+
+    const spawnRipple = (cx: number, cy: number) => {
+      if (reducedMotion || !fx) return;
+      const ripple = document.createElement('span');
+      ripple.style.cssText =
+        'position:absolute;left:-22px;top:-22px;width:44px;height:44px;border:1.5px solid rgba(16,185,129,0.55);border-radius:50%;';
+      fx.appendChild(ripple);
+      ripple.animate(
+        [
+          { transform: `translate(${cx}px, ${cy}px) scale(0.35)`, opacity: 0.9 },
+          { transform: `translate(${cx}px, ${cy}px) scale(1.6)`, opacity: 0 },
+        ],
+        { duration: 550, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+      ).onfinish = () => ripple.remove();
     };
 
     const onPointerDown = (event: PointerEvent) => {
       if (event.pointerType === 'touch' || event.button !== 0) return;
       pressed = true;
       spawnConfetti(event.clientX, event.clientY);
+      spawnRipple(event.clientX, event.clientY);
     };
 
     const onPointerUp = () => {
@@ -92,19 +114,28 @@ export function CustomCursor() {
     const onMouseLeave = () => {
       shown = false;
       plane.style.opacity = '0';
+      if (trail) trail.style.opacity = '0';
     };
 
     const tick = () => {
       if (reducedMotion) {
         x = targetX;
         y = targetY;
+        trailX = x;
+        trailY = y;
       } else {
         x += (targetX - x) * 0.22;
         y += (targetY - y) * 0.22;
+        trailX += (x - trailX) * 0.09;
+        trailY += (y - trailY) * 0.09;
         scale += ((pressed ? 0.78 : 1) - scale) * 0.35;
       }
       const tilt = reducedMotion ? 0 : Math.max(-14, Math.min(14, (targetX - x) * 0.55));
       plane.style.transform = `translate3d(${x - HOTSPOT_X}px, ${y - HOTSPOT_Y}px, 0) rotate(${tilt}deg) scale(${scale})`;
+      if (trail && shown) {
+        trail.style.opacity = '1';
+        trail.style.transform = `translate3d(${trailX - 18}px, ${trailY - 18}px, 0) scale(${pressed ? 1.4 : 1})`;
+      }
       frame = requestAnimationFrame(tick);
     };
 
@@ -128,6 +159,10 @@ export function CustomCursor() {
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[90] overflow-hidden">
       <div ref={fxRef} />
+      <div
+        ref={trailRef}
+        className="absolute left-0 top-0 h-9 w-9 rounded-full bg-accent/25 opacity-0 blur-md will-change-transform"
+      />
       <div
         ref={planeRef}
         className="absolute left-0 top-0 h-6 w-6 opacity-0 will-change-transform"

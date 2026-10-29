@@ -25,6 +25,8 @@
     --ring: 160 84% 39%;
     --ease-out-premium: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out-premium: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-liquid: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-squish: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   * {
@@ -91,9 +93,9 @@
   }
 }
 
-/* Display font for page headings */
+/* Display font for page headings (self-hosted via next/font, exposed as --font-outfit) */
 .font-display {
-  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-outfit), 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* Grid backdrop used by the hero section */
@@ -125,18 +127,101 @@
   }
 }
 
-/* Entry animation shared by hero sections */
+/* ── Liquid motion system ───────────────────────────────────────────────
+   Water-like entrances: content surfaces through a soft blur, rises,
+   overshoots a touch, then settles. Layers:
+   - .animate-fade-in-up   load-in for hero layers (stagger via delay)
+   - .animate-jelly-in     squishy scale settle (photo/cards, no opacity)
+   - .animate-breathe      slow ambient float (uses `scale`, composes with
+                           existing transforms like -translate-x-1/2)
+   - [data-reveal]         scroll-triggered reveal driven by the Reveal
+                           atom (IntersectionObserver, fires once)          */
+
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.988);
+    filter: blur(9px);
+  }
+  55% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+  78% {
+    transform: translateY(-3px) scale(1.003);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 .animate-fade-in-up {
   opacity: 0;
-  animation: fade-in-up 600ms var(--ease-out-premium) forwards;
+  animation: fade-in-up 900ms var(--ease-liquid) forwards;
 }
 
-/* Reduced motion support */
+@keyframes jelly-in {
+  0% {
+    transform: scale(0.84);
+    filter: blur(8px);
+  }
+  55% {
+    transform: scale(1.05);
+    filter: blur(0);
+  }
+  78% {
+    transform: scale(0.985);
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-jelly-in {
+  animation: jelly-in 750ms var(--ease-squish) 250ms both;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    scale: 1;
+    opacity: 0.85;
+  }
+  50% {
+    scale: 1.08;
+    opacity: 1;
+  }
+}
+
+.animate-breathe {
+  animation: breathe 9s ease-in-out infinite;
+}
+
+/* Scroll reveal — hidden only when JS is present (html.js gate added by
+   the inline script in the root layout), so content is never lost without
+   JavaScript. Reveal atom adds .is-revealed once, when ~12% in view. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px) scale(0.99);
+  filter: blur(8px);
+  transition:
+    opacity 800ms var(--ease-liquid),
+    transform 800ms var(--ease-liquid),
+    filter 800ms var(--ease-liquid);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Reduced motion: everything lands instantly, nothing floats */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -149,6 +234,19 @@
   .animate-fade-in-up {
     opacity: 1 !important;
     transform: translateY(0) !important;
+    filter: blur(0) !important;
     animation: none !important;
+  }
+
+  .animate-jelly-in,
+  .animate-breathe {
+    animation: none !important;
+  }
+
+  html.js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: blur(0) !important;
+    transition: none !important;
   }
 }

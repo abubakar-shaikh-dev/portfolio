@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { Reveal } from '@/components/atoms/Reveal';
 import { ArticleCard } from '@/components/molecules/ArticleCard';
 import { getAllArticles, getArticleCategories } from '@/data/queries/getArticles';
 
@@ -21,7 +22,8 @@ export function ThoughtsListSectionClient({ articles, categories }: ThoughtsList
     <>
       <section className="py-8 md:py-12">
         <div className="section-container">
-          <div className="flex flex-wrap gap-2.5">
+          <Reveal>
+            <div className="flex flex-wrap gap-2.5">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -35,15 +37,18 @@ export function ThoughtsListSectionClient({ articles, categories }: ThoughtsList
                 {category.label}
               </button>
             ))}
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="pb-16 md:pb-24">
         <div className="section-container">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredArticles.map((article) => (
-              <ArticleCard key={article.id} article={article} />
+            {filteredArticles.map((article, index) => (
+              <Reveal key={article.id} delay={(index % 3) * 70} className="h-full">
+                <ArticleCard article={article} />
+              </Reveal>
             ))}
           </div>
         </div>

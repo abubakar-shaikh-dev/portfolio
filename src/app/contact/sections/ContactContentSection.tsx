@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Mail, Linkedin, Github, Twitter, Instagram, Loader2, Send } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Reveal } from '@/components/atoms/Reveal';
 import { Section } from '@/components/atoms/Section';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
@@ -81,7 +82,7 @@ export function ContactContentSection() {
   return (
     <Section>
     <div className="mx-auto grid w-full max-w-2xl gap-12 lg:max-w-none lg:grid-cols-5">
-        <div className="space-y-8 lg:col-span-2">
+        <Reveal className="space-y-8 lg:col-span-2">
           <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 space-y-4">
             <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
               // GET_IN_TOUCH
@@ -129,8 +130,9 @@ export function ContactContentSection() {
               })}
             </div>
           </div>
-        </div>
+        </Reveal>
 
+        <Reveal delay={120} className="lg:col-span-3">
         <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 lg:col-span-3 min-h-[620px] flex flex-col justify-center overflow-hidden transition-all duration-300">
           <AnimatePresence mode="wait">
             {!isSubmitted ? (
@@ -327,6 +329,7 @@ export function ContactContentSection() {
             )}
           </AnimatePresence>
         </div>
+        </Reveal>
       </div>
     </Section>
   );

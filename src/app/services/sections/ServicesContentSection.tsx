@@ -1,3 +1,4 @@
+import { Reveal } from '@/components/atoms/Reveal';
 import { Section } from '@/components/atoms/Section';
 import { SectionHeader } from '@/components/molecules/SectionHeader';
 import { Layout, Server, Terminal, Cpu } from 'lucide-react';
@@ -15,8 +16,8 @@ export async function ServicesContentSection() {
     <Section>
       <div className="grid gap-6 md:grid-cols-2">
           {services.map((service, index) => (
+            <Reveal key={service.id} delay={(index % 2) * 90} className="h-full">
             <div
-              key={service.id}
               className="group relative flex flex-col justify-between rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6 md:p-8 transition-[border-color,background-color,transform] duration-150 ease-out-premium hover:border-accent/40 hover:bg-bg-secondary active:scale-98"
             >
               <div>
@@ -51,6 +52,7 @@ export async function ServicesContentSection() {
                 </div>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
 
@@ -64,8 +66,8 @@ export async function ServicesContentSection() {
             const IconComponent = icons[index];
 
             return (
+              <Reveal key={area.category} delay={(index % 4) * 70} className="h-full">
               <div
-                key={area.category}
                 className="group flex flex-col rounded-xl border border-border-primary/80 bg-bg-secondary/60 transition-[border-color,background-color,transform] duration-150 ease-out-premium hover:border-accent/40 hover:bg-bg-secondary overflow-hidden active:scale-98"
               >
                 <div className="flex items-center justify-between border-b border-border-primary/50 bg-[#0c0c0c] px-4 py-3 select-none">
@@ -95,6 +97,7 @@ export async function ServicesContentSection() {
                   </div>
                 </div>
               </div>
+              </Reveal>
             );
           })}
         </div>
@@ -104,8 +107,9 @@ export async function ServicesContentSection() {
         </div>
 
         <div className="relative border-l border-border-primary/60 pl-4 md:pl-6 ml-2 md:ml-4 space-y-6 md:space-y-8">
-          {clients.map((client) => (
-            <div key={client.company} className="relative">
+          {clients.map((client, index) => (
+            <Reveal key={client.company} delay={index * 110}>
+            <div className="relative">
               <div className="absolute -left-[21px] md:-left-[31px] top-4 h-[9px] w-[9px] rounded-full border-2 border-bg-primary bg-accent ring-4 ring-bg-primary" />
               <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6 md:p-8 hover:border-accent/30 transition-[border-color,background-color] duration-150">
                 <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
@@ -124,6 +128,7 @@ export async function ServicesContentSection() {
                 </p>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
     </Section>
