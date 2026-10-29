@@ -112,14 +112,18 @@ export function Navbar() {
             animate={{ opacity: 1, filter: 'blur(0px)' }}
             exit={{ opacity: 0, filter: 'blur(12px)' }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-[#0a0a0a]/85 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a]/85 backdrop-blur-2xl lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"
           >
-            {/* Luxury ambience — soft emerald glows over the frosted page */}
-            <div className="pointer-events-none absolute -top-32 -right-24 h-80 w-80 rounded-full bg-accent/10 blur-[110px]" />
-            <div className="pointer-events-none absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-accent/5 blur-[110px]" />
+            {/* Luxury ambience — soft emerald glows over the frosted page.
+               Clipped in an inset-0 layer so the off-canvas blobs never
+               create scrollbars on the scrollable overlay. */}
+            <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+              <div className="absolute -top-32 -right-24 h-80 w-80 rounded-full bg-accent/10 blur-[110px]" />
+              <div className="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-accent/5 blur-[110px]" />
+            </div>
 
             <motion.div
               className="relative flex items-center justify-between border-b border-border-primary/40 px-6 py-5"
@@ -143,7 +147,7 @@ export function Navbar() {
               </button>
             </motion.div>
 
-            <nav className="relative flex flex-1 flex-col justify-center px-6 py-8" aria-label="Mobile navigation">
+            <nav className="relative flex flex-1 flex-col justify-center px-6 py-5" aria-label="Mobile navigation">
               <ul>
                 {NAV_LINKS.map((link, index) => {
                   const Icon = LINK_ICONS[link.href as keyof typeof LINK_ICONS];
