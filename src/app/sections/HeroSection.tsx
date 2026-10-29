@@ -19,8 +19,8 @@ export async function HeroSection() {
       <div className="pointer-events-none absolute -top-32 left-1/2 -z-0 h-[450px] w-[650px] -translate-x-1/2 rounded-full bg-accent/10 blur-[130px] animate-breathe" />
 
       <div className="section-container relative z-10">
-        {/* Status Line */}
-        <div className="mb-6 flex items-center justify-center gap-2.5 font-mono text-xs text-text-secondary animate-fade-in-up sm:mb-8 sm:justify-start" style={{ animationDelay: '100ms' }}>
+        {/* Status Line — desktop/tablet only; the portrait leads on phones */}
+        <div className="mb-6 hidden items-center justify-center gap-2.5 font-mono text-xs text-text-secondary animate-fade-in-up sm:mb-8 sm:flex sm:justify-start" style={{ animationDelay: '100ms' }}>
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           <span>Available for full-stack &amp; cloud engineering roles</span>
         </div>
