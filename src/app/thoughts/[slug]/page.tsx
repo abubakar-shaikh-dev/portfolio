@@ -116,7 +116,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
               <span className="inline-block rounded-md border border-border-primary/80 bg-bg-secondary px-3 py-1 font-mono text-xs font-semibold text-accent">
                 {article.category}
               </span>
-              <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 {article.title}
               </h1>
               <p className="text-lg leading-relaxed text-text-secondary sm:text-xl">

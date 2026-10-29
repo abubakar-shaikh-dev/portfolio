@@ -45,8 +45,7 @@
 | Atoms | `src/components/atoms/*` — smallest UI primitives |
 | Molecules | `src/components/molecules/*` — small combinations |
 | Organisms | `src/components/organisms/*` — complex feature-level |
-| Templates | `src/components/templates/*` — page-level layout compositions |
-| Pages | `src/app/**/page.tsx` — route segments (thin, compose templates) |
+| Pages | `src/app/**/page.tsx` — route segments (thin, compose sections) |
 
 ## Reserved Files
 

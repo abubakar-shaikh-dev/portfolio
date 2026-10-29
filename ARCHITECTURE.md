@@ -12,23 +12,19 @@ The component tree follows Atomic Design methodology, adapted for Next.js App Ro
 
 ### Atoms (`src/components/atoms/`)
 
-The smallest UI primitives: `SectionLabel`, and shadcn/ui components (`Button`, `Input`, `Badge`, etc.).
+The smallest UI primitives: `SectionLabel`, and the shared `Section` content container (vertical rhythm + `section-container` bounds).
 
 ### Molecules (`src/components/molecules/`)
 
-Small combinations of atoms: `ArticleCard`, `ProjectCard`, `RepoCard`, `CareerItem`, `TopicCard`, `VideoCard`, `SocialButtons`, `SectionHeader`, `CTABanner`.
+Small combinations of atoms: `ArticleCard`, `ProjectCard`, `RepoCard`, `CareerItem`, `SectionHeader`, `PageHero`, `CTABanner`.
 
 ### Organisms (`src/components/organisms/`)
 
 Complex, feature-level components: `Navbar`, `Footer`.
 
-### Templates (`src/components/templates/`)
-
-Page-level layout compositions: `PageLayout`.
-
 ### Pages (`src/app/**/page.tsx`)
 
-Route segments in the App Router. Each page is **thin** — it composes templates and sections, and fetches data via the query layer.
+Route segments in the App Router. Each page is **thin** — it composes sections, and fetches data via the query layer.
 
 ## Server Components vs Client Components
 

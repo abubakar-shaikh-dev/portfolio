@@ -1,15 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Linkedin, Twitter, Github, Instagram, Loader2, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, Twitter, Instagram, Loader2, Send } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
-const socials = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abubakar-shaikh-dev', icon: Linkedin },
-  { label: 'GitHub', href: 'https://github.com/abubakar-shaikh-dev', icon: Github },
-  { label: 'X / Twitter', href: 'https://x.com/abubakarshaikh_dev', icon: Twitter },
-  { label: 'Instagram', href: 'https://instagram.com/abubakarshaikh.dev', icon: Instagram },
-];
+const socialIcons = { LinkedIn: Linkedin, GitHub: Github, 'X / Twitter': Twitter, Instagram: Instagram };
 
 export function ContactContentSection() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -86,7 +82,7 @@ export function ContactContentSection() {
       <div className="section-container">
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="space-y-8 lg:col-span-2">
-            <div className="border border-border-primary bg-bg-secondary p-8 space-y-4">
+            <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 space-y-4">
               <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
                 // GET_IN_TOUCH
               </h3>
@@ -104,7 +100,7 @@ export function ContactContentSection() {
               </span>
               <a
                 href="mailto:shaikhabubakar2380@gmail.com"
-                className="inline-flex w-full items-center gap-3 border border-border-primary bg-bg-secondary px-6 py-4 text-base font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent active:scale-98"
+                className="inline-flex w-full items-center gap-3 rounded-md border border-border-primary/80 bg-bg-secondary/60 px-6 py-4 text-base font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent active:scale-98"
               >
                 <Mail className="h-5 w-5 text-accent" />
                 shaikhabubakar2380@gmail.com
@@ -116,23 +112,26 @@ export function ContactContentSection() {
                 Social Networks
               </span>
               <div className="grid grid-cols-2 gap-2">
-                {socials.map((social) => (
+                {SOCIAL_LINKS.map((social) => {
+                  const SocialIcon = socialIcons[social.label as keyof typeof socialIcons];
+                  return (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-border-primary bg-bg-secondary px-4 py-3 text-xs font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent active:scale-97"
+                    className="inline-flex items-center gap-2 rounded-md border border-border-primary/80 bg-bg-secondary/60 px-4 py-3 text-xs font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent active:scale-97"
                   >
-                    <social.icon className="h-4 w-4" />
+                    <SocialIcon className="h-4 w-4" />
                     {social.label}
                   </a>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          <div className="border border-border-primary bg-bg-secondary p-8 lg:col-span-3 min-h-[620px] flex flex-col justify-center overflow-hidden transition-all duration-300">
+          <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 lg:col-span-3 min-h-[620px] flex flex-col justify-center overflow-hidden transition-all duration-300">
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
                 <motion.div
@@ -160,7 +159,7 @@ export function ContactContentSection() {
                         onChange={handleInputChange}
                         placeholder="Enter your name"
                         disabled={isSubmitting}
-                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                        className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                           errors.name ? 'border-red-500' : 'border-border-primary'
                         }`}
                       />
@@ -179,7 +178,7 @@ export function ContactContentSection() {
                         onChange={handleInputChange}
                         placeholder="name@example.com"
                         disabled={isSubmitting}
-                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                        className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                           errors.email ? 'border-red-500' : 'border-border-primary'
                         }`}
                       />
@@ -198,7 +197,7 @@ export function ContactContentSection() {
                         onChange={handleInputChange}
                         placeholder="Project, Job Opportunity, Consultancy..."
                         disabled={isSubmitting}
-                        className="w-full border border-border-primary bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed"
+                        className="w-full rounded-md border border-border-primary bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed"
                       />
                     </div>
 
@@ -214,7 +213,7 @@ export function ContactContentSection() {
                         onChange={handleInputChange}
                         placeholder="Tell me about your project or inquiry..."
                         disabled={isSubmitting}
-                        className={`w-full border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium resize-none disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                        className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium resize-none disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                           errors.message ? 'border-red-500' : 'border-border-primary'
                         }`}
                       />
@@ -236,7 +235,7 @@ export function ContactContentSection() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-flex w-full items-center justify-center gap-2 border border-accent bg-accent py-4 text-sm font-semibold text-black transition-[background-color,border-color,transform] duration-150 ease-out-premium hover:bg-accent-light active:scale-97 disabled:opacity-50"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-black transition-[background-color,transform] duration-150 ease-out-premium hover:bg-white/90 active:scale-97 disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <><Loader2 className="h-4 w-4 animate-spin" /> Sending Message...</>
@@ -295,7 +294,7 @@ export function ContactContentSection() {
                   </div>
 
                   {/* Terminal style Submitted Record Receipt */}
-                  <div className="w-full max-w-md border border-border-primary bg-bg-primary p-5 text-left font-mono text-xs text-text-secondary space-y-3 select-none">
+                  <div className="w-full max-w-md rounded-md border border-border-primary bg-bg-primary p-5 text-left font-mono text-xs text-text-secondary space-y-3 select-none">
                     <p className="text-text-muted">// SUBMITTED_RECORD</p>
                     <div className="grid grid-cols-[60px_1fr] gap-x-2 gap-y-1">
                       <span className="text-accent">NAME:</span>
@@ -320,7 +319,7 @@ export function ContactContentSection() {
                   <button
                     type="button"
                     onClick={handleResetForm}
-                    className="inline-flex items-center gap-2 border border-border-primary bg-bg-primary hover:border-accent hover:bg-[#111111] px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-white transition-all duration-200 active:scale-97"
+                    className="inline-flex items-center gap-2 rounded-md border border-border-primary bg-bg-primary hover:border-accent hover:bg-[#111111] px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-white transition-all duration-200 active:scale-97"
                   >
                     <span>// SEND_ANOTHER_MESSAGE</span>
                   </button>

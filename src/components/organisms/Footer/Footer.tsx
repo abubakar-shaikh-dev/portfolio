@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { Linkedin, Twitter, Github, Instagram, Rss } from 'lucide-react';
 import {
+  SOCIAL_LINKS,
   FOOTER_CONTENT_LINKS,
   FOOTER_TOPIC_LINKS,
   FOOTER_CONNECT_LINKS,
   FOOTER_LEGAL_LINKS,
 } from '@/lib/constants';
+
+const socialIcons = { LinkedIn: Linkedin, GitHub: Github, 'X / Twitter': Twitter, Instagram: Instagram };
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,10 +27,12 @@ export function Footer() {
               scalable MERN apps and DevOps architectures.
             </p>
             <div className="flex items-center gap-3 pt-2">
-              <a href="https://www.linkedin.com/in/abubakar-shaikh-dev" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-95" aria-label="LinkedIn"><Linkedin className="h-4 w-4" /></a>
-              <a href="https://x.com/abubakarshaikh_dev" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-95" aria-label="X / Twitter"><Twitter className="h-4 w-4" /></a>
-              <a href="https://github.com/abubakar-shaikh-dev" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-95" aria-label="GitHub"><Github className="h-4 w-4" /></a>
-              <a href="https://instagram.com/abubakarshaikh.dev" target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-95" aria-label="Instagram"><Instagram className="h-4 w-4" /></a>
+              {SOCIAL_LINKS.map((social) => {
+                const SocialIcon = socialIcons[social.label as keyof typeof socialIcons];
+                return (
+                  <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-95" aria-label={social.label}><SocialIcon className="h-4 w-4" /></a>
+                );
+              })}
               <a href="/feed.xml" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-95" aria-label="RSS Feed"><Rss className="h-4 w-4" /></a>
             </div>
           </div>

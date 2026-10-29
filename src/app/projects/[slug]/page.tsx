@@ -101,7 +101,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                   // PROJECT_DETAILS
                 </span>
                 <div className="mt-3 flex flex-wrap items-center gap-4">
-                  <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+                  <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
                     {project.name}
                   </h1>
                   <div className="flex items-center gap-2">

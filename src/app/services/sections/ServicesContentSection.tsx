@@ -1,3 +1,5 @@
+import { Section } from '@/components/atoms/Section';
+import { SectionHeader } from '@/components/molecules/SectionHeader';
 import { Layout, Server, Terminal, Cpu } from 'lucide-react';
 import { getAllServices, getExpertiseAreas, getPreviousClients } from '@/data/queries/getServices';
 
@@ -10,9 +12,8 @@ export async function ServicesContentSection() {
   const terminalNames = ['frontend.sh', 'backend.env', 'devops.yml', 'ai_agent.py'];
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="section-container">
-        <div className="grid gap-6 md:grid-cols-2">
+    <Section>
+      <div className="grid gap-6 md:grid-cols-2">
           {services.map((service, index) => (
             <div
               key={service.id}
@@ -53,13 +54,8 @@ export async function ServicesContentSection() {
           ))}
         </div>
 
-        <div className="mt-16 md:mt-24 mb-8 md:mb-10">
-          <span className="font-mono text-xs uppercase tracking-wider text-accent">
-            // EXPERTISE_MATRIX
-          </span>
-          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl mt-2">
-            Areas of Expertise
-          </h2>
+        <div className="mt-16 md:mt-24">
+          <SectionHeader label="EXPERTISE_MATRIX" title="Areas of Expertise" />
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -103,13 +99,8 @@ export async function ServicesContentSection() {
           })}
         </div>
 
-        <div className="mt-16 md:mt-24 mb-8 md:mb-10">
-          <span className="font-mono text-xs uppercase tracking-wider text-accent">
-            // CAREER_HISTORY
-          </span>
-          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl mt-2">
-            Previous Clients &amp; Employers
-          </h2>
+        <div className="mt-16 md:mt-24">
+          <SectionHeader label="CAREER_HISTORY" title="Previous Clients & Employers" />
         </div>
 
         <div className="relative border-l border-border-primary/60 pl-4 md:pl-6 ml-2 md:ml-4 space-y-6 md:space-y-8">
@@ -135,28 +126,6 @@ export async function ServicesContentSection() {
             </div>
           ))}
         </div>
-
-        <div className="mt-16 md:mt-24 overflow-hidden rounded-2xl border border-border-primary/80 bg-gradient-to-b from-bg-secondary to-bg-primary p-8 md:p-12 text-center relative shadow-2xl">
-          <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
-          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">
-            // HIRE_ME
-          </span>
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl mt-2 mb-4">
-            Ready to kick off a project?
-          </h2>
-          <p className="max-w-xl mx-auto text-base text-text-secondary leading-relaxed mb-8">
-            If you are looking for dedicated expertise to implement features, audit and optimize backend architectures, or automate deployments, let&apos;s align.
-          </p>
-          <a
-            href="https://www.linkedin.com/in/abubakar-shaikh-dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-black transition-[background-color,transform] duration-150 ease-out-premium hover:bg-white/90 active:scale-97"
-          >
-            Let&apos;s Connect on LinkedIn
-          </a>
-        </div>
-      </div>
-    </section>
+    </Section>
   );
 }

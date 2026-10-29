@@ -2,13 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Linkedin, Twitter, Github, Instagram, ArrowUpRight, Mail } from 'lucide-react';
 import { getAllSkills } from '@/data/queries/getSkills';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
-const socials = [
-  { label: 'GitHub', href: 'https://github.com/abubakar-shaikh-dev', icon: Github },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abubakar-shaikh-dev', icon: Linkedin },
-  { label: 'X / Twitter', href: 'https://x.com/abubakarshaikh_dev', icon: Twitter },
-  { label: 'Instagram', href: 'https://instagram.com/abubakarshaikh.dev', icon: Instagram },
-];
+const socialIcons = { LinkedIn: Linkedin, GitHub: Github, 'X / Twitter': Twitter, Instagram: Instagram };
 
 const focusTech = ['React', 'Node.js', 'NestJS', 'TypeScript', 'AWS', 'Docker', 'Microservices', 'PostgreSQL'];
 
@@ -79,18 +75,21 @@ export async function HeroSection() {
 
               {/* Social Links Bar */}
               <div className="flex items-center justify-start gap-1 pt-2 sm:pt-0 sm:border-l sm:border-border-primary/60 sm:pl-4">
-                {socials.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-md text-text-muted transition-colors duration-150 hover:bg-bg-secondary hover:text-white active:scale-95"
-                  >
-                    <social.icon className="h-4 w-4" />
-                  </a>
-                ))}
+                {SOCIAL_LINKS.map((social) => {
+                  const SocialIcon = socialIcons[social.label as keyof typeof socialIcons];
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="flex h-10 w-10 items-center justify-center rounded-md text-text-muted transition-colors duration-150 hover:bg-bg-secondary hover:text-white active:scale-95"
+                    >
+                      <SocialIcon className="h-4 w-4" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
