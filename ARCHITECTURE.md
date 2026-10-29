@@ -12,7 +12,7 @@ The component tree follows Atomic Design methodology, adapted for Next.js App Ro
 
 ### Atoms (`src/components/atoms/`)
 
-The smallest UI primitives: `SectionLabel`, and the shared `Section` content container (vertical rhythm + `section-container` bounds).
+The smallest UI primitives: `SectionLabel`, the shared `Section` content container (vertical rhythm + `section-container` bounds), and the `CustomCursor` (smooth-follow plane cursor with click confetti).
 
 ### Molecules (`src/components/molecules/`)
 

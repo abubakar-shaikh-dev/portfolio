@@ -62,6 +62,27 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #3a3a3a;
   }
+
+  /* Paper-plane cursor site-wide. Hotspot (3, 4) = mirrored SVG's nose.
+     pointer:fine keeps touch devices unaffected; !important wins over
+     Tailwind utilities (cursor-default) and preflight button cursors.
+     Safari has no SVG cursor support and falls back to the native one.
+     Once the CustomCursor client component mounts it adds
+     .custom-cursor-attached to <html> and takes over rendering. */
+  @media (pointer: fine) {
+    *,
+    *::before,
+    *::after {
+      cursor: url('/cursor.svg') 3 4, auto !important;
+    }
+
+    html.custom-cursor-attached,
+    html.custom-cursor-attached *,
+    html.custom-cursor-attached *::before,
+    html.custom-cursor-attached *::after {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer utilities {
