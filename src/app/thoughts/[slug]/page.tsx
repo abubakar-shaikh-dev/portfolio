@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, ChevronRight } from 'lucide-react';
 import { getArticleBySlug, getAllArticles } from '@/data/queries/getArticles';
 import { articleContent } from '@/data/articleContent';
@@ -139,6 +140,20 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
                 </span>
               </div>
             </header>
+
+            {article.image && (
+              <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-border-primary/80">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  unoptimized
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
 
             <div className="border-l-2 border-accent pl-6 py-1">
               <p className="text-lg leading-relaxed text-text-secondary italic">

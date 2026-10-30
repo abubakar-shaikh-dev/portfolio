@@ -73,6 +73,45 @@ export async function fetchCollection<T>(
   }
 }
 
+/** Admin write: insert or replace a document by its stable `id`. */
+export async function upsertById<T extends { id: string }>(
+  collection: string,
+  doc: T & { order?: number },
+): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error(`Database unavailable — cannot save ${collection}.`);
+  const { id, ...rest } = doc;
+  await db.collection(collection).replaceOne({ id }, { id, ...rest }, { upsert: true });
+}
+
+export async function deleteById(collection: string, id: string): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error(`Database unavailable — cannot delete from ${collection}.`);
+  await db.collection(collection).deleteOne({ id });
+}
+
+/** Admin read: raw DB document by id — no JSON fallback (admin sees DB truth). */
+export async function getDocById<T>(collection: string, id: string): Promise<(T & { order?: number }) | null> {
+  const db = await getDb();
+  if (!db) return null;
+  try {
+    return ((await db.collection(collection).findOne({ id })) as unknown as (T & { order?: number }) | null) ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Next positional slot for appended items (list queries sort by `order`). */
+export async function nextOrder(collection: string): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+  const last = await db
+    .collection(collection)
+    .find({}, { sort: { order: -1 }, limit: 1 })
+    .next();
+  return ((last?.order as number | undefined) ?? -1) + 1;
+}
+
 /** Reads a single document; falls back to JSON when the DB is unreachable or the doc is absent. */
 export async function fetchOne<T>(
   collection: string,

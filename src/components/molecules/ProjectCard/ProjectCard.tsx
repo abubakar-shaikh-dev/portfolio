@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/data/types/project.types';
 
@@ -13,6 +14,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
       className="group flex h-full flex-col justify-between rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6 transition-[border-color,background-color,transform] duration-150 ease-out-premium hover:border-accent/40 hover:bg-bg-secondary active:scale-98"
     >
       <div>
+        {project.image && (
+          <div className="relative mb-4 h-36 w-full overflow-hidden rounded-lg border border-border-primary/60">
+            <Image
+              src={project.image}
+              alt=""
+              fill
+              unoptimized
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-300 ease-out-premium group-hover:scale-[1.03]"
+            />
+          </div>
+        )}
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-lg font-bold text-white transition-colors duration-150 group-hover:text-accent">
             {project.name}

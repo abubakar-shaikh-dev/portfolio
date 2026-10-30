@@ -14,4 +14,7 @@ export interface Project {
   featured: boolean;
   stack: string[];
   links: ProjectLinks;
+  /** Cloudinary cover (admin-uploaded); optional — cards render without it */
+  image?: string;
+  imagePublicId?: string;
 }

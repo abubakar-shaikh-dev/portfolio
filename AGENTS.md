@@ -77,6 +77,13 @@
 - Detail pages hide the breadcrumb below `sm` and keep the back link.
 - Cursor effects are `pointer: fine` only and honor reduced motion (`CustomCursor`); overlay menus lock body scroll via `useBodyScrollLock`.
 
+## Admin Panel (`/admin`)
+
+- Single-admin auth: credentials from `ADMIN_EMAIL` + `ADMIN_PASSWORD` (or `ADMIN_PASSWORD_HASH`) in `.env.local`; session is an HS256 JWT (`jose`) in an http-only cookie (`admin_session`, 7 days).
+- `src/middleware.ts` guards every `/admin` route (login excluded, `?next=` honored); `src/lib/auth.ts` holds the pure, edge-safe primitives — no `next/headers` imports there.
+- Route structure: `src/app/admin/login/` (standalone) and `src/app/admin/(panel)/` (route group sharing the authenticated shell). Login submits via Server Action (`src/app/admin/actions.ts`) with IP rate limiting (5 attempts / 10 min).
+- Admin pages must be `export const dynamic = 'force-dynamic'` and `robots: { index: false }`. Mutations belong in Server Actions that validate with Zod and call `revalidatePath` on the affected public pages.
+
 ## Motion System
 
 - Entrances use the liquid keyframes in `globals.css`: `.animate-fade-in-up` (blur-to-sharp rise with water settle — stagger via inline `animationDelay`), `.animate-jelly-in` (squishy scale for photos/cards), `.animate-breathe` (ambient float; uses the `scale` property so it composes with transforms).

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, ExternalLink, Github, Package, ChevronRight } from 'lucide-react';
 import { getProjectBySlug, getAllProjectSlugs } from '@/data/queries/getProjects';
 import { notFound } from 'next/navigation';
@@ -117,6 +118,20 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                   </div>
                 </div>
               </div>
+
+              {project.image && (
+                <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-border-primary/80">
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} cover`}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              )}
 
               <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 shadow-xl">
                 <p className="text-base leading-relaxed text-text-secondary whitespace-pre-line sm:text-lg">
