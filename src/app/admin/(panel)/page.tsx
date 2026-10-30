@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import { ArrowUpRight, FileText, FolderGit2, GitBranch } from 'lucide-react';
+import { ArrowUpRight, FileText, FolderGit2, GitBranch, MailOpen } from 'lucide-react';
+import { getUnreadCount } from './actions';
+import { getAllMessages } from '@/data/queries/getMessages';
 import { Reveal } from '@/components/atoms/Reveal';
 import { getAllArticles } from '@/data/queries/getArticles';
 import { getAllProjects } from '@/data/queries/getProjects';
@@ -14,11 +16,13 @@ const STATS = [
 ] as const;
 
 export default async function AdminDashboardPage() {
-  const [projects, articles, repos] = await Promise.all([
+  const [projects, articles, repos, messages] = await Promise.all([
     getAllProjects(),
     getAllArticles(),
     getAllRepos(),
+    getAllMessages(),
   ]);
+  const unread = await getUnreadCount();
 
   const counts: Record<string, number> = {
     PROJECTS: projects.length,
@@ -39,7 +43,7 @@ export default async function AdminDashboardPage() {
         </p>
       </Reveal>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {STATS.map((stat, index) => {
           const Icon = stat.icon;
           return (
@@ -59,6 +63,27 @@ export default async function AdminDashboardPage() {
             </Reveal>
           );
         })}
+
+        <Reveal delay={210}>
+          <Link
+            href="/admin/messages"
+            className="group flex items-center justify-between rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6 transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent/40 active:scale-98"
+          >
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-wider text-text-muted">MESSAGES</p>
+              <p className="font-display mt-1 text-3xl font-bold text-white">{messages.length}</p>
+              {unread > 0 && (
+                <p className="mt-1 font-mono text-[10px] text-accent">{unread} UNREAD</p>
+              )}
+            </div>
+            <span className="relative flex h-10 w-10 items-center justify-center rounded-lg border border-border-primary/60 bg-bg-primary text-text-secondary transition-colors duration-150 group-hover:border-accent/40 group-hover:text-accent">
+              <MailOpen className="h-4 w-4" aria-hidden="true" />
+              {unread > 0 && (
+                <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-accent" />
+              )}
+            </span>
+          </Link>
+        </Reveal>
       </div>
 
       <Reveal delay={140}>
@@ -101,6 +126,7 @@ export default async function AdminDashboardPage() {
               { label: 'Repos', href: '/admin/repos' },
               { label: 'Career', href: '/admin/career' },
               { label: 'Services & Skills', href: '/admin/services' },
+              { label: 'Messages', href: '/admin/messages' },
             ].map((item) => (
               <Link
                 key={item.href}
@@ -108,6 +134,9 @@ export default async function AdminDashboardPage() {
                 className="group flex items-center justify-between rounded-lg border border-border-primary/60 bg-bg-secondary/40 px-4 py-3.5 text-sm font-semibold text-white transition-colors duration-150 hover:border-accent/40"
               >
                 {item.label}
+                {item.label === 'Messages' && unread > 0 && (
+                  <span className="rounded-full bg-accent px-2 py-0.5 font-mono text-[10px] text-black">{unread}</span>
+                )}
                 <ArrowUpRight className="h-3.5 w-3.5 text-text-muted transition-colors duration-150 group-hover:text-accent" aria-hidden="true" />
               </Link>
             ))}

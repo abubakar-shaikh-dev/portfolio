@@ -3,6 +3,7 @@ import { Pencil, Plus } from 'lucide-react';
 import { Reveal } from '@/components/atoms/Reveal';
 import { getAllProjects } from '@/data/queries/getProjects';
 import { deleteProjectAction } from '../actions';
+import { ConfirmSubmit } from '../confirm-submit';
 
 export const dynamic = 'force-dynamic';
 
@@ -49,15 +50,15 @@ export default async function AdminProjectsPage() {
                 >
                   <Pencil className="h-3 w-3" aria-hidden="true" /> Edit
                 </Link>
-                <form action={deleteProjectAction}>
-                  <input type="hidden" name="id" value={project.id} />
-                  <button
-                    type="submit"
-                    className="rounded-md border border-border-primary px-3 py-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:border-red-500/60 hover:text-red-400"
-                  >
-                    Delete
-                  </button>
-                </form>
+                <ConfirmSubmit
+                  action={deleteProjectAction}
+                  id={project.id}
+                  title={`Delete “${project.name}”?`}
+                  description="This permanently removes the project page from the live site. This action cannot be undone."
+                  triggerClassName="rounded-md border border-border-primary px-3 py-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:border-red-500/60 hover:text-red-400"
+                >
+                  Delete
+                </ConfirmSubmit>
               </div>
             </li>
           ))}

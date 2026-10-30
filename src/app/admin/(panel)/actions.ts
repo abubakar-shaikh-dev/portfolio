@@ -343,3 +343,35 @@ export async function saveSkillsAction(_prev: ActionState, form: FormData): Prom
   }
   return INITIAL_ERROR;
 }
+
+/* ── Messages inbox ───────────────────────────────────────────────────── */
+
+export async function setMessageReadAction(form: FormData): Promise<void> {
+  await requireAdmin();
+  const id = String(form.get('id') ?? '');
+  const read = String(form.get('read') ?? '') === 'true';
+  if (!id) return;
+  const db = await getDb();
+  if (!db) throw new Error('Database unavailable — cannot update the message.');
+  await db.collection('messages').updateOne({ id }, { $set: { read } });
+  revalidatePath('/admin/messages');
+  revalidatePath('/admin');
+}
+
+export async function deleteMessageAction(form: FormData): Promise<void> {
+  await requireAdmin();
+  const id = String(form.get('id') ?? '');
+  if (id) await deleteById('messages', id);
+  revalidatePath('/admin/messages');
+  revalidatePath('/admin');
+}
+
+export async function getUnreadCount(): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+  try {
+    return await db.collection('messages').countDocuments({ read: { $ne: true } });
+  } catch {
+    return 0;
+  }
+}

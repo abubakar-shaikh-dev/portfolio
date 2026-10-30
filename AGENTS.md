@@ -92,7 +92,7 @@
 
 ## Email Integration (Resend)
 
-- Contact form submissions are sent via the [Resend](https://resend.com/) SDK.
+- Contact form submissions are stored in the `messages` collection (source of truth for the admin inbox) and forwarded by email via the [Resend](https://resend.com/) SDK on a best-effort basis — the inbox keeps the message even if Resend is down.
 - API key is stored in `.env.local` as `RESEND_API_KEY` (never hardcoded).
 - Route Handler: `src/app/api/send/route.ts` (POST only).
 - Sender: `onboarding@resend.dev` (test domain — swap to verified domain for production).

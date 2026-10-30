@@ -17,9 +17,7 @@ if (!uri) {
 }
 
 declare global {
-  // eslint-disable-next-line no-var
   var __mongoClient: MongoClient | undefined;
-  // eslint-disable-next-line no-var
   var __mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
@@ -66,11 +64,21 @@ export async function fetchCollection<T>(
       .collection(collection)
       .find(options?.filter ?? {}, { sort: options?.sort })
       .toArray();
-    return docs as unknown as T[];
+    return docs.map((doc) => plain<T>(doc));
   } catch (error) {
     console.warn(`[db] read failed on "${collection}", serving JSON fallback:`, (error as Error).message);
     return fallback;
   }
+}
+
+/**
+ * Strips MongoDB's `_id` (an ObjectId — not serializable across the
+ * server/client boundary) so every document leaving this module is a plain
+ * object matching the JSON snapshot shape.
+ */
+function plain<T>(doc: Document): T {
+  const { _id, ...rest } = doc;
+  return rest as unknown as T;
 }
 
 /** Admin write: insert or replace a document by its stable `id`. */
@@ -95,7 +103,8 @@ export async function getDocById<T>(collection: string, id: string): Promise<(T 
   const db = await getDb();
   if (!db) return null;
   try {
-    return ((await db.collection(collection).findOne({ id })) as unknown as (T & { order?: number }) | null) ?? null;
+    const doc = await db.collection(collection).findOne({ id });
+    return doc ? (plain<T>(doc) as T & { order?: number }) : null;
   } catch {
     return null;
   }
@@ -122,7 +131,7 @@ export async function fetchOne<T>(
   if (!db) return fallback;
   try {
     const doc = await db.collection(collection).findOne(filter);
-    return (doc as unknown as T) ?? fallback;
+    return doc ? plain<T>(doc) : fallback;
   } catch (error) {
     console.warn(`[db] read failed on "${collection}", serving JSON fallback:`, (error as Error).message);
     return fallback;

@@ -1,8 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono, Outfit } from 'next/font/google';
-import { Navbar } from '@/components/organisms/Navbar';
-import { Footer } from '@/components/organisms/Footer';
-import { CustomCursor } from '@/components/atoms/CustomCursor';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
 
@@ -161,11 +158,10 @@ export default function RootLayout({
           }}
         />
       </head>
+      {/* Site chrome (navbar/footer/cursor) lives in the (site) route group
+          so admin pages render without it. */}
       <body className="min-h-screen bg-[#0a0a0a] text-white antialiased">
-        <CustomCursor />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        {children}
         <Toaster position="top-right" closeButton />
       </body>
     </html>

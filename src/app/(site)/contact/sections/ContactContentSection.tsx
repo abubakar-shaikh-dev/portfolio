@@ -10,7 +10,7 @@ import { SOCIAL_LINKS } from '@/lib/constants';
 const socialIcons = { LinkedIn: Linkedin, GitHub: Github, 'X / Twitter': Twitter, Instagram: Instagram };
 
 export function ContactContentSection() {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '', website: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -73,7 +73,7 @@ export function ContactContentSection() {
   };
 
   const handleResetForm = () => {
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: '', email: '', subject: '', message: '', website: '' });
     setErrors({});
     setSubmitError(null);
     setIsSubmitted(false);

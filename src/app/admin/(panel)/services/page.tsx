@@ -3,6 +3,7 @@ import { Pencil, Plus } from 'lucide-react';
 import { Reveal } from '@/components/atoms/Reveal';
 import { getAllServices } from '@/data/queries/getServices';
 import { deleteServiceAction } from '../actions';
+import { ConfirmSubmit } from '../confirm-submit';
 import { getAllSkills } from '@/data/queries/getSkills';
 import { SkillsForm } from './SkillsForm';
 
@@ -48,15 +49,15 @@ export default async function AdminServicesPage() {
                 >
                   <Pencil className="h-3 w-3" aria-hidden="true" /> Edit
                 </Link>
-                <form action={deleteServiceAction}>
-                  <input type="hidden" name="id" value={service.id} />
-                  <button
-                    type="submit"
-                    className="rounded-md border border-border-primary px-3 py-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:border-red-500/60 hover:text-red-400"
-                  >
-                    Delete
-                  </button>
-                </form>
+                <ConfirmSubmit
+                  action={deleteServiceAction}
+                  id={service.id}
+                  title={`Delete “${service.title}”?`}
+                  description="This removes the service card from the services page. This action cannot be undone."
+                  triggerClassName="rounded-md border border-border-primary px-3 py-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:border-red-500/60 hover:text-red-400"
+                >
+                  Delete
+                </ConfirmSubmit>
               </div>
             </li>
           ))}
