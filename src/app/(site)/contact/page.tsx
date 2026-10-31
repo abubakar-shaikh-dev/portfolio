@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ContactHeroSection } from './sections/ContactHeroSection';
 import { ContactContentSection } from './sections/ContactContentSection';
 
-const BASE_URL = 'https://abubakarshaikh.dev';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Contact | Abubakar Shaikh',
     description:
       'Get in touch with Abubakar Shaikh for full-stack development, DevOps consulting, or engineering collaborations.',
-    url: `${BASE_URL}/contact`,
+    url: `${SITE_URL}/contact`,
     type: 'website',
     images: [
       {
@@ -27,15 +27,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary',
-    title: 'Contact | Abubakar Shaikh',
-    description:
-      'Get in touch for full-stack development, DevOps consulting, or engineering collaborations.',
-    images: ['/images/profile_2.webp'],
-  },
   alternates: {
-    canonical: `${BASE_URL}/contact`,
+    canonical: `${SITE_URL}/contact`,
   },
 };
 
@@ -52,19 +45,19 @@ export default function ContactPage() {
             '@context': 'https://schema.org',
             '@type': 'ContactPage',
             name: 'Contact Abubakar Shaikh',
-            url: `${BASE_URL}/contact`,
+            url: `${SITE_URL}/contact`,
             description: 'Get in touch for full-stack development, DevOps consulting, or engineering collaborations.',
             mainEntity: {
               '@type': 'Person',
-              '@id': `${BASE_URL}/#person`,
+              '@id': `${SITE_URL}/#person`,
               name: 'Abubakar Shaikh',
               email: 'shaikhabubakar2380@gmail.com',
             },
             breadcrumb: {
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-                { '@type': 'ListItem', position: 2, name: 'Contact', item: `${BASE_URL}/contact` },
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Contact', item: `${SITE_URL}/contact` },
               ],
             },
           }),

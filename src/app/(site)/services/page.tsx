@@ -7,7 +7,7 @@ import { getAllServices } from '@/data/queries/getServices';
 // ISR: admin edits surface within a minute without a redeploy
 export const revalidate = 60;
 
-const BASE_URL = 'https://abubakarshaikh.dev';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: 'Services | Abubakar Shaikh',
     description:
       'Full-stack web development, backend architecture, DevOps automation, and AI integration services by Abubakar Shaikh.',
-    url: `${BASE_URL}/services`,
+    url: `${SITE_URL}/services`,
     type: 'website',
     images: [
       {
@@ -33,15 +33,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary',
-    title: 'Services | Abubakar Shaikh',
-    description:
-      'Full-stack web development, backend architecture, DevOps automation, and AI integration services.',
-    images: ['/images/profile_2.webp'],
-  },
   alternates: {
-    canonical: `${BASE_URL}/services`,
+    canonical: `${SITE_URL}/services`,
   },
 };
 
@@ -61,7 +54,7 @@ export default async function ServicesPage() {
             '@context': 'https://schema.org',
             '@type': 'WebPage',
             name: 'Services — Abubakar Shaikh',
-            url: `${BASE_URL}/services`,
+            url: `${SITE_URL}/services`,
             description: 'Full-stack web development, backend architecture, DevOps automation, and AI integration services.',
             mainEntity: {
               '@type': 'ItemList',
@@ -72,15 +65,15 @@ export default async function ServicesPage() {
                   '@type': 'Service',
                   name: service.title,
                   description: service.description,
-                  provider: { '@id': `${BASE_URL}/#person` },
+                  provider: { '@id': `${SITE_URL}/#person` },
                 },
               })),
             },
             breadcrumb: {
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-                { '@type': 'ListItem', position: 2, name: 'Services', item: `${BASE_URL}/services` },
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/services` },
               ],
             },
           }),

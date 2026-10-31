@@ -1,6 +1,7 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono, Outfit } from 'next/font/google';
 import { Toaster } from '@/components/ui/sonner';
+import { SITE_DESCRIPTION, SITE_EMAIL, SITE_NAME, SITE_TWITTER, SITE_URL, SOCIAL_LINKS } from '@/lib/constants';
 import './globals.css';
 
 const inter = Inter({
@@ -21,14 +22,16 @@ const outfit = Outfit({
   display: 'swap',
 });
 
+const SOCIAL_URLS = SOCIAL_LINKS.map((social) => social.href);
+const PROFILE_IMAGE = '/images/profile_2.webp';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://abubakarshaikh.dev'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Abubakar Shaikh | Full Stack Software Engineer & DevOps Specialist',
-    template: '%s | Abubakar Shaikh',
+    default: `${SITE_NAME} | Full Stack Software Engineer & DevOps Specialist`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    'Full Stack Software Engineer specializing in building scalable MERN applications, APIs, and DevOps workflows.',
+  description: SITE_DESCRIPTION,
   keywords: [
     'Full Stack Engineer',
     'MERN Stack',
@@ -40,41 +43,54 @@ export const metadata: Metadata = {
     'Docker',
     'TypeScript',
   ],
-  authors: [{ name: 'Abubakar Shaikh' }],
-  creator: 'Abubakar Shaikh',
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
   icons: {
     icon: '/favicon.ico',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://abubakarshaikh.dev',
-    siteName: 'Abubakar Shaikh',
-    title: 'Abubakar Shaikh | Full Stack Software Engineer & DevOps Specialist',
-    description:
-      'Full Stack Software Engineer specializing in building scalable MERN applications, APIs, and DevOps workflows.',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | Full Stack Software Engineer & DevOps Specialist`,
+    description: SITE_DESCRIPTION,
     images: [
       {
-        url: '/images/profile_2.webp',
+        url: PROFILE_IMAGE,
         width: 1200,
         height: 1200,
-        alt: 'Abubakar Shaikh',
+        alt: SITE_NAME,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@abubakarshaikh_dev',
-    creator: '@abubakarshaikh_dev',
-    images: ['/images/profile_2.webp'],
+    site: SITE_TWITTER,
+    creator: SITE_TWITTER,
+    images: [PROFILE_IMAGE],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
   alternates: {
-    canonical: 'https://abubakarshaikh.dev',
+    canonical: SITE_URL,
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#0a0a0a',
 };
 
 export default function RootLayout({
@@ -97,61 +113,45 @@ export default function RootLayout({
               '@graph': [
                 {
                   '@type': 'Organization',
-                  '@id': 'https://abubakarshaikh.dev/#organization',
-                  name: 'Abubakar Shaikh',
-                  url: 'https://abubakarshaikh.dev',
+                  '@id': `${SITE_URL}/#organization`,
+                  name: SITE_NAME,
+                  url: SITE_URL,
                   logo: {
                     '@type': 'ImageObject',
-                    url: 'https://abubakarshaikh.dev/images/profile_2.webp',
+                    url: `${SITE_URL}${PROFILE_IMAGE}`,
                     width: 1200,
                     height: 1200,
                   },
                   contactPoint: {
                     '@type': 'ContactPoint',
-                    email: 'shaikhabubakar2380@gmail.com',
+                    email: SITE_EMAIL,
                     contactType: 'customer service',
                   },
-                  sameAs: [
-                    'https://www.linkedin.com/in/abubakar-shaikh-dev',
-                    'https://github.com/abubakar-shaikh-dev',
-                    'https://x.com/abubakarshaikh_dev',
-                    'https://instagram.com/abubakarshaikh.dev',
-                  ],
+                  sameAs: SOCIAL_URLS,
                 },
                 {
                   '@type': 'WebSite',
-                  '@id': 'https://abubakarshaikh.dev/#website',
-                  name: 'Abubakar Shaikh',
-                  url: 'https://abubakarshaikh.dev',
-                  publisher: { '@id': 'https://abubakarshaikh.dev/#organization' },
-                  potentialAction: {
-                    '@type': 'SearchAction',
-                    target: {
-                      '@type': 'EntryPoint',
-                      urlTemplate: 'https://abubakarshaikh.dev/thoughts?q={search_term_string}',
-                    },
-                    'query-input': 'required name=search_term_string',
-                  },
+                  '@id': `${SITE_URL}/#website`,
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  publisher: { '@id': `${SITE_URL}/#organization` },
                 },
                 {
                   '@type': 'Person',
-                  '@id': 'https://abubakarshaikh.dev/#person',
-                  name: 'Abubakar Shaikh',
-                  url: 'https://abubakarshaikh.dev',
-                  image: 'https://abubakarshaikh.dev/images/profile_2.webp',
+                  '@id': `${SITE_URL}/#person`,
+                  name: SITE_NAME,
+                  url: SITE_URL,
+                  image: `${SITE_URL}${PROFILE_IMAGE}`,
                   jobTitle: 'Full Stack Software Engineer',
-                  description: 'Full Stack Software Engineer specializing in building scalable MERN applications, APIs, and DevOps workflows.',
+                  description: SITE_DESCRIPTION,
+                  email: SITE_EMAIL,
+                  worksFor: { '@id': `${SITE_URL}/#organization` },
                   knowsAbout: [
                     'TypeScript', 'React', 'Next.js', 'Node.js', 'Express',
                     'NestJS', 'MongoDB', 'PostgreSQL', 'Docker', 'AWS',
                     'DevOps', 'CI/CD', 'Microservices', 'WebSockets', 'AI Integrations',
                   ],
-                  sameAs: [
-                    'https://www.linkedin.com/in/abubakar-shaikh-dev',
-                    'https://github.com/abubakar-shaikh-dev',
-                    'https://x.com/abubakarshaikh_dev',
-                    'https://instagram.com/abubakarshaikh.dev',
-                  ],
+                  sameAs: SOCIAL_URLS,
                 },
               ],
             }),

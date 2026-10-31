@@ -3,7 +3,7 @@ import { AboutHeroSection } from './sections/AboutHeroSection';
 import { AboutContentSection } from './sections/AboutContentSection';
 import { CollaborateCTASection } from './sections/CollaborateCTASection';
 
-const BASE_URL = 'https://abubakarshaikh.dev';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'About | Abubakar Shaikh',
     description:
       'Learn about Abubakar Shaikh — Full Stack Software Engineer with 3+ years experience building scalable MERN applications and DevOps workflows.',
-    url: `${BASE_URL}/about`,
+    url: `${SITE_URL}/about`,
     type: 'profile',
     images: [
       {
@@ -28,15 +28,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary',
-    title: 'About | Abubakar Shaikh',
-    description:
-      'Full Stack Software Engineer with 3+ years experience building scalable MERN applications and DevOps workflows.',
-    images: ['/images/profile_2.webp'],
-  },
   alternates: {
-    canonical: `${BASE_URL}/about`,
+    canonical: `${SITE_URL}/about`,
   },
 };
 
@@ -55,10 +48,10 @@ export default function AboutPage() {
             '@type': 'ProfilePage',
             mainEntity: {
               '@type': 'Person',
-              '@id': `${BASE_URL}/#person`,
+              '@id': `${SITE_URL}/#person`,
               name: 'Abubakar Shaikh',
-              url: BASE_URL,
-              image: `${BASE_URL}/images/profile_2.webp`,
+              url: SITE_URL,
+              image: `${SITE_URL}/images/profile_2.webp`,
               jobTitle: 'Full Stack Software Engineer',
               description:
                 'Full Stack Software Engineer with 3+ years experience specializing in scalable MERN applications, microservices architecture, DevOps workflows, and AI integrations.',
@@ -76,8 +69,8 @@ export default function AboutPage() {
             breadcrumb: {
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-                { '@type': 'ListItem', position: 2, name: 'About', item: `${BASE_URL}/about` },
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE_URL}/about` },
               ],
             },
           }),

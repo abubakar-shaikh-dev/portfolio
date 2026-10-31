@@ -84,6 +84,17 @@
 - Route structure: `src/app/admin/login/` (standalone) and `src/app/admin/(panel)/` (route group sharing the authenticated shell). Login submits via Server Action (`src/app/admin/actions.ts`) with IP rate limiting (5 attempts / 10 min).
 - Admin pages must be `export const dynamic = 'force-dynamic'` and `robots: { index: false }`. Mutations belong in Server Actions that validate with Zod and call `revalidatePath` on the affected public pages.
 
+## SEO & Discoverability
+
+- **Never hardcode the domain.** Import `SITE_URL` / `SITE_NAME` / `SITE_DESCRIPTION` / `SITE_EMAIL` / `SITE_TWITTER` from `src/lib/constants.ts` — they feed metadata, JSON-LD, llms.txt, the feed, and the sitemap.
+- Metadata pattern: listing pages use static `metadata`; detail pages use `generateMetadata`. OG images prefer the item's own cover (`article.image` / `project.image`) with the profile photo as fallback. Child pages must not re-declare `twitter` — the shallow merge inherits the root's `summary_large_image` card, `site`, and `creator`.
+- JSON-LD: the root layout's `@graph` (Organization `#organization`, WebSite `#website`, Person `#person`) is the single source — other pages reference those nodes via `@id` and embed their own `BreadcrumbList`. Page schemas: ProfilePage (about), ContactPage, CollectionPage (open-source, projects, research, thoughts) + ScholarlyArticle ItemList on research, WebPage + Service ItemList (services), Article (thoughts/[slug]), WebApplication/SoftwareSourceCode (projects/[slug]), ItemList of featured projects (home).
+- `robots.ts`: `/admin` + `/api` are disallowed in **every** rule group (a group with only `allow` overrides the `*` group). AI search crawlers (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot) are allowed for citations; training crawlers (CCBot, anthropic-ai, Bytespider) are blocked.
+- `src/app/llms.txt/route.ts` is **generated from the data queries** (featured projects, latest articles, papers) — never hardcode content links there; admin mutations revalidate it via `publish()`.
+- `sitemap.ts` entries carry `changeFrequency` + `priority` by route type (Google ignores them; Bing reads them). Articles use their real `dateISO` as `lastModified`. New public routes must be added to both sitemap and llms.txt Core Pages.
+- RSS autodiscovery (`alternates.types`), `themeColor`, and the web manifest live in the root layout / `src/app/manifest.ts`. `/feed.xml` and `/llms.txt` are plain route handlers.
+- Noindex surfaces: `/admin` (metadata), 404 (`src/app/not-found.tsx`). Accepted trade-offs: no CSP (inline scripts would require nonce middleware — fragile for the payoff), no IndexNow pings, GSC/Bing verification meta awaits real tokens.
+
 ## Motion System
 
 - **Compositor-only rule: animate only `opacity` and `transform`.** Never animate `filter`/blur, `backdrop-filter`, or layout properties (`padding`, `max-width`, …) — they force per-frame repaints/reflows and are the main cause of jank on low-end phones. Static (non-animated) blur glows are fine — they rasterize once.

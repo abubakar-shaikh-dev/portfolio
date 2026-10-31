@@ -5,7 +5,7 @@ import { ProjectGridSection } from './sections/ProjectGridSection';
 // ISR: admin edits surface within a minute without a redeploy
 export const revalidate = 60;
 
-const BASE_URL = 'https://abubakarshaikh.dev';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Projects | Abubakar Shaikh',
     description:
       'Portfolio of personal and commercial projects — AI-powered apps, developer tools, and full-stack web applications.',
-    url: `${BASE_URL}/projects`,
+    url: `${SITE_URL}/projects`,
     type: 'website',
     images: [
       {
@@ -30,15 +30,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary',
-    title: 'Projects | Abubakar Shaikh',
-    description:
-      'AI-powered apps, developer tools, and full-stack web applications.',
-    images: ['/images/profile_2.webp'],
-  },
   alternates: {
-    canonical: `${BASE_URL}/projects`,
+    canonical: `${SITE_URL}/projects`,
   },
 };
 
@@ -55,14 +48,14 @@ export default function ProjectsPage() {
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
             name: 'Projects — Abubakar Shaikh',
-            url: `${BASE_URL}/projects`,
+            url: `${SITE_URL}/projects`,
             description: 'Portfolio of personal and commercial projects — AI-powered apps, developer tools, and full-stack web applications.',
-            author: { '@id': `${BASE_URL}/#person` },
+            author: { '@id': `${SITE_URL}/#person` },
             breadcrumb: {
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-                { '@type': 'ListItem', position: 2, name: 'Projects', item: `${BASE_URL}/projects` },
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Projects', item: `${SITE_URL}/projects` },
               ],
             },
           }),

@@ -103,7 +103,9 @@ async function handleImage(
 }
 
 function publish(paths: string[]): void {
-  for (const path of paths) revalidatePath(path);
+  // /llms.txt is generated from the data queries — always refresh it with
+  // the content so AI search engines never see stale section lists.
+  for (const path of [...paths, '/llms.txt']) revalidatePath(path);
 }
 
 /* ── Projects ─────────────────────────────────────────────────────────── */

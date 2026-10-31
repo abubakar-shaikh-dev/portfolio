@@ -5,11 +5,10 @@ import { ArrowLeft, Calendar, Clock, ChevronRight } from 'lucide-react';
 import { getArticleBySlug, getAllArticles } from '@/data/queries/getArticles';
 import { articleContent } from '@/data/articleContent';
 import { notFound } from 'next/navigation';
+import { SITE_URL } from '@/lib/constants';
 
 // ISR: admin edits surface within a minute without a redeploy
 export const revalidate = 60;
-
-const BASE_URL = 'https://abubakarshaikh.dev';
 
 interface ArticleDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }: ArticleDetailPageProps): Prom
   const article = await getArticleBySlug(slug);
   if (!article) return { title: 'Article Not Found' };
 
-  const articleUrl = `${BASE_URL}/thoughts/${slug}`;
+  const articleUrl = `${SITE_URL}/thoughts/${slug}`;
 
   return {
     title: article.title,
@@ -38,22 +37,17 @@ export async function generateMetadata({ params }: ArticleDetailPageProps): Prom
       url: articleUrl,
       type: 'article',
       publishedTime: article.dateISO,
+      modifiedTime: article.dateISO,
       authors: [article.author],
       tags: article.tags,
       images: [
         {
-          url: '/images/profile_2.webp',
+          url: article.image ?? '/images/profile_2.webp',
           width: 1200,
-          height: 1200,
+          height: article.image ? 630 : 1200,
           alt: article.title,
         },
       ],
-    },
-    twitter: {
-      card: 'summary',
-      title: article.title,
-      description: article.excerpt,
-      images: ['/images/profile_2.webp'],
     },
     alternates: {
       canonical: articleUrl,
@@ -84,7 +78,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
     relatedArticles.push(...moreArticles);
   }
 
-  const articleUrl = `${BASE_URL}/thoughts/${slug}`;
+  const articleUrl = `${SITE_URL}/thoughts/${slug}`;
 
   return (
     <section className="min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24">
@@ -249,19 +243,19 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
             dateModified: article.dateISO,
             author: {
               '@type': 'Person',
-              '@id': `${BASE_URL}/#person`,
+              '@id': `${SITE_URL}/#person`,
               name: article.author,
             },
             publisher: {
               '@type': 'Organization',
-              '@id': `${BASE_URL}/#organization`,
+              '@id': `${SITE_URL}/#organization`,
               name: 'Abubakar Shaikh',
               logo: {
                 '@type': 'ImageObject',
-                url: `${BASE_URL}/images/profile_2.webp`,
+                url: `${SITE_URL}/images/profile_2.webp`,
               },
             },
-            image: `${BASE_URL}/images/profile_2.webp`,
+            image: `${SITE_URL}/images/profile_2.webp`,
             keywords: article.tags.join(', '),
             mainEntityOfPage: {
               '@type': 'WebPage',
@@ -270,8 +264,8 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
             breadcrumb: {
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-                { '@type': 'ListItem', position: 2, name: 'Thoughts', item: `${BASE_URL}/thoughts` },
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Thoughts', item: `${SITE_URL}/thoughts` },
                 { '@type': 'ListItem', position: 3, name: article.title, item: articleUrl },
               ],
             },

@@ -5,7 +5,7 @@ import { ThoughtsListWrapper } from './sections/ThoughtsListWrapper';
 // ISR: admin edits surface within a minute without a redeploy
 export const revalidate = 60;
 
-const BASE_URL = 'https://abubakarshaikh.dev';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Thoughts',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Thoughts | Abubakar Shaikh',
     description:
       'Deep dives into backend engineering, DevOps, AI integrations, and security tooling by Abubakar Shaikh.',
-    url: `${BASE_URL}/thoughts`,
+    url: `${SITE_URL}/thoughts`,
     type: 'website',
     images: [
       {
@@ -30,15 +30,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary',
-    title: 'Thoughts | Abubakar Shaikh',
-    description:
-      'Deep dives into backend engineering, DevOps, AI integrations, and security tooling.',
-    images: ['/images/profile_2.webp'],
-  },
   alternates: {
-    canonical: `${BASE_URL}/thoughts`,
+    canonical: `${SITE_URL}/thoughts`,
   },
 };
 
@@ -55,14 +48,14 @@ export default function ThoughtsPage() {
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
             name: 'Thoughts — Abubakar Shaikh',
-            url: `${BASE_URL}/thoughts`,
+            url: `${SITE_URL}/thoughts`,
             description: 'Deep dives into backend engineering, DevOps, AI integrations, and security tooling.',
-            author: { '@id': `${BASE_URL}/#person` },
+            author: { '@id': `${SITE_URL}/#person` },
             breadcrumb: {
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-                { '@type': 'ListItem', position: 2, name: 'Thoughts', item: `${BASE_URL}/thoughts` },
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Thoughts', item: `${SITE_URL}/thoughts` },
               ],
             },
           }),

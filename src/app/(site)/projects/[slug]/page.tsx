@@ -4,11 +4,10 @@ import Image from 'next/image';
 import { ArrowLeft, ExternalLink, Github, Package, ChevronRight } from 'lucide-react';
 import { getProjectBySlug, getAllProjectSlugs } from '@/data/queries/getProjects';
 import { notFound } from 'next/navigation';
+import { SITE_URL } from '@/lib/constants';
 
 // ISR: admin edits surface within a minute without a redeploy
 export const revalidate = 60;
-
-const BASE_URL = 'https://abubakarshaikh.dev';
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -24,7 +23,11 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
   const project = await getProjectBySlug(slug);
   if (!project) return { title: 'Project Not Found' };
 
-  const projectUrl = `${BASE_URL}/projects/${slug}`;
+  const projectUrl = `${SITE_URL}/projects/${slug}`;
+  // project.year is a display string ("2026") — derive a valid ISO date when possible
+  const projectPublishedTime = Number.isFinite(Date.parse(`${project.year}-01-01`))
+    ? `${project.year}-01-01`
+    : undefined;
 
   return {
     title: project.name,
@@ -35,20 +38,17 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
       description: project.description,
       url: projectUrl,
       type: 'article',
+      publishedTime: projectPublishedTime,
+      authors: ['Abubakar Shaikh'],
+      tags: project.stack,
       images: [
         {
-          url: '/images/profile_2.webp',
+          url: project.image ?? '/images/profile_2.webp',
           width: 1200,
-          height: 1200,
+          height: project.image ? 630 : 1200,
           alt: project.name,
         },
       ],
-    },
-    twitter: {
-      card: 'summary',
-      title: project.name,
-      description: project.description,
-      images: ['/images/profile_2.webp'],
     },
     alternates: {
       canonical: projectUrl,
@@ -64,7 +64,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
     notFound();
   }
 
-  const projectUrl = `${BASE_URL}/projects/${slug}`;
+  const projectUrl = `${SITE_URL}/projects/${slug}`;
 
   // Determine schema type based on whether it has a live URL
   const schemaType = project.links.live ? 'WebApplication' : 'SoftwareSourceCode';
@@ -209,7 +209,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             url: projectUrl,
             author: {
               '@type': 'Person',
-              '@id': `${BASE_URL}/#person`,
+              '@id': `${SITE_URL}/#person`,
               name: 'Abubakar Shaikh',
             },
             ...(project.links.github && { codeRepository: project.links.github }),
@@ -218,8 +218,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             breadcrumb: {
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-                { '@type': 'ListItem', position: 2, name: 'Projects', item: `${BASE_URL}/projects` },
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Projects', item: `${SITE_URL}/projects` },
                 { '@type': 'ListItem', position: 3, name: project.name, item: projectUrl },
               ],
             },

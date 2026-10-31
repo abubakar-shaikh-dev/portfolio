@@ -5,7 +5,7 @@ import { RepoGridSection } from './sections/RepoGridSection';
 // ISR: admin edits surface within a minute without a redeploy
 export const revalidate = 60;
 
-const BASE_URL = 'https://abubakarshaikh.dev';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Open Source',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Open Source | Abubakar Shaikh',
     description:
       'Open source projects and developer tools built and maintained by Abubakar Shaikh — including SKELR, FEATIFY, and XENC.',
-    url: `${BASE_URL}/open-source`,
+    url: `${SITE_URL}/open-source`,
     type: 'website',
     images: [
       {
@@ -30,15 +30,8 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary',
-    title: 'Open Source | Abubakar Shaikh',
-    description:
-      'Open source projects and developer tools — SKELR, FEATIFY, and XENC.',
-    images: ['/images/profile_2.webp'],
-  },
   alternates: {
-    canonical: `${BASE_URL}/open-source`,
+    canonical: `${SITE_URL}/open-source`,
   },
 };
 
@@ -55,14 +48,14 @@ export default function OpenSourcePage() {
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
             name: 'Open Source Projects — Abubakar Shaikh',
-            url: `${BASE_URL}/open-source`,
+            url: `${SITE_URL}/open-source`,
             description: 'Open source projects and developer tools built and maintained by Abubakar Shaikh.',
-            author: { '@id': `${BASE_URL}/#person` },
+            author: { '@id': `${SITE_URL}/#person` },
             breadcrumb: {
               '@type': 'BreadcrumbList',
               itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-                { '@type': 'ListItem', position: 2, name: 'Open Source', item: `${BASE_URL}/open-source` },
+                { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+                { '@type': 'ListItem', position: 2, name: 'Open Source', item: `${SITE_URL}/open-source` },
               ],
             },
           }),
