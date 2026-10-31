@@ -22,8 +22,8 @@ export default async function AdminMessagesPage() {
       <Reveal>
         <div className="flex items-end justify-between">
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">// CONTACT_INBOX</p>
-            <h1 className="font-display mt-2 text-3xl font-bold tracking-tight text-white">Messages</h1>
+            <p className="font-mono text-xs text-text-muted">// Contact inbox</p>
+            <h1 className="font-display mt-2 text-3xl font-medium tracking-tight text-white">Messages</h1>
             <p className="mt-2 text-sm text-text-secondary">
               {messages.length} total · {unread} unread
             </p>
@@ -44,7 +44,7 @@ export default async function AdminMessagesPage() {
             >
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="flex items-center gap-2 font-semibold text-white">
+                  <p className="flex items-center gap-2 font-medium text-white">
                     {message.read ? (
                       <MailOpen className="h-4 w-4 shrink-0 text-text-muted" aria-hidden="true" />
                     ) : (

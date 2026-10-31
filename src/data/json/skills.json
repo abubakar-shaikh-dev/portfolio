@@ -1,12 +1,12 @@
 {
   "row1": [
-    "TYPESCRIPT", "JAVASCRIPT", "REACT", "NEXT.JS", "VITE", "TAILWIND CSS",
-    "THREE.JS", "ZUSTAND", "TANSTACK", "DEEPGRAM", "TWILIO", "OPENROUTER",
-    "PYTHON", "SQL", "HTML & CSS"
+    "TypeScript", "JavaScript", "React", "Next.js", "Vite", "Tailwind CSS",
+    "Three.js", "Zustand", "TanStack", "Deepgram", "Twilio", "OpenRouter",
+    "Python", "SQL", "HTML & CSS"
   ],
   "row2": [
-    "NODE.JS", "EXPRESS", "NESTJS", "FASTIFY", "MONGODB", "POSTGRESQL",
-    "MYSQL", "REDIS", "DOCKER", "AWS", "KAFKA", "BULLMQ", "RABBITMQ",
-    "PRISMA", "MONGOOSE", "MICROSERVICES", "CI/CD", "NGINX"
+    "Node.js", "Express", "NestJS", "Fastify", "MongoDB", "PostgreSQL",
+    "MySQL", "Redis", "Docker", "AWS", "Kafka", "BullMQ", "RabbitMQ",
+    "Prisma", "Mongoose", "Microservices", "CI/CD", "Nginx"
   ]
 }

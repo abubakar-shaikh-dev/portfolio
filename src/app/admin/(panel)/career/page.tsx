@@ -15,8 +15,8 @@ export default async function AdminCareerPage() {
       <Reveal>
         <div className="flex items-end justify-between">
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">// MANAGE_CAREER</p>
-            <h1 className="font-display mt-2 text-3xl font-bold tracking-tight text-white">Career Timeline</h1>
+            <p className="font-mono text-xs text-text-muted">// Manage_CAREER</p>
+            <h1 className="font-display mt-2 text-3xl font-medium tracking-tight text-white">Career Timeline</h1>
           </div>
           <Link
             href="/admin/career/new"
@@ -35,7 +35,7 @@ export default async function AdminCareerPage() {
               className="flex flex-col justify-between gap-3 rounded-lg border border-border-primary/60 bg-bg-secondary/40 p-4 sm:flex-row sm:items-center"
             >
               <div>
-                <p className="font-semibold text-white">{item.company}</p>
+                <p className="font-medium text-white">{item.company}</p>
                 <p className="mt-0.5 font-mono text-[10px] text-text-muted">
                   {item.role} · {item.period}
                 </p>

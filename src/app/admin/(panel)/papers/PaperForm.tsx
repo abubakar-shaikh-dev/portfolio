@@ -21,12 +21,12 @@ export function PaperForm({ paper }: { paper: Paper | null }) {
     <div className="mx-auto max-w-3xl">
       <Link
         href="/admin/papers"
-        className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-text-secondary transition-colors duration-150 hover:text-white"
+        className="inline-flex items-center gap-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:text-white"
       >
         <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> All papers
       </Link>
 
-      <h1 className="font-display mt-4 text-2xl font-bold tracking-tight text-white md:text-3xl">
+      <h1 className="font-display mt-4 text-2xl font-medium tracking-tight text-white md:text-3xl">
         {paper ? 'Edit Paper' : 'New Paper'}
       </h1>
 
@@ -76,7 +76,7 @@ export function PaperForm({ paper }: { paper: Paper | null }) {
         </Field>
 
         <div className="space-y-4 rounded-xl border border-border-primary/60 bg-bg-secondary/40 p-5">
-          <p className="font-mono text-xs uppercase tracking-wider text-accent">// PAPER_LINKS</p>
+          <p className="font-mono text-xs text-text-muted">// Paper links</p>
           <div className="grid gap-5 sm:grid-cols-2">
             <Field label="PDF URL" hint="Publisher or personal copy">
               <input name="pdf" type="url" defaultValue={paper?.links.pdf} className={inputClasses} />

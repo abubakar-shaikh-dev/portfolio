@@ -16,7 +16,7 @@ interface ContentSection {
 const CATEGORIES = [
   { id: 'backend', label: 'Backend & APIs' },
   { id: 'devops', label: 'Infrastructure & DevOps' },
-  { id: 'ai', label: 'AI & WebRTC' },
+  { id: 'ai', label: 'AI & Real-time' },
   { id: 'security', label: 'Security & Tooling' },
 ];
 
@@ -45,12 +45,12 @@ export function ArticleForm({ article }: { article: Article | null }) {
     <div className="mx-auto max-w-3xl">
       <Link
         href="/admin/articles"
-        className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-text-secondary transition-colors duration-150 hover:text-white"
+        className="inline-flex items-center gap-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:text-white"
       >
         <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> All articles
       </Link>
 
-      <h1 className="font-display mt-4 text-2xl font-bold tracking-tight text-white md:text-3xl">
+      <h1 className="font-display mt-4 text-2xl font-medium tracking-tight text-white md:text-3xl">
         {article ? 'Edit Article' : 'New Article'}
       </h1>
 
@@ -105,7 +105,7 @@ export function ArticleForm({ article }: { article: Article | null }) {
 
         {/* ── Content ── */}
         <div className="space-y-4 rounded-xl border border-border-primary/60 bg-bg-secondary/40 p-5">
-          <p className="font-mono text-xs uppercase tracking-wider text-accent">// ARTICLE_CONTENT</p>
+          <p className="font-mono text-xs text-text-muted">// Article content</p>
 
           <Field label="Subtitle">
             <input value={subtitle} onChange={(e) => setSubtitle(e.target.value)} maxLength={300} className={inputClasses} />

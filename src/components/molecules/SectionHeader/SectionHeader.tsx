@@ -14,7 +14,7 @@ export function SectionHeader({ label, title, viewAllLink, viewAllLabel }: Secti
     <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <SectionLabel label={label} />
-        <h2 className="mt-2 text-3xl font-bold tracking-tight text-white md:text-4xl">{title}</h2>
+        <h2 className="mt-2 text-3xl font-medium tracking-tight text-white md:text-4xl">{title}</h2>
       </div>
       {viewAllLink && (
         <Link

@@ -91,7 +91,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <div className="mb-8">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-text-secondary transition-colors duration-150 hover:text-white"
+              className="inline-flex items-center gap-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to projects
@@ -101,20 +101,19 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="space-y-8 lg:col-span-2">
               <div>
-                <span className="font-mono text-xs uppercase tracking-wider text-accent">
-                  // PROJECT_DETAILS
+                <span className="font-mono text-xs text-text-muted">
+                  // Project details
                 </span>
                 <div className="mt-3 flex flex-wrap items-center gap-4">
-                  <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+                  <h1 className="font-display text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">
                     {project.name}
                   </h1>
-                  <div className="flex items-center gap-2">
-                    <span className="rounded-md border border-border-primary/80 bg-bg-secondary px-2.5 py-0.5 font-mono text-xs font-semibold text-accent">
+                  <div className="flex items-center gap-3 font-mono text-xs">
+                    <span className="flex items-center gap-1.5 text-text-secondary">
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
                       {project.status}
                     </span>
-                    <span className="rounded-md border border-border-primary/80 bg-bg-secondary px-2.5 py-0.5 font-mono text-xs text-text-secondary">
-                      {project.year}
-                    </span>
+                    <span className="text-text-muted">{project.year}</span>
                   </div>
                 </div>
               </div>
@@ -133,7 +132,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 </div>
               )}
 
-              <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 shadow-xl">
+              <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8">
                 <p className="text-base leading-relaxed text-text-secondary whitespace-pre-line sm:text-lg">
                   {project.description}
                 </p>
@@ -145,7 +144,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     href={project.links.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-black transition-[background-color,transform] duration-150 ease-out-premium hover:bg-white/90 active:scale-97"
+                    className="inline-flex items-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-semibold text-black transition-[background-color,transform] duration-150 ease-out-premium hover:bg-white/90 active:scale-97"
                   >
                     <ExternalLink className="h-4 w-4" />
                     Visit Live Demo
@@ -156,7 +155,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 rounded-md border border-border-primary bg-bg-secondary px-6 py-3.5 text-sm font-medium text-white transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent hover:text-accent active:scale-97"
+                    className="inline-flex items-center gap-2 rounded-md border border-border-primary bg-bg-secondary px-6 py-3 text-sm font-medium text-white transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent hover:text-accent active:scale-97"
                   >
                     <Github className="h-4 w-4" />
                     View Repository
@@ -167,7 +166,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                     href={project.links.npm}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 rounded-md border border-border-primary bg-bg-secondary px-6 py-3.5 text-sm font-medium text-white transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent hover:text-accent active:scale-97"
+                    className="inline-flex items-center gap-2 rounded-md border border-border-primary bg-bg-secondary px-6 py-3 text-sm font-medium text-white transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent hover:text-accent active:scale-97"
                   >
                     <Package className="h-4 w-4" />
                     NPM Registry
@@ -177,9 +176,9 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </div>
 
             <div className="space-y-6">
-              <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6 shadow-xl">
-                <h3 className="mb-4 font-mono text-xs uppercase tracking-wider text-accent">
-                  // TECHNOLOGIES_USED
+              <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6">
+                <h3 className="mb-4 font-mono text-xs text-text-muted">
+                  // Technologies used
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.stack.map((tech) => (

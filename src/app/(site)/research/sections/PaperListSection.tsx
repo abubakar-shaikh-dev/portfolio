@@ -11,8 +11,8 @@ export async function PaperListSection() {
       <Section>
         <Reveal>
           <div className="rounded-xl border border-dashed border-border-primary/80 bg-bg-secondary/40 px-6 py-16 text-center">
-            <p className="font-mono text-xs uppercase tracking-wider text-text-muted">
-              // NO_PUBLICATIONS_YET
+            <p className="font-mono text-xs text-text-muted">
+              // No publications yet
             </p>
             <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-text-secondary">
               The first papers from my doctoral research are in the pipeline — they will appear here as they are submitted and published.

@@ -53,7 +53,7 @@ function Brand({ onClick }: { onClick?: () => void }) {
     <Link
       href="/admin"
       onClick={onClick}
-      className="flex shrink-0 items-center px-6 py-6 font-mono text-lg font-bold tracking-tight text-white transition-colors duration-150"
+      className="flex shrink-0 items-center px-6 py-6 font-mono text-lg font-medium text-white transition-colors duration-150"
     >
       <span className="text-accent">~/</span>backstage
     </Link>
@@ -70,7 +70,7 @@ function SidebarNav({ pathname, onNavigate }: { pathname: string; onNavigate?: (
 
   return (
     <nav aria-label="Admin sections" className="flex-1 overflow-y-auto px-3 py-2">
-      <p className="px-3 font-mono text-[10px] uppercase tracking-wider text-text-muted">// Manage</p>
+      <p className="px-3 font-mono text-[10px] text-text-muted">// Manage</p>
       <ul className="mt-3 space-y-1">
         {ADMIN_NAV.map((item) => {
           const Icon = item.icon;
@@ -97,7 +97,7 @@ function SidebarNav({ pathname, onNavigate }: { pathname: string; onNavigate?: (
         })}
       </ul>
 
-      <p className="mt-8 px-3 font-mono text-[10px] uppercase tracking-wider text-text-muted">// Site</p>
+      <p className="mt-8 px-3 font-mono text-[10px] text-text-muted">// Site</p>
       <ul className="mt-3 space-y-1">
         <li>
           <Link
@@ -131,7 +131,7 @@ function SidebarFooter({ email }: { email: string }) {
       <button
         type="button"
         onClick={() => setIsSignOutOpen(true)}
-        className="mt-3 flex w-full items-center justify-center gap-2 rounded-md border border-border-primary px-3.5 py-2.5 font-mono text-xs uppercase tracking-wider text-text-secondary transition-colors duration-150 hover:border-accent hover:text-accent active:scale-97"
+        className="mt-3 flex w-full items-center justify-center gap-2 rounded-md border border-border-primary px-3.5 py-2.5 font-mono text-xs text-text-secondary transition-colors duration-150 hover:border-accent hover:text-accent active:scale-97"
       >
         <LogOut className="h-3.5 w-3.5" aria-hidden="true" /> Sign out
       </button>
@@ -197,13 +197,13 @@ export function AdminShell({ email, children }: { email: string; children: React
             aria-label="Open admin menu"
             aria-expanded={isDrawerOpen}
             aria-controls="admin-drawer"
-            className="-ml-2.5 rounded-md p-2.5 text-text-secondary transition-[color,transform] duration-150 ease-out-premium hover:text-accent active:scale-95"
+            className="-ml-2.5 rounded-md p-2.5 text-text-secondary transition-[color,transform] duration-150 ease-out-premium hover:text-accent active:scale-97"
           >
             <Menu className="h-5 w-5" aria-hidden="true" />
           </button>
           <Link
             href="/admin"
-            className="font-mono text-lg font-bold tracking-tight text-white transition-colors duration-150"
+            className="font-mono text-lg font-medium text-white transition-colors duration-150"
           >
             <span className="text-accent">~/</span>backstage
           </Link>
@@ -250,7 +250,7 @@ export function AdminShell({ email, children }: { email: string; children: React
                 type="button"
                 onClick={() => setIsDrawerOpen(false)}
                 aria-label="Close admin menu"
-                className="rounded-md p-2.5 text-text-secondary transition-[color,transform] duration-150 ease-out-premium hover:text-accent active:scale-95"
+                className="rounded-md p-2.5 text-text-secondary transition-[color,transform] duration-150 ease-out-premium hover:text-accent active:scale-97"
                 autoFocus
               >
                 <X className="h-5 w-5" aria-hidden="true" />

@@ -22,12 +22,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
               fill
               unoptimized
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-300 ease-out-premium group-hover:scale-[1.03]"
+              className="object-cover"
             />
           </div>
         )}
         <div className="flex items-start justify-between gap-2">
-          <h3 className="text-lg font-bold text-white transition-colors duration-150 group-hover:text-accent">
+          <h3 className="text-lg font-medium text-white transition-colors duration-150 group-hover:text-accent">
             {project.name}
           </h3>
           <ArrowUpRight className="h-4 w-4 shrink-0 text-text-muted transition-transform duration-150 ease-out-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />

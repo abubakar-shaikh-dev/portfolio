@@ -26,14 +26,14 @@ export function PaperCard({ paper }: PaperCardProps) {
     <article className="group flex h-full flex-col rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-6 transition-[border-color,background-color] duration-150 ease-out-premium hover:border-accent/40 hover:bg-bg-secondary">
       <div className="mb-3 flex flex-wrap items-center gap-2 font-mono text-[11px]">
         <span
-          className={`rounded-md border px-2.5 py-0.5 uppercase tracking-wider ${STATUS_STYLES[paper.status]}`}
+          className={`rounded-md border px-2.5 py-0.5 ${STATUS_STYLES[paper.status]}`}
         >
           {PAPER_STATUS_LABELS[paper.status] ?? paper.status}
         </span>
         <span className="text-text-muted">{paper.venue} · {paper.year}</span>
       </div>
 
-      <h3 className="text-lg font-bold leading-snug text-white transition-colors duration-150 group-hover:text-accent">
+      <h3 className="text-lg font-medium leading-snug text-white transition-colors duration-150 group-hover:text-accent">
         {paper.title}
       </h3>
 
@@ -66,9 +66,9 @@ export function PaperCard({ paper }: PaperCardProps) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-md border border-border-primary/70 bg-bg-primary px-3 py-1.5 font-mono text-[11px] text-text-secondary transition-[border-color,color,transform] duration-150 ease-out-premium hover:border-accent/50 hover:text-accent active:scale-97"
               >
-                <Icon className="h-3 w-3" aria-hidden="true" />
+                <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                 {label}
-                <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity duration-150 group-hover:opacity-60" aria-hidden="true" />
+                <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity duration-150 group-hover:opacity-60" aria-hidden="true" />
               </a>
             ))}
           </div>

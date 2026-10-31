@@ -23,10 +23,9 @@
     --border: 0 0% 16%;
     --input: 0 0% 16%;
     --ring: 160 84% 39%;
-    --ease-out-premium: cubic-bezier(0.23, 1, 0.32, 1);
-    --ease-in-out-premium: cubic-bezier(0.77, 0, 0.175, 1);
-    --ease-liquid: cubic-bezier(0.22, 1, 0.36, 1);
-    --ease-squish: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-premium: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-premium: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-liquid: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   * {
@@ -111,9 +110,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 85% 35%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
-    radial-gradient(circle at 50% 50%, transparent 10%, #0a0a0a 95%);
+  background: radial-gradient(circle at 50% 50%, transparent 10%, #0a0a0a 95%);
   pointer-events: none;
   z-index: 1;
 }
@@ -133,9 +130,6 @@
    GPU compositor instead of forcing repaints on low-end phones.
    Layers:
    - .animate-fade-in-up   load-in for hero layers (stagger via delay)
-   - .animate-jelly-in     squishy scale settle (photo/cards, no opacity)
-   - .animate-breathe      slow ambient float (uses `scale`, composes with
-                           existing transforms like -translate-x-1/2)
    - [data-reveal]         scroll-triggered reveal driven by the Reveal
                            atom (IntersectionObserver, fires once)
    Shared JS equivalents for framer-motion live in src/lib/motion.ts.  */
@@ -143,55 +137,17 @@
 @keyframes fade-in-up {
   0% {
     opacity: 0;
-    transform: translateY(22px) scale(0.988);
-  }
-  78% {
-    transform: translateY(-3px) scale(1.003);
+    transform: translateY(14px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
 .animate-fade-in-up {
   opacity: 0;
-  animation: fade-in-up 900ms var(--ease-liquid) forwards;
-}
-
-@keyframes jelly-in {
-  0% {
-    transform: scale(0.84);
-  }
-  55% {
-    transform: scale(1.05);
-  }
-  78% {
-    transform: scale(0.985);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.animate-jelly-in {
-  animation: jelly-in 750ms var(--ease-squish) 250ms both;
-}
-
-@keyframes breathe {
-  0%,
-  100% {
-    scale: 1;
-    opacity: 0.85;
-  }
-  50% {
-    scale: 1.08;
-    opacity: 1;
-  }
-}
-
-.animate-breathe {
-  animation: breathe 9s ease-in-out infinite;
+  animation: fade-in-up 600ms var(--ease-liquid) forwards;
 }
 
 /* Scroll reveal — hidden only when JS is present (html.js gate added by
@@ -199,16 +155,16 @@
    JavaScript. Reveal atom adds .is-revealed once, when ~12% in view. */
 html.js [data-reveal] {
   opacity: 0;
-  transform: translateY(26px) scale(0.99);
+  transform: translateY(16px);
   transition:
-    opacity 800ms var(--ease-liquid),
-    transform 800ms var(--ease-liquid);
+    opacity 500ms var(--ease-liquid),
+    transform 500ms var(--ease-liquid);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
 html.js [data-reveal].is-revealed {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 /* Reduced motion: everything lands instantly, nothing floats */
@@ -224,11 +180,6 @@ html.js [data-reveal].is-revealed {
   .animate-fade-in-up {
     opacity: 1 !important;
     transform: translateY(0) !important;
-    animation: none !important;
-  }
-
-  .animate-jelly-in,
-  .animate-breathe {
     animation: none !important;
   }
 

@@ -11,7 +11,7 @@ export async function LatestThoughtsSection() {
     <Section className="border-b border-border-primary/40 bg-bg-primary/50">
       <Reveal>
         <SectionHeader
-          label="THINGS_I_WRITE_ABOUT"
+          label="Things I write about"
           title="Latest Thoughts"
           viewAllLink="/thoughts"
           viewAllLabel="All articles"

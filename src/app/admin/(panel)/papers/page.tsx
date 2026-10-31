@@ -15,8 +15,8 @@ export default async function AdminPapersPage() {
       <Reveal>
         <div className="flex items-end justify-between">
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">// MANAGE_PAPERS</p>
-            <h1 className="font-display mt-2 text-3xl font-bold tracking-tight text-white">Research Papers</h1>
+            <p className="font-mono text-xs text-text-muted">// Manage papers</p>
+            <h1 className="font-display mt-2 text-3xl font-medium tracking-tight text-white">Research Papers</h1>
           </div>
           <Link
             href="/admin/papers/new"
@@ -30,7 +30,7 @@ export default async function AdminPapersPage() {
       <Reveal delay={100}>
         {papers.length === 0 ? (
           <p className="mt-8 rounded-lg border border-dashed border-border-primary/80 bg-bg-secondary/40 px-6 py-12 text-center font-mono text-xs text-text-muted">
-            // NO_PAPERS_YET — add your first publication
+            // No papers yet — add your first publication
           </p>
         ) : (
           <ul className="mt-8 space-y-3">
@@ -40,7 +40,7 @@ export default async function AdminPapersPage() {
                 className="flex flex-col justify-between gap-3 rounded-lg border border-border-primary/60 bg-bg-secondary/40 p-4 sm:flex-row sm:items-center"
               >
                 <div className="min-w-0">
-                  <p className="truncate font-semibold text-white">{paper.title}</p>
+                  <p className="truncate font-medium text-white">{paper.title}</p>
                   <p className="mt-0.5 font-mono text-[10px] text-text-muted">
                     {paper.venue} · {paper.year} · {paper.status}
                   </p>

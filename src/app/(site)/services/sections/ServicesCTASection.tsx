@@ -3,7 +3,7 @@ import { CTABanner } from '@/components/molecules/CTABanner';
 export function ServicesCTASection() {
   return (
     <CTABanner
-      label="GET_IN_TOUCH"
+      label="Get in touch"
       title="Interested in working together?"
       description="Reach out via LinkedIn to discuss your requirements and how I can help your organisation."
       buttonText="Connect on LinkedIn"

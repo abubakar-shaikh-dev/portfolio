@@ -14,13 +14,12 @@ export async function HeroSection() {
 
   return (
     <section id="hero" className="relative overflow-hidden border-b border-border-primary/60 bg-bg-primary pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-20">
-      {/* Subtle Background Ambiance Glow & Grid */}
+      {/* Subtle Background Grid */}
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-60" />
-      <div className="pointer-events-none absolute -top-32 left-1/2 -z-0 h-[450px] w-[650px] -translate-x-1/2 rounded-full bg-accent/10 blur-[130px] animate-breathe" />
 
       <div className="section-container relative z-10">
         {/* Status Line — desktop/tablet only; the portrait leads on phones */}
-        <div className="mb-6 hidden items-center justify-center gap-2.5 font-mono text-xs text-text-secondary animate-fade-in-up sm:mb-8 sm:flex sm:justify-start" style={{ animationDelay: '100ms' }}>
+        <div className="mb-6 hidden items-center justify-center gap-2 font-mono text-xs text-text-secondary animate-fade-in-up sm:mb-8 sm:flex sm:justify-start" style={{ animationDelay: '100ms' }}>
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           <span>Available for full-stack &amp; cloud engineering roles</span>
         </div>
@@ -29,7 +28,7 @@ export async function HeroSection() {
           {/* Profile Photo — leads on phones/tablets, right column on desktop */}
           <div className="order-1 flex justify-center animate-fade-in-up lg:order-2 lg:col-span-4 lg:justify-end" style={{ animationDelay: '200ms' }}>
             <div className="relative group">
-              <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1.5 shadow-xl animate-jelly-in">
+              <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1 animate-fade-in-up">
                 <Image
                   src="/images/abubakar-shaikh-profile.webp"
                   alt="Abubakar Shaikh — Full Stack Software Engineer profile photo"
@@ -37,16 +36,16 @@ export async function HeroSection() {
                   height={256}
                   priority
                   unoptimized
-                  className="h-44 w-44 rounded-lg object-cover grayscale transition-[filter,transform] duration-300 ease-out-premium group-hover:grayscale-0 group-hover:scale-[1.02] sm:h-60 sm:w-60 lg:h-64 lg:w-64"
+                  className="h-44 w-44 rounded-lg object-cover grayscale transition-[filter] duration-300 ease-out-premium group-hover:grayscale-0 sm:h-60 sm:w-60 lg:h-64 lg:w-64"
                 />
               </div>
 
-              <div className="mt-2.5 flex items-center justify-center gap-3 whitespace-nowrap px-1 font-mono text-[11px] text-text-muted sm:justify-between sm:text-xs">
+              <div className="mt-2 flex items-center justify-center gap-3 whitespace-nowrap px-1 font-mono text-[11px] text-text-muted sm:justify-between sm:text-xs">
                 <span className="flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                   Based in India
                 </span>
-                <span>3+ Yrs Exp</span>
+                <span>3+ years</span>
               </div>
             </div>
           </div>
@@ -54,13 +53,12 @@ export async function HeroSection() {
           {/* Main Hero Content */}
           <div className="order-2 lg:order-1 lg:col-span-8">
             <div className="text-center sm:text-left">
-              <h1 className="font-display text-4xl font-bold tracking-tight text-white animate-fade-in-up sm:text-6xl lg:text-7xl" style={{ animationDelay: '260ms' }}>
+              <h1 className="font-display text-4xl font-medium tracking-tight text-white animate-fade-in-up sm:text-6xl lg:text-7xl" style={{ animationDelay: '260ms' }}>
                 Abubakar Shaikh
               </h1>
 
-              <p className="mt-2.5 inline-flex items-center gap-1.5 font-mono text-base font-medium text-accent animate-fade-in-up sm:mt-3 sm:text-lg" style={{ animationDelay: '320ms' }}>
+              <p className="mt-3 inline-flex items-center gap-1.5 font-mono text-base font-medium text-accent animate-fade-in-up sm:text-lg" style={{ animationDelay: '320ms' }}>
                 <span>Full Stack Software Engineer</span>
-                <span className="inline-block h-[1.1em] w-[2.5px] rounded-sm bg-accent align-middle animate-pulse" />
               </p>
             </div>
 
@@ -69,7 +67,7 @@ export async function HeroSection() {
             </p>
 
             {/* Key Focus Tech Tags — trimmed to the top four on phones */}
-            <div className="mt-5 flex flex-wrap gap-2 animate-fade-in-up sm:mt-6" style={{ animationDelay: '440ms' }}>
+            <div className="mt-5 flex flex-wrap gap-2 animate-fade-in-up sm:mt-6" style={{ animationDelay: '360ms' }}>
               {focusTech.map((tech, index) => (
                 <span
                   key={tech}
@@ -81,11 +79,11 @@ export async function HeroSection() {
             </div>
 
             {/* Action Buttons & Socials */}
-            <div className="mt-8 flex flex-col gap-4 animate-fade-in-up sm:mt-10 sm:flex-row sm:items-center sm:gap-4" style={{ animationDelay: '500ms' }}>
+            <div className="mt-8 flex flex-col gap-4 animate-fade-in-up sm:mt-10 sm:flex-row sm:items-center sm:gap-4" style={{ animationDelay: '420ms' }}>
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <Link
                   href="/projects"
-                  className="group flex-1 sm:flex-initial inline-flex h-11 items-center justify-center gap-2 rounded-md bg-white px-5 text-sm font-semibold text-black transition-transform duration-150 ease-out-premium hover:bg-white/90 active:scale-95"
+                  className="group flex-1 sm:flex-initial inline-flex h-11 items-center justify-center gap-2 rounded-md bg-white px-5 text-sm font-semibold text-black transition-transform duration-150 ease-out-premium hover:bg-white/90 active:scale-97"
                 >
                   <span>View Projects</span>
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-150 ease-out-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -93,7 +91,7 @@ export async function HeroSection() {
 
                 <Link
                   href="/contact"
-                  className="flex-1 sm:flex-initial inline-flex h-11 items-center justify-center gap-2 rounded-md border border-border-primary bg-bg-secondary px-5 text-sm font-medium text-white transition-colors duration-150 hover:border-accent hover:text-accent active:scale-95"
+                  className="flex-1 sm:flex-initial inline-flex h-11 items-center justify-center gap-2 rounded-md border border-border-primary bg-bg-secondary px-5 text-sm font-medium text-white transition-colors duration-150 hover:border-accent hover:text-accent active:scale-97"
                 >
                   <Mail className="h-4 w-4" />
                   <span>Get in Touch</span>
@@ -111,7 +109,7 @@ export async function HeroSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex h-10 w-10 items-center justify-center rounded-md text-text-muted transition-colors duration-150 hover:bg-bg-secondary hover:text-white active:scale-95"
+                      className="flex h-10 w-10 items-center justify-center rounded-md text-text-muted transition-colors duration-150 hover:bg-bg-secondary hover:text-white active:scale-97"
                     >
                       <SocialIcon className="h-4 w-4" />
                     </a>
@@ -123,11 +121,11 @@ export async function HeroSection() {
         </div>
 
         {/* Tech Stack List */}
-        <div className="mt-10 border-t border-border-primary/40 pt-6 animate-fade-in-up sm:mt-16 sm:pt-8" style={{ animationDelay: '560ms' }}>
-          <p className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-text-muted">
-            Core Technologies &amp; Capabilities
+        <div className="mt-10 border-t border-border-primary/40 pt-6 animate-fade-in-up sm:mt-16 sm:pt-8" style={{ animationDelay: '480ms' }}>
+          <p className="font-mono text-[11px] sm:text-xs text-text-muted">
+            Core technologies &amp; capabilities
           </p>
-          <div className="mt-3.5 flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-secondary">
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 font-mono text-xs text-text-secondary">
             {allSkillsList.map((skill) => (
               <span key={skill} className="flex items-center gap-1.5 transition-colors duration-150 hover:text-white">
                 <span className="h-1 w-1 rounded-full bg-accent/60" />

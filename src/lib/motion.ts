@@ -14,8 +14,8 @@ export const EASE_OUT_PREMIUM: [number, number, number, number] = [0.23, 1, 0.32
 /** cubic-bezier(0.22, 1, 0.36, 1) — the "liquid" entrance ease */
 export const EASE_LIQUID: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-/** Staggered mobile-menu list items (Navbar) */
-export const SPRING_MENU_ITEM: Transition = { type: 'spring', stiffness: 320, damping: 22, mass: 0.9 };
+/** Staggered mobile-menu list items (Navbar) — one ease-out, no spring overshoot */
+export const SPRING_MENU_ITEM: Transition = { duration: 0.35, ease: EASE_OUT_PREMIUM };
 
 /** Admin drawer slide-in (AdminShell, mobile bottom sheets) */
 export const SPRING_DRAWER: Transition = { type: 'spring', stiffness: 380, damping: 42 };

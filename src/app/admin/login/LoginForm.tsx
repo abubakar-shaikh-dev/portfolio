@@ -15,14 +15,14 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
 
   return (
     <div className="w-full max-w-md">
-      <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 shadow-xl backdrop-blur-sm">
+      <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 ">
         <div className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-accent/30 bg-accent/10 text-accent">
             <Lock className="h-4 w-4" aria-hidden="true" />
           </span>
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">// ADMIN_ACCESS</p>
-            <h1 className="font-display text-2xl font-bold tracking-tight text-white">Backstage</h1>
+            <p className="font-mono text-xs text-text-muted">// Admin access</p>
+            <h1 className="font-display text-2xl font-medium tracking-tight text-white">Backstage</h1>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
           <input type="hidden" name="next" value={nextPath ?? ''} />
 
           <div className="space-y-2">
-            <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-white">
+            <label htmlFor="email" className="block text-xs font-medium text-text-secondary">
               Email
             </label>
             <input
@@ -49,7 +49,7 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="password" className="block text-xs font-semibold uppercase tracking-wider text-white">
+            <label htmlFor="password" className="block text-xs font-medium text-text-secondary">
               Password
             </label>
             <input
@@ -87,7 +87,7 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
 
       <Link
         href="/"
-        className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-text-secondary transition-colors duration-150 hover:text-white"
+        className="mt-6 inline-flex items-center gap-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:text-white"
       >
         <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> Back to site
       </Link>

@@ -11,7 +11,7 @@ export async function LatestOpenSourceSection() {
     <Section className="border-b border-border-primary/40">
       <Reveal>
         <SectionHeader
-          label="OPEN_SOURCE_PROJECTS"
+          label="Open source projects"
           title="Latest Open Source"
           viewAllLink="/open-source"
           viewAllLabel="View all repos"

@@ -85,8 +85,8 @@ export function ContactContentSection() {
     <div className="mx-auto grid w-full max-w-2xl gap-12 lg:max-w-none lg:grid-cols-5">
         <Reveal className="space-y-8 lg:col-span-2">
           <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 space-y-4">
-            <h3 className="font-mono text-xs uppercase tracking-wider text-accent">
-              // GET_IN_TOUCH
+            <h3 className="font-mono text-xs text-text-muted">
+              // Get in touch
             </h3>
             <p className="text-lg text-white leading-relaxed">
               Have an interesting project, job opportunity, or tech query? Let&apos;s connect and build something solid together.
@@ -97,21 +97,21 @@ export function ContactContentSection() {
           </div>
 
           <div className="space-y-2">
-            <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
-              Direct Email
+            <span className="block font-mono text-[10px] text-text-muted">
+              Direct email
             </span>
             <a
               href="mailto:shaikhabubakar2380@gmail.com"
               className="inline-flex w-full items-center gap-3 rounded-md border border-border-primary/80 bg-bg-secondary/60 px-6 py-4 text-base font-semibold text-white transition-[border-color,transform] duration-150 ease-out-premium hover:border-accent active:scale-98"
             >
-              <Mail className="h-5 w-5 text-accent" />
+              <Mail className="h-5 w-5 text-text-secondary" />
               shaikhabubakar2380@gmail.com
             </a>
           </div>
 
           <div className="space-y-3">
-            <span className="block font-mono text-[10px] uppercase tracking-wider text-text-muted">
-              Social Networks
+            <span className="block font-mono text-[10px] text-text-muted">
+              Social networks
             </span>
             <div className="grid grid-cols-2 gap-2">
               {SOCIAL_LINKS.map((social) => {
@@ -145,14 +145,14 @@ export function ContactContentSection() {
                 transition={{ duration: 0.3, ease: EASE_OUT_PREMIUM }}
                 className="w-full space-y-6"
               >
-                <h3 className="mb-6 font-mono text-xs uppercase tracking-wider text-accent">
-                  // SEND_A_MESSAGE
+                <h3 className="mb-6 font-mono text-xs text-text-muted">
+                  // Send a message
                 </h3>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="block text-xs font-semibold text-white uppercase tracking-wider">
-                      Full Name <span className="text-accent">*</span>
+                    <label htmlFor="name" className="block text-xs font-medium text-text-secondary">
+                      Full name <span className="text-accent">*</span>
                     </label>
                     <input
                       type="text"
@@ -160,9 +160,9 @@ export function ContactContentSection() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Enter your name"
+                      placeholder="Your name"
                       disabled={isSubmitting}
-                      className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                      className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/40 transition-[border-color,box-shadow,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                         errors.name ? 'border-red-500' : 'border-border-primary'
                       }`}
                     />
@@ -170,8 +170,8 @@ export function ContactContentSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="block text-xs font-semibold text-white uppercase tracking-wider">
-                      Email Address <span className="text-accent">*</span>
+                    <label htmlFor="email" className="block text-xs font-medium text-text-secondary">
+                      Email address <span className="text-accent">*</span>
                     </label>
                     <input
                       type="text"
@@ -181,7 +181,7 @@ export function ContactContentSection() {
                       onChange={handleInputChange}
                       placeholder="name@example.com"
                       disabled={isSubmitting}
-                      className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                      className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/40 transition-[border-color,box-shadow,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                         errors.email ? 'border-red-500' : 'border-border-primary'
                       }`}
                     />
@@ -189,7 +189,7 @@ export function ContactContentSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="subject" className="block text-xs font-semibold text-white uppercase tracking-wider">
+                    <label htmlFor="subject" className="block text-xs font-medium text-text-secondary">
                       Subject
                     </label>
                     <input
@@ -198,14 +198,13 @@ export function ContactContentSection() {
                       name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      placeholder="Project, Job Opportunity, Consultancy..."
                       disabled={isSubmitting}
                       className="w-full rounded-md border border-border-primary bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="block text-xs font-semibold text-white uppercase tracking-wider">
+                    <label htmlFor="message" className="block text-xs font-medium text-text-secondary">
                       Message <span className="text-accent">*</span>
                     </label>
                     <textarea
@@ -214,9 +213,8 @@ export function ContactContentSection() {
                       rows={5}
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Tell me about your project or inquiry..."
                       disabled={isSubmitting}
-                      className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent transition-[border-color,opacity,background-color] duration-150 ease-out-premium resize-none disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
+                      className={`w-full rounded-md border bg-bg-primary px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/40 transition-[border-color,box-shadow,opacity,background-color] duration-150 ease-out-premium resize-none disabled:opacity-60 disabled:bg-bg-primary/50 disabled:border-border-primary/50 disabled:cursor-not-allowed ${
                         errors.message ? 'border-red-500' : 'border-border-primary'
                       }`}
                     />
@@ -225,11 +223,11 @@ export function ContactContentSection() {
 
                   {submitError && (
                     <div className="border border-red-500/20 bg-red-500/5 p-4 text-sm text-red-400 flex items-start gap-3 animate-in fade-in slide-in-from-bottom-2 duration-200">
-                      <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-red-400 font-mono text-xs font-bold">
+                      <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-red-400 font-mono text-xs font-semibold">
                         !
                       </div>
                       <div>
-                        <p className="font-semibold font-mono text-xs uppercase tracking-wider">// SUBMISSION_FAILED</p>
+                        <p className="font-semibold font-mono text-xs text-red-400">// Submission failed</p>
                         <p className="text-xs text-red-400/80 mt-1">{submitError}</p>
                       </div>
                     </div>
@@ -238,7 +236,7 @@ export function ContactContentSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-white px-6 py-3.5 text-sm font-semibold text-black transition-[background-color,transform] duration-150 ease-out-premium hover:bg-white/90 active:scale-97 disabled:opacity-50"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-white px-6 py-3 text-sm font-semibold text-black transition-[background-color,transform] duration-150 ease-out-premium hover:bg-white/90 active:scale-97 disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <><Loader2 className="h-4 w-4 animate-spin" /> Sending Message...</>
@@ -289,8 +287,8 @@ export function ContactContentSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="font-mono text-xs uppercase tracking-wider text-accent">// RECORD_SAVED</h3>
-                  <h4 className="text-3xl font-bold text-white tracking-tight">Message Received!</h4>
+                  <h3 className="font-mono text-xs text-text-muted">// Record saved</h3>
+                  <h4 className="text-3xl font-medium text-white tracking-tight">Message received</h4>
                   <p className="max-w-md text-text-secondary text-sm leading-relaxed text-balance mx-auto">
                     Thank you, <span className="text-white font-semibold">{formData.name}</span>. Your message has been saved and I will get back to you at <span className="text-white font-semibold">{formData.email}</span> within 24 hours.
                   </p>
@@ -298,21 +296,21 @@ export function ContactContentSection() {
 
                 {/* Terminal style Submitted Record Receipt */}
                 <div className="w-full max-w-md rounded-md border border-border-primary bg-bg-primary p-5 text-left font-mono text-xs text-text-secondary space-y-3 select-none">
-                  <p className="text-text-muted">// SUBMITTED_RECORD</p>
+                  <p className="text-text-muted">// Submitted record</p>
                   <div className="grid grid-cols-[60px_1fr] gap-x-2 gap-y-1">
-                    <span className="text-accent">NAME:</span>
+                    <span className="text-text-muted">Name:</span>
                     <span className="text-white truncate">{formData.name}</span>
-                    <span className="text-accent">EMAIL:</span>
+                    <span className="text-text-muted">Email:</span>
                     <span className="text-white truncate">{formData.email}</span>
                     {formData.subject && (
                       <>
-                        <span className="text-accent">SUBJECT:</span>
+                        <span className="text-text-muted">Subject:</span>
                         <span className="text-white truncate">{formData.subject}</span>
                       </>
                     )}
                   </div>
                   <div className="border-t border-border-primary pt-3 mt-2">
-                    <p className="text-accent mb-1">MESSAGE:</p>
+                    <p className="text-text-muted mb-1">Message:</p>
                     <p className="text-text-muted whitespace-pre-wrap break-words max-h-[120px] overflow-y-auto pr-1">
                       {formData.message}
                     </p>
@@ -322,9 +320,9 @@ export function ContactContentSection() {
                 <button
                   type="button"
                   onClick={handleResetForm}
-                  className="inline-flex items-center gap-2 rounded-md border border-border-primary bg-bg-primary hover:border-accent hover:bg-[#111111] px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-white transition-[border-color,background-color,color] duration-200 active:scale-97"
+                  className="inline-flex items-center gap-2 rounded-md border border-border-primary bg-bg-primary hover:border-accent hover:bg-[#111111] px-6 py-3 text-xs font-mono text-text-secondary hover:text-white transition-[border-color,background-color,color] duration-200 active:scale-97"
                 >
-                  <span>// SEND_ANOTHER_MESSAGE</span>
+                  <span>// Send another message</span>
                 </button>
               </motion.div>
             )}

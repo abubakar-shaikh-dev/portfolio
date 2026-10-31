@@ -15,8 +15,8 @@ export default async function AdminReposPage() {
       <Reveal>
         <div className="flex items-end justify-between">
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">// MANAGE_REPOS</p>
-            <h1 className="font-display mt-2 text-3xl font-bold tracking-tight text-white">Open Source</h1>
+            <p className="font-mono text-xs text-text-muted">// Manage_REPOS</p>
+            <h1 className="font-display mt-2 text-3xl font-medium tracking-tight text-white">Open Source</h1>
           </div>
           <Link
             href="/admin/repos/new"
@@ -35,9 +35,9 @@ export default async function AdminReposPage() {
               className="flex flex-col justify-between gap-3 rounded-lg border border-border-primary/60 bg-bg-secondary/40 p-4 sm:flex-row sm:items-center"
             >
               <div className="min-w-0">
-                <p className="truncate font-mono font-semibold text-white">{repo.name}</p>
+                <p className="truncate font-mono font-medium text-white">{repo.name}</p>
                 <p className="mt-0.5 font-mono text-[10px] text-text-muted">
-                  {repo.language} · ★ {repo.stars} · {repo.forks} forks
+                  {repo.language} · {repo.stars} stars · {repo.forks} forks
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-2">

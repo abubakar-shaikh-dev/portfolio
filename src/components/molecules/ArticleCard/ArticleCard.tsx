@@ -17,11 +17,11 @@ export function ArticleCard({ article }: ArticleCardProps) {
           <time>{article.date}</time>
           <span className="text-border-primary">•</span>
           <span className="flex items-center gap-1">
-            <Clock className="h-3 w-3 text-text-muted" />
+            <Clock className="h-3.5 w-3.5 text-text-muted" />
             {article.readTime}
           </span>
         </div>
-        <h3 className="line-clamp-2 text-lg font-bold text-white transition-colors duration-150 group-hover:text-accent">
+        <h3 className="line-clamp-2 text-lg font-medium text-white transition-colors duration-150 group-hover:text-accent">
           {article.title}
         </h3>
         <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-text-secondary">

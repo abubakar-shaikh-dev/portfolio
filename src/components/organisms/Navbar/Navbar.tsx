@@ -74,7 +74,7 @@ export function Navbar() {
         >
           <Link
             href="/"
-            className="font-mono text-lg font-bold tracking-tight text-white transition-colors duration-150 active:scale-97"
+            className="font-mono text-lg font-medium text-white transition-colors duration-150 active:scale-97"
           >
             <span className="text-accent">~/</span>abubakarshaikh
           </Link>
@@ -84,7 +84,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider transition-[color,background-color] duration-150 ease-out-premium rounded-md ${
+                className={`relative px-3.5 py-1.5 font-mono text-xs transition-[color,background-color] duration-150 ease-out-premium rounded-md ${
                   isActive(link.href)
                     ? 'text-accent font-semibold bg-accent/10 border border-accent/20'
                     : isScrolled
@@ -98,7 +98,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="rounded-md p-2.5 text-text-secondary transition-[color,background-color,transform] duration-150 ease-out-premium hover:text-accent active:scale-95 lg:hidden"
+            className="rounded-md p-2.5 text-text-secondary transition-[color,background-color,transform] duration-150 ease-out-premium hover:text-accent active:scale-97 lg:hidden"
             aria-label="Open menu"
             aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(true)}
@@ -125,14 +125,6 @@ export function Navbar() {
             aria-modal="true"
             aria-label="Site menu"
           >
-            {/* Luxury ambience — soft emerald glows over the frosted page.
-               Clipped in an inset-0 layer so the off-canvas blobs never
-               create scrollbars on the scrollable overlay. */}
-            <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-              <div className="absolute -top-32 -right-24 h-80 w-80 rounded-full bg-accent/10 blur-[110px]" />
-              <div className="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-accent/5 blur-[110px]" />
-            </div>
-
             <motion.div
               className="relative flex items-center justify-between border-b border-border-primary/40 px-6 py-5"
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -12 }}
@@ -142,12 +134,12 @@ export function Navbar() {
               <Link
                 href="/"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-mono text-lg font-bold tracking-tight text-white active:scale-97"
+                className="font-mono text-lg font-medium text-white active:scale-97"
               >
                 <span className="text-accent">~/</span>abubakarshaikh
               </Link>
               <button
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-border-primary/60 text-text-secondary transition-colors duration-150 hover:border-accent/60 hover:text-accent active:scale-95"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border-primary/60 text-text-secondary transition-colors duration-150 hover:border-accent/60 hover:text-accent active:scale-97"
                 aria-label="Close menu"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -163,12 +155,12 @@ export function Navbar() {
                   return (
                     <motion.li
                       key={link.href}
-                      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 28, scale: 0.94 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={
                         shouldReduceMotion
                           ? { duration: 0.2, delay: index * 0.03 }
-                          : { delay: 0.12 + index * 0.055, ...SPRING_MENU_ITEM }
+                          : { delay: 0.08 + index * 0.045, ...SPRING_MENU_ITEM }
                       }
                     >
                       <Link
@@ -189,7 +181,7 @@ export function Navbar() {
                           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
                         </span>
                         <span
-                          className={`font-display text-[26px] font-semibold tracking-tight transition-colors duration-150 ${
+                          className={`font-display text-[26px] font-medium tracking-tight transition-colors duration-150 ${
                             active ? 'text-accent' : 'text-white group-hover:text-accent'
                           }`}
                         >
@@ -224,15 +216,15 @@ export function Navbar() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border-primary/60 text-text-secondary transition-colors duration-150 hover:border-accent/60 hover:text-accent active:scale-95"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border-primary/60 text-text-secondary transition-colors duration-150 hover:border-accent/60 hover:text-accent active:scale-97"
                     >
                       <SocialIcon className="h-4 w-4" aria-hidden="true" />
                     </a>
                   );
                 })}
               </div>
-              <p className="mt-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-text-muted">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+              <p className="mt-4 flex items-center gap-2 font-mono text-[10px] text-text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 Available for full-stack &amp; cloud roles — India
               </p>
             </motion.div>

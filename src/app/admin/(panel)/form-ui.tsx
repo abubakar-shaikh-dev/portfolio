@@ -7,7 +7,7 @@ import Image from 'next/image';
 export const inputClasses =
   'w-full rounded-md border border-border-primary bg-bg-primary px-3.5 py-2.5 text-sm text-white placeholder-text-muted transition-[border-color] duration-150 focus:border-accent focus:outline-none';
 
-export const labelClasses = 'block text-[11px] font-semibold uppercase tracking-wider text-text-secondary';
+export const labelClasses = 'block text-[11px] font-medium text-text-secondary';
 
 export function Field({
   label,
@@ -85,7 +85,7 @@ export function ImageField({
           </div>
         ) : (
           <div className="flex h-24 w-40 items-center justify-center rounded-lg border border-dashed border-border-primary/60 font-mono text-[10px] text-text-muted">
-            NO_IMAGE
+            No image
           </div>
         )}
 
@@ -105,7 +105,7 @@ export function ImageField({
             JPG/PNG/WebP up to 4.5 MB — auto-cropped to 1200×630 and 800×800 on delivery
           </p>
           {currentImage && (
-            <label className="flex w-fit items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-text-secondary">
+            <label className="flex w-fit items-center gap-2 font-mono text-[10px] text-text-secondary">
               <input
                 type="checkbox"
                 name="removeImage"

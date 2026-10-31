@@ -15,8 +15,8 @@ export default async function AdminProjectsPage() {
       <Reveal>
         <div className="flex items-end justify-between">
           <div>
-            <p className="font-mono text-xs uppercase tracking-wider text-accent">// MANAGE_PROJECTS</p>
-            <h1 className="font-display mt-2 text-3xl font-bold tracking-tight text-white">Projects</h1>
+            <p className="font-mono text-xs text-text-muted">// Manage_PROJECTS</p>
+            <h1 className="font-display mt-2 text-3xl font-medium tracking-tight text-white">Projects</h1>
           </div>
           <Link
             href="/admin/projects/new"
@@ -35,9 +35,9 @@ export default async function AdminProjectsPage() {
               className="flex flex-col justify-between gap-3 rounded-lg border border-border-primary/60 bg-bg-secondary/40 p-4 sm:flex-row sm:items-center"
             >
               <div className="min-w-0">
-                <p className="truncate font-semibold text-white">
+                <p className="truncate font-medium text-white">
                   {project.name}
-                  {project.featured && <span className="ml-2 font-mono text-[10px] text-accent">FEATURED</span>}
+                  {project.featured && <span className="ml-2 font-mono text-[10px] text-accent">Featured</span>}
                 </p>
                 <p className="mt-0.5 font-mono text-[10px] text-text-muted">
                   /{project.slug} · {project.year} · {project.status}

@@ -23,7 +23,7 @@ export function PageHero({ label, title, description, image }: PageHeroProps) {
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           {image && (
             <div
-              className="mb-6 h-28 w-28 overflow-hidden rounded-full border-2 border-accent/80 bg-bg-secondary p-1 shadow-xl animate-fade-in-up"
+              className="mb-6 h-28 w-28 overflow-hidden rounded-full border border-border-primary bg-bg-secondary p-1 animate-fade-in-up"
               style={{ animationDelay: '100ms' }}
             >
               <Image
@@ -33,23 +33,22 @@ export function PageHero({ label, title, description, image }: PageHeroProps) {
                 height={112}
                 unoptimized
                 priority
-                className="h-full w-full rounded-full object-cover grayscale transition-[filter,transform] duration-300 ease-out-premium hover:grayscale-0 hover:scale-105"
+                className="h-full w-full rounded-full object-cover grayscale transition-[filter] duration-300 ease-out-premium hover:grayscale-0"
               />
             </div>
           )}
 
-          <div
-            className={`inline-flex items-center gap-2 rounded-full border border-border-primary/80 bg-bg-secondary px-3.5 py-1 text-xs text-text-secondary animate-fade-in-up ${
+          <p
+            className={`font-mono text-xs text-text-muted animate-fade-in-up ${
               image ? 'mb-3' : 'mb-4'
             }`}
             style={{ animationDelay: badgeDelay }}
           >
-            <span className="h-2 w-2 rounded-full bg-accent" />
-            <span className="font-mono text-accent">// {label}</span>
-          </div>
+            // {label}
+          </p>
 
           <h1
-            className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl animate-fade-in-up"
+            className="font-display text-4xl font-medium tracking-tight text-white sm:text-5xl md:text-6xl animate-fade-in-up"
             style={{ animationDelay: titleDelay }}
           >
             {title}

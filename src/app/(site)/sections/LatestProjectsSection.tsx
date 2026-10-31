@@ -11,7 +11,7 @@ export async function LatestProjectsSection() {
     <Section className="border-b border-border-primary/40">
       <Reveal>
         <SectionHeader
-          label="THINGS_I_BUILD"
+          label="Things I build"
           title="Featured Projects"
           viewAllLink="/projects"
           viewAllLabel="View all projects"

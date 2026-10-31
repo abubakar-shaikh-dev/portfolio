@@ -14,12 +14,12 @@ export function ProjectForm({ project }: { project: Project | null }) {
     <div className="mx-auto max-w-3xl">
       <Link
         href="/admin/projects"
-        className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-text-secondary transition-colors duration-150 hover:text-white"
+        className="inline-flex items-center gap-2 font-mono text-xs text-text-secondary transition-colors duration-150 hover:text-white"
       >
         <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> All projects
       </Link>
 
-      <h1 className="font-display mt-4 text-2xl font-bold tracking-tight text-white md:text-3xl">
+      <h1 className="font-display mt-4 text-2xl font-medium tracking-tight text-white md:text-3xl">
         {project ? `Edit: ${project.name}` : 'New Project'}
       </h1>
 

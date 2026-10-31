@@ -19,7 +19,7 @@ export async function getArticleCategories(): Promise<ArticleCategory[]> {
     { id: 'all', label: 'All' },
     { id: 'backend', label: 'Backend & APIs' },
     {id: 'devops', label: 'Infrastructure & DevOps' },
-    { id: 'ai', label: 'AI & WebRTC' },
+    { id: 'ai', label: 'AI & Real-time' },
     { id: 'security', label: 'Security & Tooling' },
   ];
 }

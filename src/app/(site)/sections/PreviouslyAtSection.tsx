@@ -10,7 +10,7 @@ export async function PreviouslyAtSection() {
   return (
     <Section className="border-b border-border-primary/40 bg-bg-primary/50">
       <Reveal>
-        <SectionHeader label="CAREER_TIMELINE" title="Previous Experience & Roles" />
+        <SectionHeader label="Career timeline" title="Previous Experience & Roles" />
       </Reveal>
 
       <div className="space-y-3">

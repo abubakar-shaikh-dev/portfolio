@@ -18,7 +18,7 @@ export function Footer() {
       <div className="section-container py-16">
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-12 lg:grid-cols-4">
           <div className="col-span-2 space-y-4 sm:col-span-1">
-            <Link href="/" className="inline-block font-mono text-lg font-bold text-white transition-colors duration-150 active:scale-97">
+            <Link href="/" className="inline-block font-mono text-lg font-medium text-white transition-colors duration-150 active:scale-97">
               <span className="text-accent">~/</span>abubakarshaikh
             </Link>
             <p className="text-sm leading-relaxed text-text-secondary">
@@ -30,15 +30,15 @@ export function Footer() {
               {SOCIAL_LINKS.map((social) => {
                 const SocialIcon = socialIcons[social.label as keyof typeof socialIcons];
                 return (
-                  <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-95" aria-label={social.label}><SocialIcon className="h-4 w-4" /></a>
+                  <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-97" aria-label={social.label}><SocialIcon className="h-4 w-4" /></a>
                 );
               })}
-              <a href="/feed.xml" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-95" aria-label="RSS Feed"><Rss className="h-4 w-4" /></a>
+              <a href="/feed.xml" className="flex h-8 w-8 items-center justify-center rounded-md text-text-muted transition-[color,background-color,transform] duration-150 ease-out-premium hover:bg-bg-secondary hover:text-accent active:scale-97" aria-label="RSS Feed"><Rss className="h-4 w-4" /></a>
             </div>
           </div>
 
           <div>
-            <h3 className="mb-4 font-mono text-xs uppercase tracking-wider text-accent">// CONTENT</h3>
+            <h3 className="mb-4 font-mono text-xs text-text-muted">// Content</h3>
             <ul className="space-y-3">
               {FOOTER_CONTENT_LINKS.map((link) => (
                 <li key={link.href}>
@@ -49,7 +49,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-mono text-xs uppercase tracking-wider text-accent">// TOPICS</h3>
+            <h3 className="mb-4 font-mono text-xs text-text-muted">// Topics</h3>
             <ul className="space-y-3">
               {FOOTER_TOPIC_LINKS.map((link) => (
                 <li key={link.label}>
@@ -60,7 +60,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-mono text-xs uppercase tracking-wider text-accent">// CONNECT</h3>
+            <h3 className="mb-4 font-mono text-xs text-text-muted">// Connect</h3>
             <ul className="space-y-3">
               {FOOTER_CONNECT_LINKS.map((link) => (
                 <li key={link.label}>

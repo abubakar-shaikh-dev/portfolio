@@ -15,7 +15,7 @@ export function RepoCard({ repo }: RepoCardProps) {
     >
       <div>
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-mono text-base font-bold text-white transition-colors duration-150 group-hover:text-accent">
+          <h3 className="font-mono text-base font-medium text-white transition-colors duration-150 group-hover:text-accent">
             {repo.name}
           </h3>
           <ArrowUpRight className="h-4 w-4 shrink-0 text-text-muted transition-transform duration-150 ease-out-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
@@ -39,7 +39,7 @@ export function RepoCard({ repo }: RepoCardProps) {
         </span>
         {repo.forks > 0 && (
           <span className="flex items-center gap-1">
-            {repo.forks} forks
+            {repo.forks} {repo.forks === 1 ? 'fork' : 'forks'}
           </span>
         )}
       </div>
