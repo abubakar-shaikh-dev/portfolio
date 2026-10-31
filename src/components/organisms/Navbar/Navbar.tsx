@@ -108,6 +108,11 @@ export function Navbar() {
         </div>
       </motion.nav>
 
+      {/* Mobile menu: frosted backdrop, cheaply — the backdrop-filter is
+          static (never animated) and body scroll is locked while open, so
+          the filtered snapshot composites once; only the overlay's opacity
+          fades. Never combine with an animated filter: that re-rasterizes
+          every frame and is what made the menu laggy on low-end phones. */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -115,7 +120,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: EASE_LIQUID }}
-            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a]/95 lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a]/60 backdrop-blur-xl lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"
