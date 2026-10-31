@@ -1,6 +1,10 @@
 export const SITE_NAME = 'Abubakar Shaikh';
 export const SITE_DESCRIPTION = 'Full Stack Software Engineer specializing in building scalable MERN applications, APIs, and DevOps workflows.';
-export const SITE_URL = 'https://abubakarshaikh.dev';
+/** Canonical site origin — REQUIRED in the build environment
+ *  (NEXT_PUBLIC_SITE_URL in .env.local / hosting platform). Falls back to
+ *  localhost so a missing env fails visibly in URLs instead of silently
+ *  pointing at a hardcoded production domain. */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 export const SITE_TWITTER = '@abubakarshaikh_dev';
 export const SITE_EMAIL = 'shaikhabubakar2380@gmail.com';
 
