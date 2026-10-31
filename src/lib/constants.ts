@@ -8,6 +8,7 @@ export const NAV_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'Open Source', href: '/open-source' },
   { label: 'Projects', href: '/projects' },
+  { label: 'Research', href: '/research' },
   { label: 'Services', href: '/services' },
   { label: 'Thoughts', href: '/thoughts' },
   { label: 'Contact', href: '/contact' },
@@ -24,6 +25,7 @@ export const FOOTER_CONTENT_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'Open Source', href: '/open-source' },
   { label: 'Projects', href: '/projects' },
+  { label: 'Research', href: '/research' },
   { label: 'Services', href: '/services' },
   { label: 'Thoughts', href: '/thoughts' },
 ] as const;

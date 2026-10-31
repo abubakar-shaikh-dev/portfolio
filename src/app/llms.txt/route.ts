@@ -11,6 +11,7 @@ export async function GET() {
 - [Projects](${SITE_URL}/projects): Full-stack web applications, AI-powered tools, and developer CLIs
 - [Services](${SITE_URL}/services): Full-stack development, backend architecture, DevOps automation, and AI integration services
 - [Open Source](${SITE_URL}/open-source): Open source projects including SKELR, FEATIFY, and XENC
+- [Research](${SITE_URL}/research): Research papers, publications, and preprints from doctoral research
 - [Thoughts](${SITE_URL}/thoughts): Technical blog covering backend engineering, DevOps, AI, and security
 - [Contact](${SITE_URL}/contact): Get in touch for collaborations and consulting
 

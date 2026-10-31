@@ -10,6 +10,7 @@ import {
   articleContentSchema,
   articleSchema,
   careerSchema,
+  paperSchema,
   projectSchema,
   repoSchema,
   serviceSchema,
@@ -215,6 +216,48 @@ export async function deleteArticleAction(form: FormData): Promise<void> {
   if (id) await deleteById('articles', id);
   publish(['/', '/thoughts']);
   redirect('/admin/articles');
+}
+
+/* ── Papers ───────────────────────────────────────────────────────────── */
+
+export async function savePaperAction(_prev: ActionState, form: FormData): Promise<ActionState> {
+  try {
+    await requireAdmin();
+    const parsed = paperSchema.parse({
+      id: str(form, 'id') || crypto.randomUUID(),
+      title: str(form, 'title'),
+      authors: list(form, 'authors'),
+      venue: str(form, 'venue'),
+      year: num(form, 'year', new Date().getFullYear()),
+      status: str(form, 'status') || 'in-progress',
+      abstract: str(form, 'abstract'),
+      keywords: list(form, 'keywords'),
+      links: { pdf: str(form, 'pdf'), doi: str(form, 'doi'), arxiv: str(form, 'arxiv'), code: str(form, 'code') },
+    });
+    await upsertById('papers', {
+      ...parsed,
+      links: Object.fromEntries(Object.entries(parsed.links).filter(([, v]) => v)) as typeof parsed.links,
+      order: await resolveOrder('papers', parsed.id, form),
+    });
+    publish(['/research']);
+    redirect('/admin/papers');
+  } catch (error) {
+    if (error instanceof z.ZodError) return { error: firstError(error) };
+    if (error instanceof Error) {
+      if (error.message.startsWith('NEXT_REDIRECT')) throw error;
+      return { error: error.message };
+    }
+    return INITIAL_ERROR;
+  }
+  return INITIAL_ERROR;
+}
+
+export async function deletePaperAction(form: FormData): Promise<void> {
+  await requireAdmin();
+  const id = String(form.get('id') ?? '');
+  if (id) await deleteById('papers', id);
+  publish(['/research']);
+  redirect('/admin/papers');
 }
 
 /* ── Repos ────────────────────────────────────────────────────────────── */

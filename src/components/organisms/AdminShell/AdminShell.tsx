@@ -15,6 +15,7 @@ import {
   LayoutDashboard,
   LogOut,
   Menu,
+  ScrollText,
   X,
   type LucideIcon,
 } from 'lucide-react';
@@ -35,6 +36,7 @@ const ADMIN_NAV: AdminNavItem[] = [
   { label: 'Messages', href: '/admin/messages', icon: Inbox },
   { label: 'Projects', href: '/admin/projects', icon: FolderGit2 },
   { label: 'Articles', href: '/admin/articles', icon: FileText },
+  { label: 'Papers', href: '/admin/papers', icon: ScrollText },
   { label: 'Repos', href: '/admin/repos', icon: GitBranch },
   { label: 'Career', href: '/admin/career', icon: Briefcase },
   { label: 'Services & Skills', href: '/admin/services', icon: Layers },

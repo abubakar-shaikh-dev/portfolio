@@ -30,7 +30,7 @@ try {
   const db = client.db(dbName);
   console.log(`[seed] connected to ${dbName}`);
 
-  const collections = ['articles', 'projects', 'repos', 'career', 'services'];
+  const collections = ['articles', 'papers', 'projects', 'repos', 'career', 'services'];
 
   for (const name of collections) {
     const docs = (await readJson(name)).map((doc, index) => ({ ...doc, order: index }));

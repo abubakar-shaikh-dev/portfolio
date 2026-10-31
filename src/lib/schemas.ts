@@ -66,6 +66,23 @@ export const articleSchema = z.object({
   imagePublicId: z.string().trim().max(200).optional(),
 });
 
+export const paperSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().trim().min(1, 'Title is required').max(300),
+  authors: z.array(z.string().trim().min(1)).min(1, 'At least one author'),
+  venue: z.string().trim().min(1, 'Venue is required').max(160),
+  year: z.number().int().min(1900).max(2100),
+  status: z.enum(['published', 'preprint', 'under-review', 'in-progress']),
+  abstract: z.string().trim().min(1, 'Abstract is required').max(4000),
+  keywords: z.array(z.string().trim().min(1)).min(1, 'At least one keyword'),
+  links: z.object({
+    pdf: optionalUrl,
+    doi: optionalUrl,
+    arxiv: optionalUrl,
+    code: optionalUrl,
+  }),
+});
+
 export const repoSchema = z.object({
   id: z.string().min(1),
   name: z.string().trim().min(1).max(80),
