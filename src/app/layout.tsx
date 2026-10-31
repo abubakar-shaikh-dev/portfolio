@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono, Outfit } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from '@/components/ui/sonner';
 import { SITE_DESCRIPTION, SITE_EMAIL, SITE_NAME, SITE_TWITTER, SITE_URL, SOCIAL_LINKS } from '@/lib/constants';
 import './globals.css';
@@ -161,6 +162,8 @@ export default function RootLayout({
       {/* Site chrome (navbar/footer/cursor) lives in the (site) route group
           so admin pages render without it. */}
       <body className="min-h-screen bg-[#0a0a0a] text-white antialiased">
+        {/* Route-change progress bar (accent emerald); covers site + admin */}
+        <NextTopLoader color="#10b981" showSpinner={false} />
         {children}
         <Toaster position="top-right" closeButton />
       </body>
