@@ -37,7 +37,7 @@ export async function HeroSection() {
                   height={256}
                   priority
                   unoptimized
-                  className="h-44 w-44 rounded-lg object-cover grayscale transition-all duration-300 ease-out-premium group-hover:grayscale-0 group-hover:scale-[1.02] sm:h-60 sm:w-60 lg:h-64 lg:w-64"
+                  className="h-44 w-44 rounded-lg object-cover grayscale transition-[filter,transform] duration-300 ease-out-premium group-hover:grayscale-0 group-hover:scale-[1.02] sm:h-60 sm:w-60 lg:h-64 lg:w-64"
                 />
               </div>
 

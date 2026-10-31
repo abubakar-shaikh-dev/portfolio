@@ -22,6 +22,7 @@ import {
 import { logoutAction } from '@/app/admin/actions';
 import { Modal } from '@/components/ui/modal';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
+import { SPRING_DRAWER } from '@/lib/motion';
 
 interface AdminNavItem {
   label: string;
@@ -188,7 +189,7 @@ export function AdminShell({ email, children }: { email: string; children: React
       </aside>
 
       {/* Mobile top bar */}
-      <header className="sticky top-0 z-30 border-b border-border-primary/60 bg-bg-primary/90 backdrop-blur-xl lg:hidden">
+      <header className="sticky top-0 z-30 border-b border-border-primary/60 bg-bg-primary lg:hidden">
         <div className="flex items-center justify-between px-5 py-3">
           <button
             type="button"
@@ -220,7 +221,7 @@ export function AdminShell({ email, children }: { email: string; children: React
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             onClick={() => setIsDrawerOpen(false)}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-black/70 lg:hidden"
             aria-hidden="true"
           />
         )}
@@ -237,7 +238,7 @@ export function AdminShell({ email, children }: { email: string; children: React
             transition={
               shouldReduceMotion
                 ? { duration: 0.2 }
-                : { type: 'spring', stiffness: 380, damping: 42 }
+                : SPRING_DRAWER
             }
             className="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col border-r border-border-primary bg-bg-primary lg:hidden"
           >

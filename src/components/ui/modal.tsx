@@ -21,8 +21,8 @@ import {
 import { Loader2, X } from 'lucide-react';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { EASE_LIQUID, SPRING_DRAWER, SPRING_MODAL } from '@/lib/motion';
 
-const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const DESKTOP_QUERY = '(min-width: 768px)';
 const DRAG_CLOSE_OFFSET = 110;
 const DRAG_CLOSE_VELOCITY = 550;
@@ -207,12 +207,8 @@ export function Modal({
 
   const panelVariants: Variants = isDesktop
     ? {
-        hidden: shouldReduceMotion
-          ? { opacity: 0 }
-          : { opacity: 0, y: 14, scale: 0.97, filter: 'blur(8px)' },
-        visible: shouldReduceMotion
-          ? { opacity: 1 }
-          : { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' },
+        hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 14, scale: 0.97 },
+        visible: shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 },
       }
     : {
         hidden: shouldReduceMotion ? { opacity: 0 } : { y: '100%' },
@@ -223,11 +219,10 @@ export function Modal({
     ? { duration: 0.2 }
     : isDesktop
       ? {
-          default: { type: 'spring', stiffness: 380, damping: 34 },
-          opacity: { duration: 0.25, ease: EASE_OUT },
-          filter: { duration: 0.25, ease: EASE_OUT },
+          default: SPRING_MODAL,
+          opacity: { duration: 0.25, ease: EASE_LIQUID },
         }
-      : { type: 'spring', stiffness: 380, damping: 42 };
+      : SPRING_DRAWER;
 
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (info.offset.y > DRAG_CLOSE_OFFSET || info.velocity.y > DRAG_CLOSE_VELOCITY) {
@@ -248,9 +243,9 @@ export function Modal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.25, ease: EASE_OUT }}
+          transition={{ duration: 0.25, ease: EASE_LIQUID }}
           style={{ zIndex, ...styles?.mask }}
-          className={`fixed inset-0 flex justify-center bg-black/60 backdrop-blur-sm ${
+          className={`fixed inset-0 flex justify-center bg-black/70 ${
             isDesktop
               ? centered
                 ? 'items-center p-6'

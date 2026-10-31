@@ -22,6 +22,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
+import { EASE_LIQUID, EASE_OUT_PREMIUM, SPRING_MENU_ITEM } from '@/lib/motion';
 
 const LINK_ICONS = {
   '/about': User,
@@ -59,13 +60,13 @@ export function Navbar() {
       <motion.nav
         initial={{ transform: shouldReduceMotion ? "translateY(0px)" : "translateY(-40px)", opacity: 0 }}
         animate={{ transform: "translateY(0px)", opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1], delay: 0.15 }}
-        className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-[padding] duration-300 ease-out-premium ${isScrolled ? 'px-4' : 'px-0'}`}
+        transition={{ duration: 0.6, ease: EASE_OUT_PREMIUM, delay: 0.15 }}
+        className={`fixed top-0 left-0 right-0 z-50 flex justify-center ${isScrolled ? 'px-4' : 'px-0'}`}
         style={{ paddingTop: isScrolled ? '12px' : '0px' }}
         aria-label="Primary navigation"
       >
         <div
-          className={`flex w-full items-center justify-between transition-[max-width,padding,background-color,box-shadow,border-radius] duration-300 ease-out-premium ${
+          className={`flex w-full items-center justify-between transition-[background-color,box-shadow,border-color] duration-300 ease-out-premium ${
             isScrolled
               ? 'max-w-5xl rounded-full px-6 py-2.5 border border-border-primary/80 bg-bg-secondary/90 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
               : 'section-container py-4'
@@ -110,11 +111,11 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, filter: 'blur(14px)' }}
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, filter: 'blur(12px)' }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a]/85 backdrop-blur-2xl lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: EASE_LIQUID }}
+            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-[#0a0a0a]/95 lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"
@@ -157,16 +158,12 @@ export function Navbar() {
                   return (
                     <motion.li
                       key={link.href}
-                      initial={
-                        shouldReduceMotion
-                          ? { opacity: 0 }
-                          : { opacity: 0, y: 28, scale: 0.94, filter: 'blur(6px)' }
-                      }
-                      animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 28, scale: 0.94 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={
                         shouldReduceMotion
                           ? { duration: 0.2, delay: index * 0.03 }
-                          : { delay: 0.12 + index * 0.055, type: 'spring', stiffness: 320, damping: 22, mass: 0.9 }
+                          : { delay: 0.12 + index * 0.055, ...SPRING_MENU_ITEM }
                       }
                     >
                       <Link
@@ -194,7 +191,7 @@ export function Navbar() {
                           {link.label}
                         </span>
                         <ArrowUpRight
-                          className={`ml-auto h-4 w-4 transition-all duration-150 ${
+                          className={`ml-auto h-4 w-4 transition-opacity duration-150 ${
                             active ? 'text-accent opacity-100' : 'text-text-muted opacity-0 group-hover:opacity-100'
                           }`}
                           aria-hidden="true"
@@ -208,9 +205,9 @@ export function Navbar() {
 
             <motion.div
               className="relative border-t border-border-primary/40 px-6 py-6"
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 18, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ delay: shouldReduceMotion ? 0 : 0.45, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: shouldReduceMotion ? 0 : 0.45, duration: 0.5, ease: EASE_LIQUID }}
             >
               <div className="flex items-center gap-3">
                 {SOCIAL_LINKS.map((social) => {

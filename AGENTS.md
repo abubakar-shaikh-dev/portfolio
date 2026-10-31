@@ -86,9 +86,10 @@
 
 ## Motion System
 
-- Entrances use the liquid keyframes in `globals.css`: `.animate-fade-in-up` (blur-to-sharp rise with water settle — stagger via inline `animationDelay`), `.animate-jelly-in` (squishy scale for photos/cards), `.animate-breathe` (ambient float; uses the `scale` property so it composes with transforms).
+- **Compositor-only rule: animate only `opacity` and `transform`.** Never animate `filter`/blur, `backdrop-filter`, or layout properties (`padding`, `max-width`, …) — they force per-frame repaints/reflows and are the main cause of jank on low-end phones. Static (non-animated) blur glows are fine — they rasterize once.
+- Entrances use the keyframes in `globals.css`: `.animate-fade-in-up` (fade-rise with overshoot settle — stagger via inline `animationDelay`), `.animate-jelly-in` (squishy scale for photos/cards), `.animate-breathe` (ambient float; uses the `scale` property so it composes with transforms).
 - Scroll reveals come from the `Reveal` atom (client, IntersectionObserver, fires once). Wrap section blocks with it; stagger children with `delay={index * 70}` and `className="h-full"` inside card grids. Content is hidden only when `html.js` is set (inline script in the root layout), so no-JS visitors always see it.
-- Framer Motion (menu, cursor) uses blur-dissolve overlays and springy y/scale; keep `filter` animations on tween transitions and transforms on springs. Reduced motion: CSS forces final states; framer uses `useReducedMotion` branches.
+- Framer Motion (menu, modal, drawer) animates opacity/y/scale springs. Shared beziers and springs live in `src/lib/motion.ts` (`EASE_OUT_PREMIUM`, `EASE_LIQUID`, `SPRING_*`) — never hardcode bezier arrays in components. Scroll listeners flip booleans only (`useScrollPosition` sets state on threshold cross, not per frame). Reduced motion: CSS forces final states; framer uses `useReducedMotion` branches.
 
 ## Email Integration (Resend)
 

@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Reveal } from '@/components/atoms/Reveal';
 import { Section } from '@/components/atoms/Section';
 import { SOCIAL_LINKS } from '@/lib/constants';
+import { EASE_OUT_PREMIUM } from '@/lib/motion';
 
 const socialIcons = { LinkedIn: Linkedin, GitHub: Github, 'X / Twitter': Twitter, Instagram: Instagram };
 
@@ -133,7 +134,7 @@ export function ContactContentSection() {
         </Reveal>
 
         <Reveal delay={120} className="lg:col-span-3">
-        <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 lg:col-span-3 min-h-[620px] flex flex-col justify-center overflow-hidden transition-all duration-300">
+        <div className="rounded-xl border border-border-primary/80 bg-bg-secondary/60 p-8 lg:col-span-3 min-h-[620px] flex flex-col justify-center overflow-hidden">
           <AnimatePresence mode="wait">
             {!isSubmitted ? (
               <motion.div
@@ -141,7 +142,7 @@ export function ContactContentSection() {
                 initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -15 }}
-                transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                transition={{ duration: 0.3, ease: EASE_OUT_PREMIUM }}
                 className="w-full space-y-6"
               >
                 <h3 className="mb-6 font-mono text-xs uppercase tracking-wider text-accent">
@@ -253,7 +254,7 @@ export function ContactContentSection() {
                 initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95, y: shouldReduceMotion ? 0 : 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.95, y: shouldReduceMotion ? 0 : -15 }}
-                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                transition={{ duration: 0.4, ease: EASE_OUT_PREMIUM }}
                 className="flex flex-col items-center justify-center text-center py-6 space-y-6 w-full"
               >
                 {/* Dynamic SVG Path drawing Checkmark */}
@@ -321,7 +322,7 @@ export function ContactContentSection() {
                 <button
                   type="button"
                   onClick={handleResetForm}
-                  className="inline-flex items-center gap-2 rounded-md border border-border-primary bg-bg-primary hover:border-accent hover:bg-[#111111] px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-white transition-all duration-200 active:scale-97"
+                  className="inline-flex items-center gap-2 rounded-md border border-border-primary bg-bg-primary hover:border-accent hover:bg-[#111111] px-6 py-3.5 text-xs font-mono uppercase tracking-wider text-text-secondary hover:text-white transition-[border-color,background-color,color] duration-200 active:scale-97"
                 >
                   <span>// SEND_ANOTHER_MESSAGE</span>
                 </button>

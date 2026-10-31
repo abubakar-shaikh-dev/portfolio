@@ -127,34 +127,30 @@
   }
 }
 
-/* ── Liquid motion system ───────────────────────────────────────────────
-   Water-like entrances: content surfaces through a soft blur, rises,
-   overshoots a touch, then settles. Layers:
+/* ── Compositor-only motion system ─────────────────────────────────────
+   Everything animates ONLY `opacity` and `transform` — never `filter`,
+   `backdrop-filter`, or layout properties — so transitions run on the
+   GPU compositor instead of forcing repaints on low-end phones.
+   Layers:
    - .animate-fade-in-up   load-in for hero layers (stagger via delay)
    - .animate-jelly-in     squishy scale settle (photo/cards, no opacity)
    - .animate-breathe      slow ambient float (uses `scale`, composes with
                            existing transforms like -translate-x-1/2)
    - [data-reveal]         scroll-triggered reveal driven by the Reveal
-                           atom (IntersectionObserver, fires once)          */
+                           atom (IntersectionObserver, fires once)
+   Shared JS equivalents for framer-motion live in src/lib/motion.ts.  */
 
 @keyframes fade-in-up {
   0% {
     opacity: 0;
     transform: translateY(22px) scale(0.988);
-    filter: blur(9px);
-  }
-  55% {
-    opacity: 1;
-    filter: blur(2px);
   }
   78% {
     transform: translateY(-3px) scale(1.003);
-    filter: blur(0);
   }
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0);
   }
 }
 
@@ -166,18 +162,15 @@
 @keyframes jelly-in {
   0% {
     transform: scale(0.84);
-    filter: blur(8px);
   }
   55% {
     transform: scale(1.05);
-    filter: blur(0);
   }
   78% {
     transform: scale(0.985);
   }
   100% {
     transform: scale(1);
-    filter: blur(0);
   }
 }
 
@@ -207,18 +200,15 @@
 html.js [data-reveal] {
   opacity: 0;
   transform: translateY(26px) scale(0.99);
-  filter: blur(8px);
   transition:
     opacity 800ms var(--ease-liquid),
-    transform 800ms var(--ease-liquid),
-    filter 800ms var(--ease-liquid);
+    transform 800ms var(--ease-liquid);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
 html.js [data-reveal].is-revealed {
   opacity: 1;
   transform: translateY(0) scale(1);
-  filter: blur(0);
 }
 
 /* Reduced motion: everything lands instantly, nothing floats */
@@ -234,7 +224,6 @@ html.js [data-reveal].is-revealed {
   .animate-fade-in-up {
     opacity: 1 !important;
     transform: translateY(0) !important;
-    filter: blur(0) !important;
     animation: none !important;
   }
 
@@ -246,7 +235,6 @@ html.js [data-reveal].is-revealed {
   html.js [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
-    filter: blur(0) !important;
     transition: none !important;
   }
 }

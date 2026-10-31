@@ -32,6 +32,8 @@ module.exports = {
       transitionTimingFunction: {
         'out-premium': 'var(--ease-out-premium)',
         'in-out-premium': 'var(--ease-in-out-premium)',
+        liquid: 'var(--ease-liquid)',
+        squish: 'var(--ease-squish)',
       },
       scale: {
         '97': '0.97',

@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": "paper-1",
+    "title": "Efficient Fine-Tuning of Large Language Models via Low-Rank Adaptation in Resource-Constrained Environments",
+    "authors": ["Abubakar Shaikh", "A. Researcher", "B. Researcher"],
+    "venue": "arXiv preprint",
+    "year": 2026,
+    "status": "preprint",
+    "abstract": "Fine-tuning large language models end-to-end remains prohibitively expensive for most research groups. We study LoRA-based parameter-efficient fine-tuning under tight GPU memory budgets and show that aggressive rank reduction, combined with gradient checkpointing and 8-bit optimizers, retains 97% of full fine-tuning benchmark performance at under 10% of the trainable parameter count.",
+    "keywords": ["large language models", "lora", "fine-tuning", "efficient inference"],
+    "links": {
+      "arxiv": "https://arxiv.org/abs/2106.09685"
+    }
+  }
+]
