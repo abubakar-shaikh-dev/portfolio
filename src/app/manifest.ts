@@ -17,7 +17,7 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#0a0a0a',
     icons: [
       {
-        src: '/images/profile_2.webp',
+        src: '/images/abubakar-shaikh-profile.webp',
         sizes: '1200x1200',
         type: 'image/webp',
         purpose: 'any',

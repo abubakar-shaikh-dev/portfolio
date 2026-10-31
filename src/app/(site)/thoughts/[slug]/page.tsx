@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: ArticleDetailPageProps): Prom
       tags: article.tags,
       images: [
         {
-          url: article.image ?? '/images/profile_2.webp',
+          url: article.image ?? '/images/abubakar-shaikh-profile.webp',
           width: 1200,
           height: article.image ? 630 : 1200,
           alt: article.title,
@@ -252,10 +252,10 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
               name: 'Abubakar Shaikh',
               logo: {
                 '@type': 'ImageObject',
-                url: `${SITE_URL}/images/profile_2.webp`,
+                url: `${SITE_URL}/images/abubakar-shaikh-profile.webp`,
               },
             },
-            image: `${SITE_URL}/images/profile_2.webp`,
+            image: `${SITE_URL}/images/abubakar-shaikh-profile.webp`,
             keywords: article.tags.join(', '),
             mainEntityOfPage: {
               '@type': 'WebPage',

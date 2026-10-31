@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
       tags: project.stack,
       images: [
         {
-          url: project.image ?? '/images/profile_2.webp',
+          url: project.image ?? '/images/abubakar-shaikh-profile.webp',
           width: 1200,
           height: project.image ? 630 : 1200,
           alt: project.name,

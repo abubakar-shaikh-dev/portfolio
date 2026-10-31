@@ -23,7 +23,7 @@ const outfit = Outfit({
 });
 
 const SOCIAL_URLS = SOCIAL_LINKS.map((social) => social.href);
-const PROFILE_IMAGE = '/images/profile_2.webp';
+const PROFILE_IMAGE = '/images/abubakar-shaikh-profile.webp';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

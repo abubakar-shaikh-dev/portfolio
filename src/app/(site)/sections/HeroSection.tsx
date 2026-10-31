@@ -31,8 +31,8 @@ export async function HeroSection() {
             <div className="relative group">
               <div className="overflow-hidden rounded-xl border border-border-primary bg-bg-secondary p-1.5 shadow-xl animate-jelly-in">
                 <Image
-                  src="/images/profile_2.webp"
-                  alt="Abubakar Shaikh profile photo"
+                  src="/images/abubakar-shaikh-profile.webp"
+                  alt="Abubakar Shaikh — Full Stack Software Engineer profile photo"
                   width={256}
                   height={256}
                   priority

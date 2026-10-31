@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: 'profile',
     images: [
       {
-        url: '/images/profile_2.webp',
+        url: '/images/abubakar-shaikh-profile.webp',
         width: 1200,
         height: 1200,
         alt: 'Abubakar Shaikh — Full Stack Software Engineer',
@@ -51,7 +51,7 @@ export default function AboutPage() {
               '@id': `${SITE_URL}/#person`,
               name: 'Abubakar Shaikh',
               url: SITE_URL,
-              image: `${SITE_URL}/images/profile_2.webp`,
+              image: `${SITE_URL}/images/abubakar-shaikh-profile.webp`,
               jobTitle: 'Full Stack Software Engineer',
               description:
                 'Full Stack Software Engineer with 3+ years experience specializing in scalable MERN applications, microservices architecture, DevOps workflows, and AI integrations.',

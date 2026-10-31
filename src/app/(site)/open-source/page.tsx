@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/profile_2.webp',
+        url: '/images/abubakar-shaikh-profile.webp',
         width: 1200,
         height: 1200,
         alt: 'Abubakar Shaikh — Open Source Projects',
